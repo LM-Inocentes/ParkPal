@@ -19,6 +19,8 @@
 .custom-toolbar {
   height: 75px;
   display: flex;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .toolbar-elements {
@@ -26,6 +28,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.left-elements {
+  margin-left: 1vw;
 }
 
 .right-elements {
