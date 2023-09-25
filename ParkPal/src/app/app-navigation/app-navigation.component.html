@@ -4,10 +4,24 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>ParkPAL</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="">Login</a>
+  <mat-nav-list>
+  <!-- Add nested list for Parking Spaces -->
+  <a mat-list-item href="">Dashboard</a>
+  <mat-list>
+    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area A</a>
+    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area B</a>
+    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area C</a>
+  </mat-list>
+  <!-- End nested list for Parking Spaces -->
+  <a mat-list-item href="">Profile</a>
+  <a mat-list-item href="">Reports History</a>
+  <a mat-list-item href="">Terms and Conditions</a>
+  <a mat-list-item href="">Data Privacy Statement</a>
+  <a mat-list-item href="">Feedback</a>
+  <a mat-list-item href="">Logout</a>
+      <!-- <a mat-list-item href="">Login</a>
       <a mat-list-item href="register">Register</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item href="#">Link 3</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -36,7 +50,7 @@
           >
           <mat-icon aria-label="notifications icon">notifications_none</mat-icon>
           </button>
-          <div style="display: flex; align-items: center;">
+          <!-- <div style="display: flex; align-items: center;">
             <span style="margin-left: 10px; margin-right: -6px;">John Doe</span>
             <button
               type="button"
@@ -44,8 +58,8 @@
               mat-icon-button
               (click)="drawer.toggle()">
               <mat-icon aria-label="keyboard arrow down">keyboard_arrow_down</mat-icon>
-          </button>
-          </div>
+            </button>
+          </div> -->
         </div>
       </div>
     </mat-toolbar>
