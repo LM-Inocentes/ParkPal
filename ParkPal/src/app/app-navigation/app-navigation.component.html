@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>ParkPAL</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="">login</a>
       <a mat-list-item href="#">Link 2</a>
@@ -11,7 +11,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="custom-toolbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -20,8 +20,36 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ParkPal</span>
+      <div class="toolbar-elements">
+        <div class="left-elements">
+          <div>DASHBOARD</div>
+          <div class="date-container">
+            <div class="day">{{ currentDay }}</div><div class="date">{{ currentDate }}</div>
+          </div>
+        </div>
+        <div class="right-elements">
+          <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          >
+          <mat-icon aria-label="notifications icon">notifications_none</mat-icon>
+          </button>
+          <div style="display: flex; align-items: center;">
+            <span style="margin-left: 10px; margin-right: -6px;">John Doe</span>
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()">
+              <mat-icon aria-label="keyboard arrow down">keyboard_arrow_down</mat-icon>
+          </button>
+          </div>
+        </div>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <span>test</span>
   </mat-sidenav-content>
 </mat-sidenav-container>
