@@ -5,8 +5,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>ParkPAL</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="">login</a>
-      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="">Login</a>
+      <a mat-list-item href="register">Register</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -50,6 +50,8 @@
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <span>test</span>
+
+    <router-outlet></router-outlet>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

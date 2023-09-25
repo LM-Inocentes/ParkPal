@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+import { InputComponent } from './input/input.component';import {MatGridListModule} from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
-
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { DatePipe } from '@angular/common';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AppNavigationComponent
+    AppNavigationComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,11 +34,15 @@ import { DatePipe } from '@angular/common';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatGridListModule
   ],
   providers: [
     DatePipe,
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

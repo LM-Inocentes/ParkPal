@@ -1,1 +1,46 @@
-<p>login works!</p>
+<section class="main_container">
+  <img
+    class="left-landing"
+    src="../../../assets/svg/parking-logo.svg"
+    alt="parklogo"
+  />
+
+  <div class="right-landing">
+    <div class="rAppName">
+      <p class="webName">ParkingPal</p>
+    </div>
+
+    <p class="container__info">Sign in to ParkingPAL</p>
+    <p class="container__info1">Enter your account details below</p>
+
+    <!-- Forms section -->
+    <form class="right__forms">
+
+      <!-- Input Email -->
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password"/>
+      </mat-form-field>
+
+      <button mat-raised-button color="warn">Sign In</button>
+
+      <p class="right__forgotpass">Forgot Password?</p>
+
+      <!-- Don't Have acc? -->
+      <div class="right__donthaveacc">
+        <p class="right__donthaveacctxt">Don't have an account?</p>
+        <button mat-button color="warn" routerLink="/register">Get Started</button>
+      </div>
+    </form>
+
+    <!-- Sign in to ParkingPAL
+    <div class="right__landing__signin">
+      
+    </div> -->
+  </div>
+</section>
