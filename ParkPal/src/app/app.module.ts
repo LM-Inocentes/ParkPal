@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,13 +13,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+import { InputComponent } from './input/input.component';import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AppNavigationComponent
+    AppNavigationComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,13 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

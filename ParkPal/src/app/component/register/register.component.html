@@ -1,1 +1,82 @@
-<p>register works!</p>
+<mat-grid-list cols="2" colHeight="1:2">
+  <mat-grid-tile>
+    <!-- input information/s -->
+    <form>
+      <!-- Basic Information -->
+      <div class="main__basicinformation">
+        <p class="main__information__texttitles">Basic Information</p>
+
+        <!-- full name -->
+        <div>
+          <p class="information__texttitles">Full Name<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+        </div>
+
+        <!-- Email Address -->
+        <div>
+          <p class="information__texttitles">Email Address<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" />
+          </mat-form-field>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <p class="information__texttitles">Password<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" />
+          </mat-form-field>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <p class="information__texttitles">Confirm Password<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- end of Basic Information section -->
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="2">2</mat-grid-tile>
+  <mat-grid-tile> <!-- Vehicle Information -->
+    <div class="main__vehicleinformation">
+      <p class="main__information__texttitles">Vehicle Information</p>
+
+      <!-- Make -->
+      <div>
+        <p class="information__texttitles">Make<span>*</span></p>
+        <mat-form-field>
+          <mat-label>Make</mat-label>
+          <input matInput type="text"/>
+        </mat-form-field>
+      </div>
+
+      <!-- Model -->
+      <div>
+        <p class="information__texttitles">Model<span>*</span></p>
+        <mat-form-field>
+          <mat-label>Model</mat-label>
+          <input matInput type="text"/>
+        </mat-form-field>
+      </div>
+
+      <!-- Plate Number -->
+      <div>
+        <p class="information__texttitles">Plate Number<span>*</span></p>
+        <mat-form-field>
+          <mat-label>Plate Number</mat-label>
+          <input matInput type="text"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- end of vehicle section -->
+</mat-grid-tile>
+</mat-grid-list>
