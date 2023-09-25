@@ -2,6 +2,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken'
 import  asyncHandler  from 'express-async-handler';
 import { IUser, UserModel } from '../models/user.model';
+import { IAdmin, AdminModel } from '../models/admin.model';
 import bcrypt from 'bcryptjs';
 
 const router = Router();
@@ -22,11 +23,11 @@ const generateTokenResponse = (user:any) => {
       };
 }
 
-router.post("/login",  asyncHandler(
+router.post("/user/login",  asyncHandler(
     async (req, res) => {
       const {email, password} = req.body;
       const user = await UserModel.findOne({ email });
-      if(!user){                                                                    //if user email does not exist
+      if(!user){                                                                   
         res.status(400).send("Email does not exist");
         return;
       }
@@ -39,7 +40,24 @@ router.post("/login",  asyncHandler(
     }
 ))
 
-router.post('/register', asyncHandler(
+router.post("/admin/login",  asyncHandler(
+  async (req, res) => {
+    const {username, password} = req.body;
+    const user = await AdminModel.findOne({ username });
+    if(!user){                                                                   
+      res.status(400).send("Username does not exist");
+      return;
+    }
+    const isPassMatch = await bcrypt.compare(password, user.password);           
+    if(isPassMatch) {
+      res.send(generateTokenResponse(user));
+      return;
+    }
+    res.status(400).send("Incorrect Password"); 
+  }
+))
+
+router.post('/user/register', asyncHandler(
     async (req, res) => {
       const {id, Fullname, email, contactinfo, password} = req.body;
       const user = await UserModel.findOne({email});
@@ -66,6 +84,30 @@ router.post('/register', asyncHandler(
     const dbUser = await UserModel.create(newUser);  
     res.send(generateTokenResponse(dbUser));
   }
+))
+
+router.post('/admin/register', asyncHandler(
+  async (req, res) => {
+    const {Fullname, username, password} = req.body;
+    const admin = await AdminModel.findOne({username});
+    const count = await AdminModel.count();
+    if(admin){
+      res.status(400)
+      .send('Username already exist!');
+      return;
+    }
+  const salt = await bcrypt.genSalt(10); 
+  const newAdmin:IAdmin = {
+    id: count.toString(),
+    Fullname,
+    username: username.toLowerCase(),
+    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+    Level: '3',
+  }
+
+  const dbUser = await AdminModel.create(newAdmin);  
+  res.send(generateTokenResponse(dbUser));
+}
 ))
 
 
