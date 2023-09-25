@@ -78,4 +78,8 @@ export class AuthService {
     if(userJson) return JSON.parse(userJson) as Admin;
     return new Admin();
   }
+
+  isAuthenticated(): boolean {
+    return (localStorage.getItem(USER_KEY) != null);
+  }
 }
