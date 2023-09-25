@@ -26,7 +26,7 @@ export const UserSchema = new Schema<IUser>(
         StudyLoad: { type:String, required:false },
         IDdoc: { type:String, required:false },
         Payment: { type:String, required:false },
-        Level: { type:String, required:false },
+        Level: { type:String, required:true },
     },{
         toJSON:{
             virtuals:true
