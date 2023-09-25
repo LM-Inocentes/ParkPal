@@ -12,7 +12,7 @@ import { Admin } from 'src/app/shared/models/admin';
 export class LoginComponent {
   loginForm!:FormGroup;
   isSubmitted = false;
-  returnUrl = '/';
+  returnUrl = '/dashboard';
   user!: Admin;
 
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {

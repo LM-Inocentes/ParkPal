@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+import { Admin } from '../shared/models/admin';
 
 @Component({
   selector: 'app-app-navigation',
@@ -12,6 +14,9 @@ import { DatePipe } from '@angular/common';
 export class AppNavigationComponent {
 
   private breakpointObserver = inject(BreakpointObserver);
+
+  admin!:Admin;
+  Firstname?:string;
 
   // Initialize currentDate as null
   currentDay: string | null = null;
@@ -23,7 +28,14 @@ export class AppNavigationComponent {
       shareReplay()
     );
 
-  constructor(private datePipe: DatePipe) {
+  constructor(private datePipe: DatePipe, private authService:AuthService) {
+
+    authService.userObservable.subscribe((newAdmin) => {
+      this.admin = newAdmin;
+      if(this.isAuth){
+        this.Firstname = this.admin.Fullname.split(' ').at(0);
+      }
+  });
     // Get the current date
     const currentDateObj = new Date();
 
@@ -42,5 +54,13 @@ export class AppNavigationComponent {
     // Assign the formatted date to currentDate
     this.currentDate = transformedDate;
     this.currentDay = transformedDay;
+  }
+
+  logout(){
+    this.authService.logout();
+  }
+
+  get isAuth(){
+    return this.admin.token;
   }
 }

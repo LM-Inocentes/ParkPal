@@ -7,7 +7,7 @@ import { AppNavigationComponent } from './app-navigation/app-navigation.componen
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
   {path : 'register',title: 'Parkpal-register',  component : RegisterComponent},
-  {path : 'app-navigation', title: 'App Navigation', component : AppNavigationComponent}
+  {path : 'dashboard', title: 'Dashboard', component : AppNavigationComponent}
 ];
 
 @NgModule({
