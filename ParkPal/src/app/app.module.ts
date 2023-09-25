@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import { InputComponent } from './input/input.component';import {MatGridListModule} from '@angular/material/grid-list';
-
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -40,7 +40,9 @@ import { InputComponent } from './input/input.component';import {MatGridListModu
     MatGridListModule
   ],
   providers: [
+    DatePipe,
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

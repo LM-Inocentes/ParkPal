@@ -15,3 +15,46 @@
   top: 0;
   z-index: 1;
 }
+
+.custom-toolbar {
+  height: 75px;
+  display: flex;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.toolbar-elements {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-elements {
+  margin-left: 0.8vw;
+}
+
+.right-elements {
+  display: flex;
+  align-items: center;
+}
+
+.custom-toolbar div {
+  margin-top: -5px;
+  margin-bottom: -5px;
+  padding: 0;
+}
+
+/* app-navigation.component.scss */
+.date-container {
+  display: flex;
+}
+
+.day {
+  color: red; /* Red color for the day */
+  margin-right: 5px
+}
+
+.date {
+  color: rgb(148, 148, 148); /* Gray color for the date */
+}
