@@ -1,13 +1,13 @@
-<mat-grid-list cols="2" colHeight="1:2">
-  <mat-grid-tile>
-    <!-- input information/s -->
-    <form>
+<section class="main__container">
+  <!-- input information/s -->
+  <form>
+    <div class="main__container__grid">
       <!-- Basic Information -->
       <div class="main__basicinformation">
         <p class="main__information__texttitles">Basic Information</p>
 
         <!-- full name -->
-        <div>
+        <div class="sub-container">
           <p class="information__texttitles">Full Name<span>*</span></p>
           <mat-form-field>
             <mat-label>Full Name</mat-label>
@@ -43,40 +43,70 @@
         </div>
       </div>
       <!-- end of Basic Information section -->
-    </form>
-  </mat-grid-tile>
-  <mat-grid-tile rowspan="2">2</mat-grid-tile>
-  <mat-grid-tile> <!-- Vehicle Information -->
-    <div class="main__vehicleinformation">
-      <p class="main__information__texttitles">Vehicle Information</p>
 
-      <!-- Make -->
-      <div>
-        <p class="information__texttitles">Make<span>*</span></p>
-        <mat-form-field>
-          <mat-label>Make</mat-label>
-          <input matInput type="text"/>
-        </mat-form-field>
-      </div>
+      <!-- Vehicle Information -->
+      <div class="main__vehicleinformation">
+        <p class="main__information__texttitles">Vehicle Information</p>
 
-      <!-- Model -->
-      <div>
-        <p class="information__texttitles">Model<span>*</span></p>
-        <mat-form-field>
-          <mat-label>Model</mat-label>
-          <input matInput type="text"/>
-        </mat-form-field>
-      </div>
+        <!-- Make -->
+        <div>
+          <p class="information__texttitles">Make<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Make</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+        </div>
 
-      <!-- Plate Number -->
-      <div>
-        <p class="information__texttitles">Plate Number<span>*</span></p>
-        <mat-form-field>
-          <mat-label>Plate Number</mat-label>
-          <input matInput type="text"/>
-        </mat-form-field>
+        <!-- Model -->
+        <div>
+          <p class="information__texttitles">Model<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Model</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+        </div>
+
+        <!-- Plate Number -->
+        <div>
+          <p class="information__texttitles">Plate Number<span>*</span></p>
+          <mat-form-field>
+            <mat-label>Plate Number</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+        </div>
       </div>
+      <!-- end of vehicle section -->
+
+      <!-- Upload Required Documents Section -->
+      <div class="main__uploadreqdoc">
+        <p class="main__information__texttitles">Upload Required Documents</p>
+        <div class="information__texttitles">Owner's Registration (OR)<span>*</span></div>
+        <input class="upload-box" type="file" accept="image/*" />
+        <div class="information__texttitles">Certificate of Registration (CR) Document<span>*</span></div>
+        <input class="upload-box" type="file" accept="image/*" />
+        <div class="information__texttitles">Proof of Current Study Load<span>*</span></div>
+        <input class="upload-box" type="file" accept="image/*" />
+        <div class="information__texttitles">Identification (ID) document<span>*</span></div>
+        <input class="upload-box" type="file" accept="image/*" />
+        <div class="information__texttitles">Payment Confirmation<span>*</span></div>
+        <input class="upload-box" type="file" accept="image/*" />
+      </div>
+      <!-- End ofUpload Required Documents Section -->
     </div>
-    <!-- end of vehicle section -->
-</mat-grid-tile>
-</mat-grid-list>
+  </form>
+</section>
+
+<!-- <div>
+        <label for="upload-button">
+          Browse Image
+        </label>
+        <p id="file-name" for="file-name"></p>
+      </div> -->
+<!-- <div>Certificate of Registration (CR) Document<span>*</span></div>
+      <input type="file" id="CR" accept="image/*">
+      <div>Proof of Current Study Load<span>*</span></div>
+      <input type="file" id="study_load" accept="image/*">
+      <div>Identification (ID) document<span>*</span></div>
+      <input type="file" id="id_document" accept="image/*">
+      <div>Payment Confirmation<span>*</span></div>
+      <input type="file" id="payment_confirmation" accept="image/*"> -->
