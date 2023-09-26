@@ -110,5 +110,4 @@ router.post('/admin/register', asyncHandler(
 }
 ))
 
-
 export default router;

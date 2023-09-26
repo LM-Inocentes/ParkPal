@@ -8,6 +8,7 @@ const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
   {path : 'register',title: 'Parkpal-register',  component : RegisterComponent},
   {path : 'dashboard', title: 'Dashboard', component : AppNavigationComponent}
+  
 ];
 
 @NgModule({

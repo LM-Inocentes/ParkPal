@@ -29,6 +29,7 @@ import { DatePipe } from '@angular/common';
     RegisterComponent,
     AppNavigationComponent,
     InputComponent,
+    
   ],
   imports: [
     BrowserModule,
