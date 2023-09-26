@@ -21,6 +21,7 @@ import { InputComponent } from './input/input.component';import {MatGridListModu
 import { DatePipe } from '@angular/common';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,4 +56,6 @@ import { DatePipe } from '@angular/common';
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

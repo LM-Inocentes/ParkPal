@@ -7,13 +7,14 @@ import { Admin } from 'src/app/shared/models/admin';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm!:FormGroup;
   isSubmitted = false;
   returnUrl = '/dashboard';
   user!: Admin;
+  hide = true;
 
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) {
     this.loginForm = this.formBuilder.group({
