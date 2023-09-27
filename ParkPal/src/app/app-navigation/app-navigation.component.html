@@ -4,25 +4,20 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>ParkPAL</mat-toolbar>
-  <mat-nav-list>
-  <!-- Add nested list for Parking Spaces -->
-  <a mat-list-item href="">Dashboard</a>
-  <mat-list>
-    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area A</a>
-    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area B</a>
-    <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area C</a>
-  </mat-list>
-  <!-- End nested list for Parking Spaces -->
-  <a mat-list-item href="">{{Firstname}}</a>
-  <a mat-list-item href="">Reports History</a>
-  <a mat-list-item href="">Terms and Conditions</a>
-  <a mat-list-item href="">Data Privacy Statement</a>
-  <a mat-list-item href="">Feedback</a>
-  <a mat-list-item href="/" (click)="logout()">Logout</a>
-      <!-- <a mat-list-item href="">Login</a>
-      <a mat-list-item href="register">Register</a>
-      <a mat-list-item href="#">Link 3</a> -->
-    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item href="">Dashboard</a>
+      <mat-list>
+        <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area A</a>
+        <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area B</a>
+        <a mat-list-item href=""><mat-icon mat-list-icon>arrow_right</mat-icon>Parking Area C</a>
+      </mat-list>
+      <a mat-list-item href="">{{Firstname}}</a>
+      <a mat-list-item href="">Reports History</a>
+      <a mat-list-item href="">Terms and Conditions</a>
+      <a mat-list-item href="">Data Privacy Statement</a>
+      <a mat-list-item href="">Feedback</a>
+      <a mat-list-item href="/" (click)="logout()">Logout</a>
+  </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="custom-toolbar">
@@ -36,7 +31,7 @@
       </button>
       <div class="toolbar-elements">
         <div class="left-elements">
-          <div>DASHBOARD</div>
+          <div class="page-header">DASHBOARD</div>
           <div class="date-container">
             <div class="day">{{ currentDay }}</div><div class="date">{{ currentDate }}</div>
           </div>
@@ -46,12 +41,11 @@
           type="button"
           aria-label="Toggle sidenav"
           mat-icon-button
-          (click)="drawer.toggle()"
-          >
-          <mat-icon aria-label="notifications icon">notifications_none</mat-icon>
+          (click)="drawer.toggle()">
+            <mat-icon aria-label="notifications icon">notifications_none</mat-icon>
           </button>
           <!-- <div style="display: flex; align-items: center;">
-            <span style="margin-left: 10px; margin-right: -6px;">John Doe</span>
+            <span style="margin-left: 10px; margin-right: -6px;">{{Firstname}}</span>
             <button
               type="button"
               aria-label="Toggle sidenav"
@@ -64,7 +58,7 @@
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->
-
+    <span> test </span>
     <router-outlet></router-outlet>
 
   </mat-sidenav-content>
