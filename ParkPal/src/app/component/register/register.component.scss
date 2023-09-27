@@ -61,7 +61,8 @@ span {
     padding: 3em;
     display: grid;
     grid-gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
 
     .main__basicinformation {
         display: flex;
@@ -88,9 +89,22 @@ span {
         padding: 2em;
         border-radius: .3em;
         box-shadow: 10px 10px 30px #BB2525;
+        display: flex;
+        flex-direction: column;
 
         width: 100vh;
         max-width: fit-content;
+
+        button[mat-raised-button]{
+            margin: 1.2em 0 0 0;
+            color: white;
+            background-color: #141E46;
+            font-size: 30px;
+            font-family: 'Poppins', Courier, monospace;
+            font-weight: 500;
+            border-radius: 0;
+            padding: 25px 0 25px 0;
+        }
     }
 }
 
