@@ -19,6 +19,10 @@ import { MatListModule } from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import { InputComponent } from './input/input.component';import {MatGridListModule} from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -29,6 +33,11 @@ import { DatePipe } from '@angular/common';
     RegisterComponent,
     AppNavigationComponent,
     InputComponent,
+    DashboardComponent,
+    TermsAndConditionsComponent,
+    DataPrivacyComponent,
+    FeedbackComponent,
+    
   ],
   imports: [
     BrowserModule,

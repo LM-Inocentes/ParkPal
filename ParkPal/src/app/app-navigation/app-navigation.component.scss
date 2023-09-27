@@ -17,7 +17,7 @@
 }
 
 .custom-toolbar {
-  height: 75px;
+  height: fit-content;
   display: flex;
   padding-left: 0px;
   padding-right: 0px;
@@ -25,13 +25,35 @@
 
 .toolbar-elements {
   width: 100vw;
+  height: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .left-elements {
-  margin-left: 0.8vw;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px
+}
+
+.page-header {
+  font-size: 25px;
+  height: fit-content;
+  display: flex;
+  position: relative;
+  line-height: normal;
+}
+
+.date-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  align-items: center;
+  position: relative;
+  line-height: normal;
 }
 
 .right-elements {
@@ -40,16 +62,14 @@
   margin-right: 12px;
 }
 
-.custom-toolbar div {
-  margin-top: -5px;
-  margin-bottom: -5px;
-  padding: 0;
-}
+// .custom-toolbar div {
+//   margin-top: -5px;
+//   margin-bottom: -5px;
+//   padding: 0;
+// }
 
 /* app-navigation.component.scss */
-.date-container {
-  display: flex;
-}
+
 
 .day {
   color: red; /* Red color for the day */
