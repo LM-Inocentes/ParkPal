@@ -1,9 +1,11 @@
 .sidenav-container {
   height: 100%;
+  
 }
 
 .sidenav {
   width: 200px;
+  background-color: #FAF2F2;
 }
 
 .sidenav .mat-toolbar {
@@ -17,7 +19,7 @@
 }
 
 .custom-toolbar {
-  background-color: #fedd59;
+  background-color: #ffffff;
   height: fit-content;
   display: flex;
   padding-left: 0px;
