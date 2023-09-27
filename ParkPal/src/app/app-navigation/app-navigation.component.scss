@@ -17,6 +17,7 @@
 }
 
 .custom-toolbar {
+  background-color: #fedd59;
   height: fit-content;
   display: flex;
   padding-left: 0px;
@@ -29,8 +30,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .left-elements {
@@ -41,10 +42,12 @@
 
 .page-header {
   font-size: 25px;
-  height: fit-content;
   display: flex;
   position: relative;
-  line-height: normal;
+  line-height: 25px;
+  color: black;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
 }
 
 .date-container {
@@ -53,7 +56,9 @@
   height: fit-content;
   align-items: center;
   position: relative;
-  line-height: normal;
+  line-height: 22px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 .right-elements {

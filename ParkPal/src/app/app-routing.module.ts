@@ -12,10 +12,10 @@ const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
   {path : 'register',title: 'Parkpal-register',  component : RegisterComponent},
   {
-    path : 'dashboard', 
+    path : '', 
     children: [
       {
-        path: '',
+        path: 'dashboard',
         component: DashboardComponent,
       },
       {
