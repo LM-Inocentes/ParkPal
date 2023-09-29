@@ -3,11 +3,13 @@ export class User{
     email!: string;
     password!: string;
     Fullname!: string;
-    contactinfo!: string;
     ORdoc!: string;
     CRdoc!: string;
     StudyLoad!: string;
     IDdoc!: string;
     Payment!: string;
+    VMake!: string;
+    VModel!: string;
+    VPlateNo!: string;
     tokent!: string;
 }

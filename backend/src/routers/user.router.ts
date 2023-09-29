@@ -18,7 +18,6 @@ const generateTokenResponse = (user:any) => {
         email: user.email,
         password: user.password,
         Fullname: user.Fullname,
-        contactinfo: user.contactinfo,
         token: token,
       };
 }
@@ -59,11 +58,11 @@ router.post("/admin/login",  asyncHandler(
 
 router.post('/user/register', asyncHandler(
     async (req, res) => {
-      const {id, Fullname, email, contactinfo, password} = req.body;
-      const user = await UserModel.findOne({email});
+      const {id, Fullname, email, password, VMake, VModel, VPlateNo} = req.body;
+      const user = await UserModel.findOne({id});
       if(user){
         res.status(400)
-        .send('User email already exist!');
+        .send('User id already exist!');
         return;
       }
     const salt = await bcrypt.genSalt(10); 
@@ -71,7 +70,6 @@ router.post('/user/register', asyncHandler(
       id,
       Fullname,
       email: email.toLowerCase(),
-      contactinfo,
       password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
       ORdoc: '',
       CRdoc: '',
@@ -79,10 +77,13 @@ router.post('/user/register', asyncHandler(
       IDdoc: '',
       Payment: '',
       Level: '1',
+      VMake,
+      VModel,
+      VPlateNo
     }
 
     const dbUser = await UserModel.create(newUser);  
-    res.send(generateTokenResponse(dbUser));
+    res.send(dbUser);
   }
 ))
 

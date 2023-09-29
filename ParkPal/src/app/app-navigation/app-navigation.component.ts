@@ -30,7 +30,7 @@ export class AppNavigationComponent {
 
   constructor(private datePipe: DatePipe, private authService:AuthService) {
 
-    authService.userObservable.subscribe((newAdmin) => {
+    authService.adminObservable.subscribe((newAdmin) => {
       this.admin = newAdmin;
       if(this.isAuth){
         this.Firstname = this.admin.Fullname.split(' ').at(0);
@@ -58,7 +58,7 @@ export class AppNavigationComponent {
   }
 
   logout(){
-    this.authService.logout();
+    this.authService.AdminLogout();
   }
 
   get isAuth(){

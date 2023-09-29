@@ -1,17 +1,26 @@
 <section class="main__container">
   <!-- input information/s -->
-  <form>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
     <div class="main__container__grid">
       <!-- Basic Information -->
       <div class="main__basicinformation">
         <p class="main__information__texttitles">Basic Information</p>
+        
+        <!-- ID number -->
+        <div class="sub-container">
+          <p class="information__texttitles">ID Number<span>*</span></p>
+          <mat-form-field>
+            <mat-label>e.g. 22-2222-222</mat-label>
+            <input matInput type="text" formControlName="IDNo"/>
+          </mat-form-field>
+        </div>
 
         <!-- full name -->
         <div class="sub-container">
           <p class="information__texttitles">Full Name<span>*</span></p>
           <mat-form-field>
             <mat-label>Full Name</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="Fullname"/>
           </mat-form-field>
         </div>
 
@@ -19,8 +28,8 @@
         <div>
           <p class="information__texttitles">Email Address<span>*</span></p>
           <mat-form-field>
-            <mat-label>Email Address</mat-label>
-            <input matInput type="email" />
+            <mat-label>e.g. john@gmail.com</mat-label>
+            <input matInput type="email" formControlName="email"/>
           </mat-form-field>
         </div>
 
@@ -28,8 +37,8 @@
         <div>
           <p class="information__texttitles">Password<span>*</span></p>
           <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput type="password" />
+            <mat-label>Must be more than 6 characters</mat-label>
+            <input matInput type="password" formControlName="password"/>
           </mat-form-field>
         </div>
 
@@ -37,8 +46,8 @@
         <div>
           <p class="information__texttitles">Confirm Password<span>*</span></p>
           <mat-form-field>
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="password" />
+            <mat-label>Must be more than 6 characters</mat-label>
+            <input matInput type="password" formControlName="confirmPassword"/>
           </mat-form-field>
         </div>
       </div>
@@ -53,7 +62,7 @@
           <p class="information__texttitles">Make<span>*</span></p>
           <mat-form-field>
             <mat-label>Make</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="VMake"/>
           </mat-form-field>
         </div>
 
@@ -62,7 +71,7 @@
           <p class="information__texttitles">Model<span>*</span></p>
           <mat-form-field>
             <mat-label>Model</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="VModel"/>
           </mat-form-field>
         </div>
 
@@ -71,7 +80,7 @@
           <p class="information__texttitles">Plate Number<span>*</span></p>
           <mat-form-field>
             <mat-label>Plate Number</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="VPlateNo"/>
           </mat-form-field>
         </div>
       </div>
@@ -83,7 +92,7 @@
         <div class="information__texttitles">
           Owner's Registration (OR)<span>*</span>
         </div>
-        <input class="upload-box" type="file" accept="image/*" />
+        <input class="upload-box" type="file" accept="image/*" (change)="ORFile($event)"/>
         <div class="information__texttitles">
           Certificate of Registration (CR) Document<span>*</span>
         </div>

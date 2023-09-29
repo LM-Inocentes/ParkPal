@@ -5,20 +5,21 @@ export interface IUser{
     email: string;
     password: string;
     Fullname: string;
-    contactinfo: string;
     ORdoc: string;
     CRdoc: string;
     StudyLoad: string;
     IDdoc: string;
     Payment: string;
     Level: string;
+    VMake: string;
+    VModel: string;
+    VPlateNo: string;
 }
 
 export const UserSchema = new Schema<IUser>(
     {
         id: { type:String, required:true },
         Fullname: { type:String, required:true },
-        contactinfo: { type:String, required:true },
         email: { type:String, required:true, unique:true },
         password: { type:String, required:true },
         ORdoc: { type:String, required:false },
@@ -27,6 +28,9 @@ export const UserSchema = new Schema<IUser>(
         IDdoc: { type:String, required:false },
         Payment: { type:String, required:false },
         Level: { type:String, required:true },
+        VMake: { type:String, required:true },
+        VModel: { type:String, required:true },
+        VPlateNo: { type:String, required:true },
     },{
         toJSON:{
             virtuals:true

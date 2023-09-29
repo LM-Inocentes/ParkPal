@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Admin } from 'src/app/shared/models/admin';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '/dashboard';
-  user!: Admin;
+  user!: User;
+  admin!: Admin;
   hide = true;
 
   constructor(
@@ -32,11 +34,18 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-    this.authService.userObservable.subscribe((newUser) => {
-      this.user = newUser;
-      console.log(this.user);
-    });
+  /*
+    try {
+      // Attempt to execute this.authService.userObservable.subscribe
+      this.authService.adminObservable.subscribe((newAdmin) => {
+        this.admin = newAdmin;
+      });
+    } catch (error) {
+      this.authService.userObservable.subscribe((newUser) => {
+        this.user = newUser;
+      });
+    }
+    */
   }
 
   get form() {

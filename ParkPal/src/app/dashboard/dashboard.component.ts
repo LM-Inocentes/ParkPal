@@ -13,7 +13,7 @@ export class DashboardComponent {
   Firstname?:string;
 
   constructor(private authService:AuthService) {
-    authService.userObservable.subscribe((newAdmin) => {
+    authService.adminObservable.subscribe((newAdmin) => {
       this.admin = newAdmin;
       if(this.isAuth){
         this.Firstname = this.admin.Fullname.split(' ').at(0);
