@@ -9,8 +9,8 @@ import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
-  {path : '',title: 'ParkPal-Login',  component : LoginComponent},
-  {path : 'register',title: 'Parkpal-register',  component : RegisterComponent},
+  {path : '',title: 'ParkPal',  component : LoginComponent},
+  {path : 'register',title: 'Parkpal: Register',  component : RegisterComponent},
   {
     path : '', 
     children: [
