@@ -75,12 +75,6 @@ export class AuthService {
   UserRegister(userRegister:IUserRegister): Observable<User>{
     return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
       tap({
-        next: (user) => {
-          this.toastrService.success(
-            `Please Wait for Admin Confirmation`,
-            'Application Submitted'
-          )
-        },
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Application Failed');
         }
@@ -92,95 +86,35 @@ export class AuthService {
     const uploadData = new FormData();
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
-    return this.http.patch<User>(USER_UPLOAD_OR, uploadData).pipe(
-      tap({
-        next: (item) => {
-          this.toastrService.success(
-            `OR Uploaded`,
-            'Success'
-          )
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Upload Unsuccessful');
-        }
-      })
-    );;
+    return this.http.patch<User>(USER_UPLOAD_OR, uploadData)
   }
 
   CRUpload(IDNo: any, image: File): Observable<User>{
     const uploadData = new FormData();
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
-    return this.http.patch<User>(USER_UPLOAD_CR, uploadData).pipe(
-      tap({
-        next: (item) => {
-          this.toastrService.success(
-            `CR Uploaded`,
-            'Success'
-          )
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Upload Unsuccessful');
-        }
-      })
-    );;
+    return this.http.patch<User>(USER_UPLOAD_CR, uploadData)
   }
 
   SLUpload(IDNo: any, image: File): Observable<User>{
     const uploadData = new FormData();
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
-    return this.http.patch<User>(USER_UPLOAD_STUDYLOAD, uploadData).pipe(
-      tap({
-        next: (item) => {
-          this.toastrService.success(
-            `Study Load Uploaded`,
-            'Success'
-          )
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Upload Unsuccessful');
-        }
-      })
-    );;
+    return this.http.patch<User>(USER_UPLOAD_STUDYLOAD, uploadData)
   }
 
   IDUpload(IDNo: any, image: File): Observable<User>{
     const uploadData = new FormData();
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
-    return this.http.patch<User>(USER_UPLOAD_IDDOC, uploadData).pipe(
-      tap({
-        next: (item) => {
-          this.toastrService.success(
-            `ID Uploaded`,
-            'Success'
-          )
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Upload Unsuccessful');
-        }
-      })
-    );;
+    return this.http.patch<User>(USER_UPLOAD_IDDOC, uploadData)
   }
 
   PaymentUpload(IDNo: any, image: File): Observable<User>{
     const uploadData = new FormData();
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
-    return this.http.patch<User>(USER_UPLOAD_PAYMENT, uploadData).pipe(
-      tap({
-        next: (item) => {
-          this.toastrService.success(
-            `Payment Uploaded`,
-            'Success'
-          )
-        },
-        error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Upload Unsuccessful');
-        }
-      })
-    );;
+    return this.http.patch<User>(USER_UPLOAD_PAYMENT, uploadData)
   }
 
   AdminLogout(){

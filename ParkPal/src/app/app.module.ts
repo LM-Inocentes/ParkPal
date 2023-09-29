@@ -23,6 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { LoadingComponent } from './component/loading/loading.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 
 
@@ -37,6 +39,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     TermsAndConditionsComponent,
     DataPrivacyComponent,
     FeedbackComponent,
+    LoadingComponent,
     
   ],
   imports: [
@@ -60,7 +63,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     }),
   ],
   providers: [
-    DatePipe,
+    DatePipe, { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
 
   bootstrap: [AppComponent]

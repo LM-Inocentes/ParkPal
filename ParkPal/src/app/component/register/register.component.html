@@ -96,19 +96,19 @@
         <div class="information__texttitles">
           Certificate of Registration (CR) Document<span>*</span>
         </div>
-        <input class="upload-box" type="file" accept="image/*" />
+        <input class="upload-box" type="file" accept="image/*" (change)="CRFile($event)"/>
         <div class="information__texttitles">
           Proof of Current Study Load<span>*</span>
         </div>
-        <input class="upload-box" type="file" accept="image/*" />
+        <input class="upload-box" type="file" accept="image/*" (change)="SLFile($event)"/>
         <div class="information__texttitles">
           Identification (ID) document<span>*</span>
         </div>
-        <input class="upload-box" type="file" accept="image/*" />
+        <input class="upload-box" type="file" accept="image/*" (change)="IDFile($event)"/>
         <div class="information__texttitles">
           Payment Confirmation<span>*</span>
         </div>
-        <input class="upload-box" type="file" accept="image/*" />
+        <input class="upload-box" type="file" accept="image/*" (change)="PaymentFile($event)"/>
         <!-- Submit application -->
         <button mat-raised-button type="submit">Submit Application</button>
         <!-- End ofSubmit application -->

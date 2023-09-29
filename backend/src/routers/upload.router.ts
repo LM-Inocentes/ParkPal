@@ -12,7 +12,7 @@ const router = Router();
         const {id} = req.body;
         const user = await UserModel.findOne({id: id});
         await user!.updateOne({ $set: { "ORdoc": result.secure_url } });
-        res.send(result.secure_url);
+        res.send();
     }
   ))
 
@@ -22,7 +22,7 @@ const router = Router();
         const {id} = req.body;
         const user = await UserModel.findOne({id: id});
         await user!.updateOne({ $set: { "CRdoc": result.secure_url } });
-        res.send(result.secure_url);
+        res.send();
     }
   ))
 
@@ -32,7 +32,7 @@ const router = Router();
         const {id} = req.body;
         const user = await UserModel.findOne({id: id});
         await user!.updateOne({ $set: { "StudyLoad": result.secure_url } });
-        res.send(result.secure_url);
+        res.send();
     }
   ))
 
@@ -42,7 +42,7 @@ const router = Router();
         const {id} = req.body;
         const user = await UserModel.findOne({id: id});
         await user!.updateOne({ $set: { "IDdoc": result.secure_url } });
-        res.send(result.secure_url);
+        res.send();
     }
   ))
 
@@ -52,7 +52,7 @@ const router = Router();
         const {id} = req.body;
         const user = await UserModel.findOne({id: id});
         await user!.updateOne({ $set: { "Payment": result.secure_url } });
-        res.send(result.secure_url);
+        res.send();
     }
   ))
 
