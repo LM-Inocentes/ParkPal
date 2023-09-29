@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
 import { PasswordsMatchValidator } from 'src/app/shared/validators/password_match_validator';
-
-
+import { ToastrService } from 'ngx-toastr';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -21,11 +21,6 @@ export class RegisterComponent {
   SL!: File;
   ID!: File;
   Payment!: File;
-  selectedOR!: File;
-  selectedCR!: File;
-  selectedSL!: File;
-  selectedID!: File;
-  selectedPayment!: File;
 
   returnUrl = '/';
 
@@ -33,7 +28,8 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
     )
     { 
       
@@ -64,25 +60,40 @@ export class RegisterComponent {
       console.log(this.OR);
     }
 
-    CRFile(CR: any) {
-      this.CR = CR.files[0];
+    CRFile(event: any) {
+      this.CR = event.target.files[0];
     }
 
-    SLFile(SL: any) {
-      this.SL = SL.files[0];
+    SLFile(event: any) {
+      this.SL = event.target.files[0];
     }
 
-    IDFile(ID: any) {
-      this.ID = ID.files[0];
+    IDFile(event: any) {
+      this.ID = event.target.files[0];
     }
 
-    PaymentFile(Payment: any) {
-      this.Payment = Payment.files[0];
+    PaymentFile(event: any) {
+      this.Payment = event.target.files[0];
     }
 
     submit(){
       this.isSubmitted = true;
-      if(this.registerForm.invalid||!this.OR||!this.CR||!this.SL||!this.ID||!this.Payment) return;
+      if (
+        this.registerForm.invalid 
+      ) {
+        this.toastr.error('Please check your form fields.', 'Invalid Input');
+        return;
+      }
+      if (
+        !this.OR ||
+        !this.CR ||
+        !this.SL ||
+        !this.ID ||
+        !this.Payment
+      ) {
+        this.toastr.error('Please upload all required documents.', 'Submission Error');
+        return;
+      }
   
       const fv= this.registerForm.value;
       const user :IUserRegister = {
@@ -95,9 +106,24 @@ export class RegisterComponent {
         VModel: fv.VModel,
         VPlateNo: fv.VPlateNo,
       };
+      console.log(user);
   
-      this.authService.UserRegister(user).subscribe(_ => {})
 
+      this.authService.UserRegister(user).pipe(
+        switchMap(() => this.authService.ORUpload(fv.IDNo, this.OR)),
+        switchMap(() => this.authService.CRUpload(fv.IDNo, this.CR)),
+        switchMap(() => this.authService.SLUpload(fv.IDNo, this.SL)),
+        switchMap(() => this.authService.IDUpload(fv.IDNo, this.ID)),
+        switchMap(() => this.authService.PaymentUpload(fv.IDNo, this.Payment))
+      ).subscribe(
+        () => {
+          this.toastr.success(
+            `Please Wait for Admin Confirmation`,
+            'Application Submitted'
+          );
+          this.router.navigateByUrl('/');
+        },
+      );
     }
 }
 

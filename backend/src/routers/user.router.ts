@@ -62,7 +62,7 @@ router.post('/user/register', asyncHandler(
       const user = await UserModel.findOne({id});
       if(user){
         res.status(400)
-        .send('User id already exist!');
+        .send('ID Number Already Exist!');
         return;
       }
     const salt = await bcrypt.genSalt(10); 

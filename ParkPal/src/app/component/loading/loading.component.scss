@@ -1,0 +1,24 @@
+.container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #2ee6f74f;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+  }
+  
+  .details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+  }
+  
+  img{
+    width: 200px;
+    height: 200px;
+  }
+  
