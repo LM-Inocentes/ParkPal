@@ -1,4 +1,5 @@
-const BASE_URL = 'https://parkpal-app.onrender.com';
+import { environment } from "src/environments/environment.development";
+const BASE_URL = environment.baseUrl;
 
 
 
