@@ -86,3 +86,25 @@
 .date {
   color: rgb(148, 148, 148); /* Gray color for the date */
 }
+
+// title
+.main_title-header{
+  margin: 40px 0 0 20px;
+  background-color: #FF6969;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 42px);
+
+  .title-header{
+    padding: 20px 0 20px 0;
+    margin: 0;
+    font-family: 'Poppins', Courier, monospace;
+    color: #FFFFFF;
+
+    .PAL-span{
+      font-weight: 600;
+    }
+  }
+}

@@ -3,7 +3,10 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>ParkPAL</mat-toolbar>
+    <!-- <mat-toolbar>Parking<span>PAL</span></mat-toolbar> -->
+    <div class="main_title-header">
+      <h1 class="title-header">Parking<span class="PAL-span">PAL</span></h1>
+    </div>
     <mat-nav-list>
       <a mat-list-item href="/dashboard">Dashboard</a>
       <mat-list>
