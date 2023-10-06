@@ -26,7 +26,6 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
-import { ManualRegistrationComponent } from './manual-registration/manual-registration.component';
 import { UserRegistrationComponent } from './manual-registration/user-registration/user-registration.component';
 import { ModRegistrationComponent } from './manual-registration/mod-registration/mod-registration.component';
 import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
@@ -46,7 +45,6 @@ import { AdminRegistrationComponent } from './manual-registration/admin-registra
     FeedbackComponent,
     LoadingComponent,
     PendingRegistrationsComponent,
-    ManualRegistrationComponent,
     UserRegistrationComponent,
     ModRegistrationComponent,
     AdminRegistrationComponent,
