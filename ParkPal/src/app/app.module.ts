@@ -25,6 +25,8 @@ import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
+import { ManualRegistrationComponent } from './manual-registration/manual-registration.component';
 
 
 
@@ -40,6 +42,8 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     DataPrivacyComponent,
     FeedbackComponent,
     LoadingComponent,
+    PendingRegistrationsComponent,
+    ManualRegistrationComponent,
     
   ],
   imports: [
