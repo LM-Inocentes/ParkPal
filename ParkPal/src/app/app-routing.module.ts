@@ -7,8 +7,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { ManualRegistrationComponent } from './manual-registration/manual-registration.component';
 import { PendingRegistrationsComponent } from './pending-registrations/pending-registrations.component';
+import { UserRegistrationComponent } from './manual-registration/user-registration/user-registration.component';
+import { ModRegistrationComponent } from './manual-registration/mod-registration/mod-registration.component';
+import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
+import { Admin } from './shared/models/admin';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -25,8 +28,16 @@ const routes: Routes = [
         component: PendingRegistrationsComponent,
       },
       {
-        path: 'manual-registration',
-        component: ManualRegistrationComponent,
+        path: 'user-registration',
+        component: UserRegistrationComponent,
+      },
+      {
+        path: 'mod-registration',
+        component: ModRegistrationComponent,
+      },
+      {
+        path: 'admin-registration',
+        component: AdminRegistrationComponent,
       },
       {
         path: 'terms-and-conditions',
