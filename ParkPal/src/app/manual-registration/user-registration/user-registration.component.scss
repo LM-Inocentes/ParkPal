@@ -1,0 +1,130 @@
+// input[type="file"]{
+//   display: none;
+//   background-color: #BB2525;
+//   color: #FFFFFF;
+//   font-family: 'Poppins', Courier, monospace;
+
+// }
+// label{
+//     font-family: 'Poppins', Courier, monospace;
+//     color: #FFFFFF;
+//     background-color: #BB2525;
+//     margin: auto;
+// }
+span {
+    color: #BB2525;
+    font-weight: 500;
+}
+
+.upload-box {
+    font-size: 20px;
+    background-color: #FFFFFF;
+    outline: none;
+}
+
+::-webkit-file-upload-button {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: 'Poppins', Courier, monospace;
+    background-color: #BB2525;
+    border: 0;
+    max-width: 100%;
+    width: 213px;
+    height: 51px;
+    max-height: 100%;
+}
+
+::-webkit-file-upload-button:hover {
+    transition-duration: 0.5s;
+    color: black;
+    background: #FF6F6F;
+}
+
+.main__information__texttitles {
+    width: 275px;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Poppins', Courier, monospace;
+}
+
+.information__texttitles {
+    padding: 1em 0 0 0;
+    width: 250px;
+    font-size: 20px;
+    font-weight: 200;
+    font-family: 'Poppins', Courier, monospace;
+}
+
+.main__container__grid {
+    display: flex;
+    //gap: 10px;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    //justify-content: space-evenly;
+    //width: 80vw;
+    margin: 8vh 50px auto 50px;
+    //grid-template-columns: repeat(2, minmax(280px, 700px));
+
+
+    .main__textforms{
+        width: 500px;
+        //height: 750px;
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 1 650px;
+        justify-content: center;
+        gap: 20px;
+
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 30px;
+        //display: flex;
+        //align-items: flex-start;
+        //gap: 10px;
+        //flex: 0 1 250px;
+        
+    }
+
+    .sub-container{
+        width: 40%;
+    }
+
+    .main__basicinformation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 270px;
+    }
+
+    .main__uploadreqdoc {
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: fit-content;
+
+        button[mat-raised-button]{
+            margin: 1.2em 0 0 0;
+            color: white;
+            background-color: #141E46;
+            font-size: 30px;
+            font-family: 'Poppins', Courier, monospace;
+            font-weight: 500;
+            border-radius: 0;
+            padding: 25px 0 25px 0;
+        }
+    }
+}
+/*
+@media (max-width: 950px) {
+    .main__container__grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+*/

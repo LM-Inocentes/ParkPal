@@ -29,6 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'user-registration',
+        title: 'User Registration',
         component: UserRegistrationComponent,
       },
       {
