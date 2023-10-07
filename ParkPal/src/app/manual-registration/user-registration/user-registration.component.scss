@@ -24,7 +24,7 @@ span {
 
 ::-webkit-file-upload-button {
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Poppins', Courier, monospace;
     background-color: #BB2525;
     border: 0;
@@ -42,7 +42,7 @@ span {
 
 .main__information__texttitles {
     width: 275px;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bolder;
     font-family: 'Poppins', Courier, monospace;
 }
@@ -50,7 +50,7 @@ span {
 .information__texttitles {
     padding: 1em 0 0 0;
     width: 250px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 200;
     font-family: 'Poppins', Courier, monospace;
 }
@@ -63,7 +63,7 @@ span {
     justify-content: center;
     //justify-content: space-evenly;
     //width: 80vw;
-    margin: 8vh 50px auto 50px;
+    margin: 8vh 50px 50px 50px;
     //grid-template-columns: repeat(2, minmax(280px, 700px));
 
 
@@ -103,22 +103,33 @@ span {
         padding: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
 
         width: 100%;
         max-width: fit-content;
 
-        button[mat-raised-button]{
-            margin: 1.2em 0 0 0;
-            color: white;
-            background-color: #141E46;
-            font-size: 30px;
-            font-family: 'Poppins', Courier, monospace;
-            font-weight: 500;
-            border-radius: 0;
-            padding: 25px 0 25px 0;
-        }
+        
     }
 }
+
+.submit-button {
+    margin: 0 auto auto auto;
+    display: flex;
+    width: 500px;
+    justify-content: center;
+    button[mat-raised-button]{
+        
+        color: white;
+        background-color: #141E46;
+        font-size: 18px;
+        font-family: 'Poppins', Courier, monospace;
+        font-weight: 500;
+        border-radius: 0;
+        padding: 25px 0 25px 0;
+        width: 70%;
+    }
+}
+
 /*
 @media (max-width: 950px) {
     .main__container__grid {
