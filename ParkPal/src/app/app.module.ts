@@ -29,6 +29,8 @@ import { PendingRegistrationsComponent } from './pending-registrations/pending-r
 import { UserRegistrationComponent } from './manual-registration/user-registration/user-registration.component';
 import { ModRegistrationComponent } from './manual-registration/mod-registration/mod-registration.component';
 import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -48,6 +50,7 @@ import { AdminRegistrationComponent } from './manual-registration/admin-registra
     UserRegistrationComponent,
     ModRegistrationComponent,
     AdminRegistrationComponent,
+    UserProfileComponent,
     
   ],
   imports: [
@@ -64,6 +67,7 @@ import { AdminRegistrationComponent } from './manual-registration/admin-registra
     MatGridListModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatExpansionModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

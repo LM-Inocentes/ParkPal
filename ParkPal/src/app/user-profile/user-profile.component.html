@@ -1,0 +1,39 @@
+<section class="main_user_profile">
+  <!-- UserName Name and Email -->
+  <div class="user_details">
+    <div class="user_info">
+      <div class="box_user_info">CD</div>
+    </div>
+    <div class="user_name">Charles Henricks Dela Pena</div>
+    <div class="user_email">charles@cit.edu</div>
+  </div>
+  <!-- End of UserName Name and Email -->
+
+  <!-- expansion panel -->
+  <div class="main_expansion_container">
+    <!-- left pannel -->
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Violation History </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>No Violations Keep it Up!</p>
+    </mat-expansion-panel>
+    <!-- end of left panel -->
+    <br />
+    <!-- right panel -->
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Uploaded Documents </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+    <!-- end of right panel -->
+  </div>
+  <!-- end of expansion panel -->
+</section>
