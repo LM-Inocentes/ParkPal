@@ -10,14 +10,24 @@ const router = Router();
 const generateTokenResponse = (user:any) => {
     const token = jwt.sign({
         id: user.id
-    },"Some Text",{
+    },"Expires In",{
         expiresIn: "30d"
     })
     return {
+        Level: user.Level,
         id: user.id,
         email: user.email,
         password: user.password,
         Fullname: user.Fullname,
+        username: user.username,
+        ORdoc: user.ORdoc,         
+        CRdoc: user.CRdoc,
+        StudyLoad: user.StudyLoad,
+        IDdoc: user.IDdoc,
+        Payment: user.Payment,
+        VMake: user.VMake,
+        VModel: user.VModel,
+        VPlateNo: user.VPlateNo,
         token: token,
       };
 }
@@ -39,12 +49,15 @@ router.post("/user/login",  asyncHandler(
     }
 ))
 
-router.post("/admin/login",  asyncHandler(
+router.post("/login",  asyncHandler(
   async (req, res) => {
     const {username, password} = req.body;
-    const user = await AdminModel.findOne({ username });
+    var user = await AdminModel.findOne({ username });
+    if (!user) {
+      user = await UserModel.findOne({ 'id': username, 'isRegistered': true });
+    }
     if(!user){                                                                   
-      res.status(400).send("Username does not exist");
+      res.status(400).send("User does not exist");
       return;
     }
     const isPassMatch = await bcrypt.compare(password, user.password);           
@@ -68,6 +81,7 @@ router.post('/user/register', asyncHandler(
     const salt = await bcrypt.genSalt(10); 
     const newUser:IUser = {
       id,
+      username: id,
       Fullname,
       email: email.toLowerCase(),
       password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
@@ -76,12 +90,12 @@ router.post('/user/register', asyncHandler(
       StudyLoad: '',
       IDdoc: '',
       Payment: '',
-      Level: '1',
+      Level: 1,
       VMake,
       VModel,
-      VPlateNo
+      VPlateNo,
+      isRegistered: false
     }
-
     const dbUser = await UserModel.create(newUser);  
     res.send(dbUser);
   }
@@ -103,12 +117,19 @@ router.post('/admin/register', asyncHandler(
     Fullname,
     username: username.toLowerCase(),
     password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
-    Level: '3',
+    Level: 3,
   }
 
   const dbUser = await AdminModel.create(newAdmin);  
   res.send(generateTokenResponse(dbUser));
 }
+))
+
+router.get("/user/pending", asyncHandler(
+  async (req, res) =>{
+      const users = await UserModel.find({isRegistered: false});
+      res.send(users);                       //sending items from database
+  }
 ))
 
 export default router;

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 import { AuthService } from '../services/auth.service';
-import { Admin } from '../shared/models/admin';
+import { User } from '../shared/models/user';
 
 @Component({
   selector: 'app-app-navigation',
@@ -15,7 +15,7 @@ export class AppNavigationComponent {
 
   private breakpointObserver = inject(BreakpointObserver);
 
-  admin!:Admin;
+  user!:User;
   Firstname?:string;
 
   // Initialize currentDate as null
@@ -30,11 +30,10 @@ export class AppNavigationComponent {
 
   constructor(private datePipe: DatePipe, private authService:AuthService) {
 
-    authService.adminObservable.subscribe((newAdmin) => {
-      this.admin = newAdmin;
+    authService.userObservable.subscribe((newUser) => {
+      this.user = newUser;
       if(this.isAuth){
-        this.Firstname = this.admin.Fullname.split(' ').at(0);
-        console.log(this.admin);
+        this.Firstname = this.user.Fullname.split(' ').at(0);
       }
     });
     // Get the current date
@@ -58,10 +57,10 @@ export class AppNavigationComponent {
   }
 
   logout(){
-    this.authService.AdminLogout();
+    this.authService.Logout();
   }
 
   get isAuth(){
-    return this.admin.token;
+    return this.user.token;
   }
 }

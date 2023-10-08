@@ -5,7 +5,7 @@ export interface IAdmin{
     password: string;
     Fullname: string;
     username: string;
-    Level: string;
+    Level: number;
 }
 
 export const AdminSchema = new Schema<IAdmin>(
@@ -14,7 +14,7 @@ export const AdminSchema = new Schema<IAdmin>(
         password: { type:String, required:true },
         Fullname: { type:String, required:true },
         username: { type:String, required:true, unique:true },
-        Level: { type:String, required:true },
+        Level: { type:Number, required:true },
     },{
         toJSON:{
             virtuals:true

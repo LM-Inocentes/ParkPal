@@ -2,11 +2,13 @@ const BASE_URL = 'http://localhost:5000';
 
 
 
-export const ADMIN_LOGIN_URL = BASE_URL + '/api/users/admin/login';
+export const LOGIN_URL = BASE_URL + '/api/users/login';
 
 export const ADMIN_REGISTER_URL = BASE_URL + '/api/users/admin/register';
 
 export const USER_REGISTER_URL = BASE_URL + '/api/users/user/register';
+
+export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending';
 
 export const USER_UPLOAD_OR = BASE_URL + '/api/uploads/ORdoc';
 

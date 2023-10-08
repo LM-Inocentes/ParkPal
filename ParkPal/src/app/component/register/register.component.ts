@@ -57,7 +57,6 @@ export class RegisterComponent {
 
     ORFile(event: any) {
       this.OR = event.target.files[0];
-      console.log(this.OR);
     }
 
     CRFile(event: any) {
@@ -106,8 +105,6 @@ export class RegisterComponent {
         VModel: fv.VModel,
         VPlateNo: fv.VPlateNo,
       };
-      console.log(user);
-  
 
       this.authService.UserRegister(user).pipe(
         switchMap(() => this.authService.ORUpload(fv.IDNo, this.OR)),
