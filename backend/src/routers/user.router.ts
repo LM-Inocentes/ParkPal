@@ -4,6 +4,8 @@ import  asyncHandler  from 'express-async-handler';
 import { IUser, UserModel } from '../models/user.model';
 import { IAdmin, AdminModel } from '../models/admin.model';
 import bcrypt from 'bcryptjs';
+const cloudinary = require("../configs/cloudinary.config");
+const upload = require("../configs/multer.config");
 
 const router = Router();
 
@@ -129,6 +131,28 @@ router.get("/user/pending", asyncHandler(
   async (req, res) =>{
       const users = await UserModel.find({isRegistered: false});
       res.send(users);                       //sending items from database
+  }
+))
+
+router.patch("/user/pending/approve", asyncHandler(
+  async (req, res) =>{
+    const {id} = req.body;
+    const user = await UserModel.findOne({id: id});
+    await user!.updateOne({$set: {"isRegistered": true}});
+    res.send(user);                    
+  }
+))
+
+router.delete("/user/pending/reject/:id", asyncHandler(
+  async (req, res) => {
+    const user = await UserModel.findOne({ id: req.params.id });
+    await cloudinary.uploader.destroy(user?.ORdoc);
+    await cloudinary.uploader.destroy(user?.CRdoc);
+    await cloudinary.uploader.destroy(user?.StudyLoad);
+    await cloudinary.uploader.destroy(user?.IDdoc);
+    await cloudinary.uploader.destroy(user?.Payment);
+    await user!.delete(); 
+    res.send();
   }
 ))
 

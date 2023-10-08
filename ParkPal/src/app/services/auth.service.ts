@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD } from 'src/app/shared/apiURLS/URLS';
+import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD, APPROVE_PENDING_USER_URL, REJECT_PENDING_USER_URL } from 'src/app/shared/apiURLS/URLS';
 import { ILogin } from '../shared/interfaces/ILogin';
 import { IAdminRegister } from '../shared/interfaces/IAdminRegister';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
@@ -65,10 +65,6 @@ export class AuthService {
     );
   }
 
-  getUserRegister(): Observable<User[]>{
-    return this.http.get<User[]>(GET_PENDING_USER_URL);
-  }
-
   ORUpload(IDNo: any, image: File): Observable<User>{
     const uploadData = new FormData();
     uploadData.append('image', image);
@@ -102,6 +98,44 @@ export class AuthService {
     uploadData.append('image', image);
     uploadData.append('id', IDNo);
     return this.http.patch<User>(USER_UPLOAD_PAYMENT, uploadData)
+  }
+
+  getPendingUsers(): Observable<User[]>{
+    return this.http.get<User[]>(GET_PENDING_USER_URL);
+  }
+
+  approvePendingUser(user: User): Observable<User>{
+    return this.http.patch<User>(APPROVE_PENDING_USER_URL, user).pipe(
+      tap({
+        next: (user) => {
+          this.toastrService.success(
+            `Approved ${user.Fullname}! Registration`,
+            'Success'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Error');
+        }
+
+      })
+    );
+  }
+
+  rejectPendingUser(user: User): Observable<User>{
+    return this.http.delete<User>(REJECT_PENDING_USER_URL + user.id).pipe(
+      tap({
+        next: (user) => {
+          this.toastrService.success(
+            `Registration Rejected`,
+            'Success'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Error');
+        }
+
+      })
+    );
   }
 
   Logout(){

@@ -10,6 +10,10 @@ export const USER_REGISTER_URL = BASE_URL + '/api/users/user/register';
 
 export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending';
 
+export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';
+
+export const REJECT_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/reject/';
+
 export const USER_UPLOAD_OR = BASE_URL + '/api/uploads/ORdoc';
 
 export const USER_UPLOAD_CR = BASE_URL + '/api/uploads/CRdoc';

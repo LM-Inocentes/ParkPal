@@ -15,6 +15,7 @@ export class User{
     VMake?: string;
     VModel?: string;
     VPlateNo?: string;
+    isRegistered?: string;
     
     token!: string;
 }

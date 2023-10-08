@@ -12,7 +12,7 @@ export class DashboardComponent {
   user!:User;
   Firstname?:string;
 
-  constructor(private authService:AuthService) {
+  constructor( authService:AuthService ) {
     authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
       if(this.isAuth){
