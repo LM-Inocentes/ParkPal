@@ -2,6 +2,7 @@ import { Schema, model } from 'mongoose';
 
 export interface IUser{
     id: string;
+    username: string;
     email: string;
     password: string;
     Fullname: string;
@@ -10,27 +11,30 @@ export interface IUser{
     StudyLoad: string;
     IDdoc: string;
     Payment: string;
-    Level: string;
+    Level: number;
     VMake: string;
     VModel: string;
     VPlateNo: string;
+    isRegistered: boolean;
 }
 
 export const UserSchema = new Schema<IUser>(
     {
         id: { type:String, required:true },
+        username: { type:String, required:true, unique:true },
         Fullname: { type:String, required:true },
-        email: { type:String, required:true, unique:true },
+        email: { type:String, required:true, unique:false },
         password: { type:String, required:true },
         ORdoc: { type:String, required:false },
         CRdoc: { type:String, required:false },
         StudyLoad: { type:String, required:false },
         IDdoc: { type:String, required:false },
         Payment: { type:String, required:false },
-        Level: { type:String, required:true },
+        Level: { type:Number, required:true },
         VMake: { type:String, required:true },
         VModel: { type:String, required:true },
         VPlateNo: { type:String, required:true },
+        isRegistered: { type:Boolean, required:true },
     },{
         toJSON:{
             virtuals:true

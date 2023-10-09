@@ -31,6 +31,9 @@ import { ModRegistrationComponent } from './manual-registration/mod-registration
 import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { ImageModalComponent } from './component/image-modal/image-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -51,6 +54,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ModRegistrationComponent,
     AdminRegistrationComponent,
     UserProfileComponent,
+    ImageModalComponent,
     
   ],
   imports: [
@@ -68,6 +72,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ReactiveFormsModule,
     HttpClientModule,
     MatExpansionModule,
+    MatTableModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

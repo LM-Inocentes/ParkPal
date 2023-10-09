@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Admin } from 'src/app/shared/models/admin';
 import { User } from 'src/app/shared/models/user';
 
 @Component({
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   returnUrl = '/dashboard';
   user!: User;
-  admin!: Admin;
   hide = true;
 
   constructor(
@@ -56,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.isSubmitted = true;
     if (this.loginForm.invalid) return;
 
-    this.authService.AdminLogin({
+    this.authService.Login({
       username: this.form['username'].value,
       password: this.form['password'].value,
     }).subscribe(() => {

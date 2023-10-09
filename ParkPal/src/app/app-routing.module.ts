@@ -11,7 +11,7 @@ import { PendingRegistrationsComponent } from './pending-registrations/pending-r
 import { UserRegistrationComponent } from './manual-registration/user-registration/user-registration.component';
 import { ModRegistrationComponent } from './manual-registration/mod-registration/mod-registration.component';
 import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
-import { Admin } from './shared/models/admin';
+import { User } from './shared/models/user';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [

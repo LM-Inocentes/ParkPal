@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Admin } from '../shared/models/admin';
+import { User } from '../shared/models/user';
 
 
 @Component({
@@ -9,20 +9,20 @@ import { Admin } from '../shared/models/admin';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  admin!:Admin;
+  user!:User;
   Firstname?:string;
 
-  constructor(private authService:AuthService) {
-    authService.adminObservable.subscribe((newAdmin) => {
-      this.admin = newAdmin;
+  constructor( authService:AuthService ) {
+    authService.userObservable.subscribe((newUser) => {
+      this.user = newUser;
       if(this.isAuth){
-        this.Firstname = this.admin.Fullname.split(' ').at(0);
-        console.log(this.admin);
+        this.Firstname = this.user.Fullname.split(' ').at(0);
+        console.log(this.user);
       }
     });
   }
   
   get isAuth(){
-    return this.admin.token;
+    return this.user.token;
   }
 }
