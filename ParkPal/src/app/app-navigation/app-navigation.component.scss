@@ -1,3 +1,34 @@
+a{
+  text-decoration: none;
+  color: black;
+}
+
+svg{
+  width: 2.5em;
+  height: 2.5em;
+}
+
+p{
+  font-family: 'Poppins', Courier, monospace;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 0;
+  padding: 0 0 0 0.4em;
+}
+.mat-nav-list-btns{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.9em 0 0.9em 1.3em;
+}
+
+.mat-nav-list-btns:hover{
+  transition-duration: 0.4s;
+  background-color: #FF6969;
+  color: #FAF2F2;
+}
+
 .sidenav-container {
   height: 100%;
   
