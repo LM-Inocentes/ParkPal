@@ -8,6 +8,8 @@ export const ADMIN_REGISTER_URL = BASE_URL + '/api/users/admin/register';
 
 export const USER_REGISTER_URL = BASE_URL + '/api/users/user/register';
 
+export const USER_MANUAL_REGISTER_URL = BASE_URL + '/api/users/user/manual-register';
+
 export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending';
 
 export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';

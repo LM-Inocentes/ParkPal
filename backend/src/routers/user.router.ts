@@ -103,6 +103,38 @@ router.post('/user/register', asyncHandler(
   }
 ))
 
+router.post('/user/manual-register', asyncHandler(
+  async (req, res) => {
+    const {id, Fullname, email, password, VMake, VModel, VPlateNo} = req.body;
+    const user = await UserModel.findOne({id});
+    if(user){
+      res.status(400)
+      .send('ID Number Already Exist!');
+      return;
+    }
+  const salt = await bcrypt.genSalt(10); 
+  const newUser:IUser = {
+    id,
+    username: id,
+    Fullname,
+    email: email.toLowerCase(),
+    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+    ORdoc: '',
+    CRdoc: '',
+    StudyLoad: '',
+    IDdoc: '',
+    Payment: '',
+    Level: 1,
+    VMake,
+    VModel,
+    VPlateNo,
+    isRegistered: true
+  }
+  const dbUser = await UserModel.create(newUser);  
+  res.send(dbUser);
+}
+))
+
 router.post('/admin/register', asyncHandler(
   async (req, res) => {
     const {Fullname, username, password} = req.body;
