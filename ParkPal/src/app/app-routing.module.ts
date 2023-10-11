@@ -23,41 +23,57 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        title: 'Dashboard',
+        data: { title: 'DASHBOARD' },
       },
       {
         path: 'pending-registrations',
         component: PendingRegistrationsComponent,
+        title: 'Pending Registrations',
+        data: { title: 'PENDING REGISTRATIONS' },
       },
       {
         path: 'user-registration',
         title: 'User Registration',
         component: UserRegistrationComponent,
+        data: { title: 'USER REGISTRATION' },
       },
       {
         path: 'mod-registration',
         component: ModRegistrationComponent,
+        title: 'Moderator Registration',
+        data: { title: 'MODERATOR REGISTRATION' },
       },
       {
         path: 'admin-registration',
         component: AdminRegistrationComponent,
+        title: 'Admin Registration',
+        data: { title: 'ADMIN REGISTRATION' },
       },
       {
         path: 'terms-and-conditions',
         component: TermsAndConditionsComponent,
+        title: 'Terms and Conditions',
+        data: { title: 'TERMS AND CONDITIONS' },
       },
       {
         path: 'data-privacy',
-        component: DataPrivacyComponent
+        component: DataPrivacyComponent,
+        title: 'Data Privacy',
+        data: { title: 'DATA PRIVACY' },
       },
       {
         path: 'feedback',
         component: FeedbackComponent,
+        title: 'Feedback',
+        data: { title: 'FEEDBACK' },
       },
       // for the Profile
       {
         path: 'my-profile',
         title: 'User Profile',
-        component: UserProfileComponent
+        component: UserProfileComponent,
+        data: { title: 'USER PROFILE' },
       }
       
     ],
