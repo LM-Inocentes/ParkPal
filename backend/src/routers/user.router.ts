@@ -137,24 +137,46 @@ router.post('/user/manual-register', asyncHandler(
 
 router.post('/admin/register', asyncHandler(
   async (req, res) => {
-    const {Fullname, username, password} = req.body;
+    const {Fullname, username, password, id} = req.body;
     const admin = await AdminModel.findOne({username});
     const count = await AdminModel.count();
     if(admin){
       res.status(400)
-      .send('Username already exist!');
+      .send('ID already exist!');
       return;
     }
   const salt = await bcrypt.genSalt(10); 
   const newAdmin:IAdmin = {
-    id: count.toString(),
+    id,
     Fullname,
     username: username.toLowerCase(),
     password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
     Level: 3,
   }
-
   const dbUser = await AdminModel.create(newAdmin);  
+  res.send(generateTokenResponse(dbUser));
+}
+))
+
+router.post('/mod/register', asyncHandler(
+  async (req, res) => {
+    const {Fullname, username, password, id} = req.body;
+    const admin = await AdminModel.findOne({username});
+    const count = await AdminModel.count();
+    if(admin){
+      res.status(400)
+      .send('ID already exist!');
+      return;
+    }
+  const salt = await bcrypt.genSalt(10); 
+  const newMod:IAdmin = {
+    id,
+    Fullname,
+    username: username.toLowerCase(),
+    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+    Level: 2,
+  }
+  const dbUser = await AdminModel.create(newMod);  
   res.send(generateTokenResponse(dbUser));
 }
 ))

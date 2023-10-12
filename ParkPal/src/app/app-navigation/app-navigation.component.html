@@ -130,7 +130,7 @@
       <!-- end of Profile -->
 
       <!-- Pending reg -->
-      <a class="mat-nav-list-btns" href="/pending-registrations">
+      <a class="mat-nav-list-btns" href="/pending-registrations" *ngIf="(user.Level!=1)">
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@
       <!-- end of Pending reg -->
 
       <!-- history reports -->
-      <a class="mat-nav-list-btns" href="">
+      <a class="mat-nav-list-btns" href="" *ngIf="(user.Level!=1)">
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@
       <!-- end of history reports -->
 
       <!-- Manual Registration -->
-      <a class="mat-nav-list-btns">
+      <a class="mat-nav-list-btns" *ngIf="(user.Level!=1)">
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@
       </a>
       <!-- end of Manual Registration -->
       <!-- User -->
-      <div class="ManualReg_sub">
+      <div class="ManualReg_sub" *ngIf="(user.Level!=1)">
         <a href="/user-registration" class="ManualReg_sub_btn">
           <!-- <div class="ManualReg_sub_btn_icon">
             <svg
@@ -317,7 +317,7 @@
       <!-- end of dataprivacy -->
 
       <!-- feedback -->
-      <a class="mat-nav-list-btns" href="/feedback">
+      <a class="mat-nav-list-btns" href="/feedback" >
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"

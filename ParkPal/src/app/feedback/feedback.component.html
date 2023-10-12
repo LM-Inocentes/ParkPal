@@ -11,18 +11,20 @@
 
   <div class="maincontainer">
     <div class="container">
-      <form>
+      <form [formGroup]="feedbackForm" (ngSubmit)="submit()">
         <div class="form-group">
           <label for="feedbackType">Feedback Type</label>
-          <select id="feedbackType" name="feedbackType" required>
-            <option value="suggestion">Suggestion</option>
-            <option value="bug">Bug Report</option>
-            <option value="compliment">Compliment</option>
+          <select id="feedbackType" name="feedbackType" required formControlName="type">
+            <option value="Suggestion">Suggestion</option>
+            <option value="Bug Report">Bug Report</option>
+            <option value="Compliment">Compliment</option>
+            <option value="Complaint">Complaint</option>
           </select>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea
+          <textarea 
+            formControlName="desc"
             id="description"
             name="description"
             rows="4"
@@ -33,39 +35,21 @@
       </form>
     </div>
 
-    <div class="feedback-container">
+    <div class="feedback-container" >
       <p>Recent Feedbacks</p>
-      <div class="maincontent">
-        <div class="upper">
+      <div class="maincontent" *ngFor="let feedback of recentFeedbacks">
+        <div class="upper" >
           <div class="user_info">
-            <div class="box_user_info">CD</div>
+            <div class="box_user_info">{{ feedback.name.charAt(0) }}</div>
           </div>
-          <p class="name">Charles Dela Peña</p>
-          <p class="category"><strong>Suggestion</strong></p>
+          <p class="name"> {{ feedback.name }} </p>
+          <p class="category"><strong>{{ feedback.type }}</strong></p>
         </div>
 
         <div class="feedback-content">
           <label>Description</label>
           <p class="suggestion">
-            The application should have a reserve feature for important events.
-          </p>
-        </div>
-      </div>
-      
-      <div class="maincontent">
-        <div class="upper">
-          <div class="user_info">
-            <div class="box_user_info">ND</div>
-          </div>
-          <p class="name">Neil Diaz</p>
-          <p class="category"><strong>Compliment</strong></p>
-        </div>
-
-        <div class="feedback-content">
-          <label>Description</label>
-          <p class="suggestion">
-            I love the ease of use with the application and functionality that provides 
-            convenience.
+            {{ feedback.desc }}
           </p>
         </div>
       </div>

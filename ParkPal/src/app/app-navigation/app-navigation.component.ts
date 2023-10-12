@@ -45,6 +45,7 @@ export class AppNavigationComponent {
       if(this.isAuth){
         this.Firstname = this.user.Fullname.split(' ').at(0);
       }
+      console.log(this.user);
     });
     // Get the current date
     const currentDateObj = new Date();
