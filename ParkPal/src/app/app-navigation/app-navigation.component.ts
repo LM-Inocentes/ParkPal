@@ -6,12 +6,16 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
 
+declare const myFunction: any;
 @Component({
   selector: 'app-app-navigation',
   templateUrl: './app-navigation.component.html',
   styleUrls: ['./app-navigation.component.scss']
 })
 export class AppNavigationComponent {
+  callfun(){
+    myFunction();
+  }
 
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -27,7 +31,7 @@ export class AppNavigationComponent {
       map(result => result.matches),
       shareReplay()
     );
-
+  
   constructor(private datePipe: DatePipe, private authService:AuthService) {
 
     authService.userObservable.subscribe((newUser) => {
@@ -54,7 +58,10 @@ export class AppNavigationComponent {
     // Assign the formatted date to currentDate
     this.currentDate = transformedDate;
     this.currentDay = transformedDay;
+
+
   }
+
 
   logout(){
     this.authService.Logout();
