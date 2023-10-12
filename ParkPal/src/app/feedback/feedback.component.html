@@ -1,36 +1,84 @@
-
-<body>
-
-<section class = "feedbackMain">
-    
+<section class="feedbackMain">
+  <div class="feedback-helpusimp">
     <h2>Help Us Improve - Send Your Feedback</h2>
-    
-    <img
+  </div>
+
+  <!-- <img
     class="side-feedback"
     src="../../../assets/svg/feedback.svg"
     alt="feedback"
-    />
+    /> -->
 
+  <div class="maincontainer">
     <div class="container">
-        <form>
-            <div class="form-group">
-                <label for="feedbackType">Feedback Type</label>
-                <select id="feedbackType" name="feedbackType" required>
-                    <option value="suggestion">Suggestion</option>
-                    <option value="bug">Bug Report</option>
-                    <option value="compliment">Compliment</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" rows="4" required></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+      <form>
+        <div class="form-group">
+          <label for="feedbackType">Feedback Type</label>
+          <select id="feedbackType" name="feedbackType" required>
+            <option value="suggestion">Suggestion</option>
+            <option value="bug">Bug Report</option>
+            <option value="compliment">Compliment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <button class="btnSubmit" type="submit">Submit</button>
+      </form>
     </div>
+
+    <div class="feedback-container">
+      <p>Recent Feedbacks</p>
+      <div class="maincontent">
+        <div class="upper">
+          <div class="user_info">
+            <div class="box_user_info">CD</div>
+          </div>
+          <p class="name">Charles Dela Peña</p>
+          <p class="category"><strong>Suggestion</strong></p>
+        </div>
+
+        <div class="feedback-content">
+          <label>Description</label>
+          <p class="suggestion">
+            The application should have a reserve feature for important events.
+          </p>
+        </div>
+      </div>
+      
+      <div class="maincontent">
+        <div class="upper">
+          <div class="user_info">
+            <div class="box_user_info">ND</div>
+          </div>
+          <p class="name">Neil Diaz</p>
+          <p class="category"><strong>Compliment</strong></p>
+        </div>
+
+        <div class="feedback-content">
+          <label>Description</label>
+          <p class="suggestion">
+            I love the ease of use with the application and functionality that provides 
+            convenience.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+
+
+  </div>
+
+
+
+
+
+
+  
 </section>
-
-
-    
-    
-</body>

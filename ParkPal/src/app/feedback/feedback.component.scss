@@ -1,15 +1,32 @@
 
 /* Add this CSS to your existing styles.css or a separate CSS file */
+p{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Courier, monospace;
     background-color: #f4f4f4;
 }
 
-.feedbackMain > h2 {
-    align-items: center;
-    margin-left: 35%;
-    padding-top: 2%;
+h2{
+    margin: 0;
+    padding: 0;
 }
+
+
+.feedbackMain {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.feedback-helpusimp{
+    width: fit-content;
+}
+    
 
 .side-feedback {
     width: 37%;
@@ -21,10 +38,9 @@ body {
 
 .container {
     max-width: 600px;
-    margin-left:10%;
+    margin-left:2rem;
     margin-top: 7%;
-    position: absolute;
-    padding: 100px;;
+    padding: 5rem;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -34,16 +50,61 @@ body {
 .form-group{
     padding: 0px;
     max-width: inherit;
+    border-color:black;
 
 }
 
-.container > .h2 {
-    text-align: left;
-    margin-bottom: 20px;
+
+
+.maincontainer{
+    display:flex;
+    flex-direction: row;
 }
+
+.container 
+{
+
+    font-family: "Poppins", Courier, monospace;
+
+    #feedbackType
+    {
+        font-family: "Poppins", Courier, monospace;
+    }
+
+    .btnSubmit{
+        font-family: "Poppins", Courier, monospace;
+    }
+}
+
+
+.feedback-container {
+    @extend .container; 
+    
+}
+
+.maincontent {
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top:1rem;
+    .upper {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        
+    }
+
+    .feedback-content {
+        padding: 1rem;
+       
+    }
+}
+
+
 
 .form-group {
     margin-bottom: 15px;
+    font-family: "Poppins", Courier, monospace;
 }
 
 label {
@@ -76,4 +137,34 @@ button:hover {
 }
 
 
+.upper,
+.user_info {
+    display: flex;
+    align-items: center;
+}
 
+.upper {
+    padding: 4rem 0 3rem 0;
+    
+    .category {
+        
+    }
+
+    .user_info {
+        align-items: center;
+        justify-content: center;
+        opacity: 58%;
+        background-color: #FF6969;
+        width: 3.5em;
+        height: 3.3em;
+        border-radius: 5px;
+
+
+        .box_user_info {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #BB2525;
+        }
+    }
+
+} 

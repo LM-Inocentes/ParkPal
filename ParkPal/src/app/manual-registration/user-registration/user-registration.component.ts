@@ -109,7 +109,7 @@ export class UserRegistrationComponent {
       console.log(user);
   
 
-      this.authService.UserRegister(user).pipe(
+      this.authService.ManualUserRegister(user).pipe(
         switchMap(() => this.authService.ORUpload(fv.IDNo, this.OR)),
         switchMap(() => this.authService.CRUpload(fv.IDNo, this.CR)),
         switchMap(() => this.authService.SLUpload(fv.IDNo, this.SL)),
@@ -118,8 +118,8 @@ export class UserRegistrationComponent {
       ).subscribe(
         () => {
           this.toastr.success(
-            `Please Wait for Admin Confirmation`,
-            'Application Submitted'
+            'User has been registered successfully',
+            'User Registered'
           );
           this.router.navigateByUrl('/');
         },

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD, APPROVE_PENDING_USER_URL, REJECT_PENDING_USER_URL } from 'src/app/shared/apiURLS/URLS';
+import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD, APPROVE_PENDING_USER_URL, REJECT_PENDING_USER_URL, USER_MANUAL_REGISTER_URL } from 'src/app/shared/apiURLS/URLS';
 import { ILogin } from '../shared/interfaces/ILogin';
 import { IAdminRegister } from '../shared/interfaces/IAdminRegister';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
@@ -57,6 +57,16 @@ export class AuthService {
 
   UserRegister(userRegister:IUserRegister): Observable<User>{
     return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+      tap({
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Application Failed');
+        }
+      })
+    );
+  }
+
+  ManualUserRegister(userRegister:IUserRegister): Observable<User>{
+    return this.http.post<User>(USER_MANUAL_REGISTER_URL, userRegister).pipe(
       tap({
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Application Failed');

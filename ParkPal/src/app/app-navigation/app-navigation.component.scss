@@ -20,7 +20,7 @@ p {
 
 .mat-nav-list-btns, .dashboard_sub_btn, .ManualReg_sub_btn  {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   padding: 0.9em 0 0.9em 0.5em;
@@ -146,8 +146,8 @@ p {
 }
 
 // title
-.main_title-header {
-  margin: 40px 0 0 20px;
+.main_title-header{
+  margin: 25px 0 0 20px;
   background-color: #FF6969;
   border-radius: 20px;
   display: flex;
