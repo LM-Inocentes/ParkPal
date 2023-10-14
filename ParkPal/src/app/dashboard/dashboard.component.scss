@@ -28,17 +28,22 @@
     display: grid;
     height: auto;
     grid-auto-flow: row;
-    grid-template-columns: repeat(4, 140px); /* Create 4 columns */
+    grid-template-columns: repeat(4, 140px);
+    /* Create 4 columns */
     grid-template-rows: repeat(1, 140px);
-    gap: 5vw; /* Adjust the gap between grid items */
+    gap: 5vw;
+    /* Adjust the gap between grid items */
     //justify-content: space-evenly;
 }
 
 @media (max-width: 950px) {
+
     /* For screens smaller than 768px (e.g., mobile), make it a single column layout */
     .status-box {
-        grid-auto-flow: row; /* Flow items in rows */
-        grid-template-columns: repeat(2, 140px); /* Single column layout */
+        grid-auto-flow: row;
+        /* Flow items in rows */
+        grid-template-columns: repeat(2, 140px);
+        /* Single column layout */
     }
 
     .greetings {
@@ -147,4 +152,55 @@
 
 p {
     font-size: large;
+}
+
+//user-card
+.user-id {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 7px;
+    width: 250px;
+    height: 250px;
+    margin: 0;
+    box-shadow: 3px 3px 4px rgba(2, 2, 2, 0.2862745098);
+
+    .user-id-name {
+        width: 150px;
+        height: fit-content;
+        justify-content: center;
+
+        p {
+            text-align: center;
+        }
+    }
+
+    // buttons
+    button {
+        appearance: none;
+    }
+
+    .reject-btn,
+    .accept-btn {
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        font-family: 'Poppins', Courier, monospace;
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .accept-btn {
+        background-color: #FF9494;
+        border: 1px solid red;
+    }
+
+    .reject-btn {
+        background-color: skyblue;
+        border: 1px solid blue;
+        
+    }
+
 }

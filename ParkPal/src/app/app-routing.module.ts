@@ -13,6 +13,7 @@ import { ModRegistrationComponent } from './manual-registration/mod-registration
 import { AdminRegistrationComponent } from './manual-registration/admin-registration/admin-registration.component';
 import { User } from './shared/models/user';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -67,6 +68,12 @@ const routes: Routes = [
         component: FeedbackComponent,
         title: 'Feedback',
         data: { title: 'FEEDBACK' },
+      },
+      {
+        path: 'feedback-list',
+        component: FeedbackListComponent,
+        title: 'Feedback-list',
+        data: { title: 'FEEDBACK LIST' },
       },
       // for the Profile
       {

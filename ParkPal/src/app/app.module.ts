@@ -34,6 +34,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { ImageModalComponent } from './component/image-modal/image-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 
 
 
@@ -55,6 +56,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AdminRegistrationComponent,
     UserProfileComponent,
     ImageModalComponent,
+    FeedbackListComponent,
     
   ],
   imports: [
