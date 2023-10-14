@@ -34,29 +34,17 @@ const generateTokenResponse = (user:any) => {
       };
 }
 
-router.post("/user/login",  asyncHandler(
-    async (req, res) => {
-      const {email, password} = req.body;
-      const user = await UserModel.findOne({ email });
-      if(!user){                                                                   
-        res.status(400).send("Email does not exist");
-        return;
-      }
-      const isPassMatch = await bcrypt.compare(password, user.password);           
-      if(isPassMatch) {
-        res.send(generateTokenResponse(user));
-        return;
-      }
-      res.status(400).send("Incorrect Password"); 
-    }
-))
-
 router.post("/login",  asyncHandler(
   async (req, res) => {
     const {username, password} = req.body;
     var user = await AdminModel.findOne({ username });
     if (!user) {
       user = await UserModel.findOne({ 'id': username, 'isRegistered': true });
+    }
+    if(!user){
+      user = await UserModel.findOne({ 'id': username, 'isRegistered': false });
+      res.status(400).send("User Registration Not Yet Approved");
+      return;
     }
     if(!user){                                                                   
       res.status(400).send("User does not exist");
