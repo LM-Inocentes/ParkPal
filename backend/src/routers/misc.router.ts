@@ -26,4 +26,25 @@ router.post("/feedback" ,asyncHandler(
     }
   ))
 
+
+router.post("/feedback-list", asyncHandler(
+    async (req, res) => {
+      const { id, type, desc, name} = req.body;
+      const Ifeedback = {
+        id, 
+        name,
+        type, 
+        desc,
+      }
+        const dbFeedback = await FeedbackModel.create(Ifeedback);
+        res.send(dbFeedback);
+      }
+))
+
+router.get("/all/feedback", asyncHandler(
+  async (req, res) =>{
+    const allFeedback = await FeedbackModel.find().sort({ createdAt: -1 });
+      res.send(allFeedback);                       //sending items from database
+  }
+))
 export default router;
