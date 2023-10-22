@@ -1,0 +1,118 @@
+<div class="main-container">
+  <br />
+  <div data-modal-target="#modal" (click)="callOpenPopUpFunc()" class="user-id">
+    <!-- user Name -->
+    <div class="user-id-name">
+      <p id="sample">Charles Henricks Dela Pena</p>
+    </div>
+    <!-- end user Name -->
+
+    <!-- User Id -->
+    <div class="user-id-identification"><p>18-2022-189</p></div>
+    <!-- end User Id -->
+
+    <!-- user Email -->
+    <div class="user-id-email"><p>charles.dp@gmail.com</p></div>
+    <!-- end user Email -->
+
+    <!-- Buttons -->
+    <button id="accptBtn" class="accept-btn">Accept</button>
+    <button id="rejctBtn" class="reject-btn">Reject</button>
+    <!-- end of Buttons -->
+  </div>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      Name Placed here (User-ID)
+      <div data-close-btn class="close-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="close"
+          heigh="24"
+          width="24"
+        >
+          <path
+            fill="currentcolor"
+            d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-body">
+      <!-- txt documents -->
+      <div class="text-documents">
+        <!-- email -->
+        <div class="document-container">
+          <div class="doc-infotxt">
+            <span>Email </span>
+          </div>
+          nDiaz.MEil.Chuy@gmail.com
+        </div>
+        <!-- Vehicle Make -->
+        <div class="document-container">
+          <div class="doc-infotxt">
+            <span>Vehicle Make </span>
+          </div>
+          Sample Car
+        </div>
+        <!-- Vehicle Model -->
+        <div class="document-container">
+          <div class="doc-infotxt">
+            <span>Vehicle Model </span>
+          </div>
+          Porche Mazda
+        </div>
+        <div class="document-container">
+          <div class="doc-infotxt">
+            <span>Vehicle Plate Number </span>
+          </div>
+          GAB-323479
+        </div>
+      </div>
+
+      <!-- image docs -->
+      <div class="image-documents">
+        <!-- OR documents -->
+        <div class="document-container">
+          <span>OR Document</span>
+          <div class="documents">
+            <img src="" alt="OR Document" />
+          </div>
+        </div>
+
+        <!-- CR document -->
+        <div class="document-container">
+          <span>CR Document</span>
+          <div class="documents">
+            <img src="" alt="CR Document" />
+          </div>
+        </div>
+
+        <!-- Study Load document -->
+        <div class="document-container">
+          <span>Study Load</span>
+          <div class="documents">
+            <img src="" alt="Study Load" />
+          </div>
+        </div>
+
+        <!-- ID document -->
+        <div class="document-container">
+          <span>ID Document</span>
+          <div class="documents">
+            <img src="" alt="ID document" />
+          </div>
+        </div>
+        <!-- Payment document -->
+        <div class="document-container">
+          <span>Payment</span>
+          <div class="documents">
+            <img src="" alt="Payment" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="overlay"></div>
+  <br />
+</div>

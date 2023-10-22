@@ -1,0 +1,17 @@
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px, 0, 10px, 0;
+
+    .user-modal{
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 950px){
+    .main-container{
+        flex-direction: column;
+    }
+}

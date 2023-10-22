@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageModalComponent } from '../component/image-modal/image-modal.component';
 
+
+
 @Component({
   selector: 'app-pending-registrations',
   templateUrl: './pending-registrations.component.html',
@@ -11,6 +13,8 @@ import { ImageModalComponent } from '../component/image-modal/image-modal.compon
   
 })
 export class PendingRegistrationsComponent {
+  
+  
 
   PendingUsers: User[] = [];
   displayedColumns: string[] = ['id', 'fullname', 'email', 'ORdoc', 'CRdoc', 'StudyLoad', 'IDdoc', 'Payment', 'VMake', 'VModel', 'VPlateNo', 'actions'];

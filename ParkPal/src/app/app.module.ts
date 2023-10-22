@@ -35,6 +35,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ImageModalComponent } from './component/image-modal/image-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
+import { UserModalComponent } from './user-modal/user-modal.component';
 
 
 
@@ -57,6 +58,7 @@ import { FeedbackListComponent } from './feedback-list/feedback-list.component';
     UserProfileComponent,
     ImageModalComponent,
     FeedbackListComponent,
+    UserModalComponent,
     
   ],
   imports: [
