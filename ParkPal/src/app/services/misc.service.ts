@@ -4,7 +4,7 @@ import { Feedback } from '../shared/models/feedback';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { GET_RECENT_USER_FEEDBACK, USER_FEEDBACK } from '../shared/apiURLS/URLS';
+import { GET_ALL_USER_FEEDBACK, GET_RECENT_USER_FEEDBACK, USER_FEEDBACK } from '../shared/apiURLS/URLS';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +33,9 @@ export class MiscService {
   getRecentFeedback(): Observable<Feedback[]>{
     return this.http.get<Feedback[]>(GET_RECENT_USER_FEEDBACK);
   }
+
+  getallFeedbacks(): Observable<Feedback[]>{
+    return this.http.get<Feedback[]>(GET_ALL_USER_FEEDBACK);
+  }
+
 }
