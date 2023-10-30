@@ -1,13 +1,14 @@
 .main-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px, 0, 10px, 0;
-
-    .user-modal{
-        padding-right: 30px;
-    }
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-wrap: wrap;
+    //padding: 90px, 0, 10px, 0;
+    // border: 1px solid black;
+    height: calc(100vh - 72px);
+    // .user-modal{
+    //     padding-right: 30px;
+    // }
 }
 
 @media (max-width: 950px){

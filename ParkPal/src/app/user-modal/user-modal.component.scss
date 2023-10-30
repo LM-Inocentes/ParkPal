@@ -1,30 +1,60 @@
-//user-card
-.user-id {
-    cursor: pointer;
+.main-container {
+    font-family: 'Poppins', Courier, monospace;
     justify-content: center;
-    display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid grey;
     border-radius: 7px;
-    width: 250px;
-    height: 250px;
     margin: 0;
     box-shadow: 3px 3px 4px rgba(2, 2, 2, 0.2862745098);
+    margin: 10px;
+    padding: 25px 20px;
 
-    .user-id-name {
-        width: 150px;
-        height: fit-content;
+    .user-header {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .document-container {
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+    }
 
-        p {
-            text-align: center;
-        }
+    span.doc-infotxt {
+        font-size: 1.5rem;
+    }
+
+    .text-documents,
+    .image-documents {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 9px 11px 9px 11px;
+    }
+
+    .documents {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        object-fit: fill;
+        margin: 4px;
+    }
+
+    span {
+        font-weight: 500;
     }
 
     // buttons
     button {
         appearance: none;
+        cursor: pointer;
     }
 
     .reject-btn,
@@ -35,6 +65,11 @@
         font-family: 'Poppins', Courier, monospace;
         font-size: 1rem;
         margin: 0 0 0.5rem 0;
+    }
+
+    .accept-btn,
+    .reject-btn {
+        margin: 10px;
     }
 
     .accept-btn {
@@ -48,13 +83,7 @@
 
     }
 
-}
-
-//hover
-.user-id:hover {
-    transition: 0.15s;
-    background-color: rgb(228, 228, 228);
-
+    //hover
     .accept-btn:hover {
         transition: 0.15s;
         background-color: #f56e6e;
@@ -63,110 +92,206 @@
     .reject-btn:hover {
         background-color: rgb(89, 195, 236);
         transition: 0.15s;
-
-
-    }
-}
-
-//modal
-.main-container {
-    font-family: 'Poppins', Courier, monospace;
-
-    //min-width: calc(100% - 200px);
-    .modal-header {
-        font-size: 1.15rem;
-        padding: 9px 11px 0 11px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #FF9494;
-
-        .close-btn:hover {
-            cursor: pointer;
-            color: #f56e6e
-        }
     }
 
 
-    .modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-40%, -50%) scale(0);
-        transition: 200ms ease-in-out;
-        border: 1px solid grey;
-        border-radius: 4px;
-        z-index: 10;
-        background-color: whitesmoke;
-        width: 870px;
-        max-width: 80%; //only occupies 80% of the screen if the width is < 800px
-
-        .modal-body {
-            display: flex;
-            flex-direction: column;
-
-            .text-documents, .image-documents {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                flex-wrap: wrap;
-                padding: 9px 11px 9px 11px;
-            }
-
-            .document-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                span {
-                    font-weight: 600;
-                }
-
-                .documents {
-                    border: 1px solid black;
-                    width: 100px;
-                    height: 100px;
-                    object-fit: fill;
-                    margin: 4px;
-                }
-            }
-        }
-    }
-
-    .modal.active {
-        transform: translate(-40%, -50%) scale(1);
-    }
 }
 
-#overlay {
-    //not active
-    transition: 200ms ease-in-out;
-    position: fixed;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(0, 0, 0, .5);
-    pointer-events: none;
-}
-
-#overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
 
 @media (max-width: 950px) {
     .main-container {
-        .modal {
-            transform: translate(-50%, -50%) scale(0);
-            transition: 200ms ease-in-out;
-
+        .image-documents {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            // flex-grow: inherit;
+            padding: 9px 11px 9px 11px;
         }
 
-        .modal.active {
-            transform: translate(-50%, -50%) scale(1);
+        .document-container,
+        .image-documents {
+            margin: 15px;
+        }
+
+        .user-header {
+            font-size: 1.15rem;
+            font-weight: 600;
         }
     }
 }
+
+
+// my created modal code on notepad
+// //user-card
+// .user-id {
+//     cursor: pointer;
+//     justify-content: center;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     border: 1px solid grey;
+//     border-radius: 7px;
+//     width: 250px;
+//     height: 250px;
+//     margin: 0;
+//     box-shadow: 3px 3px 4px rgba(2, 2, 2, 0.2862745098);
+
+//     .user-id-name {
+//         width: 150px;
+//         height: fit-content;
+//         justify-content: center;
+
+//         p {
+//             text-align: center;
+//         }
+//     }
+
+//     // buttons
+//     button {
+//         appearance: none;
+//     }
+
+//     .reject-btn,
+//     .accept-btn {
+//         border-radius: 4px;
+//         width: 100px;
+//         height: 30px;
+//         font-family: 'Poppins', Courier, monospace;
+//         font-size: 1rem;
+//         margin: 0 0 0.5rem 0;
+//     }
+
+//     .accept-btn {
+//         background-color: #FF9494;
+//         border: 1px solid red;
+//     }
+
+//     .reject-btn {
+//         background-color: skyblue;
+//         border: 1px solid blue;
+
+//     }
+
+// }
+
+// //hover
+// .user-id:hover {
+//     transition: 0.15s;
+//     background-color: rgb(228, 228, 228);
+
+//     .accept-btn:hover {
+//         transition: 0.15s;
+//         background-color: #f56e6e;
+//     }
+
+//     .reject-btn:hover {
+//         background-color: rgb(89, 195, 236);
+//         transition: 0.15s;
+
+
+//     }
+// }
+
+// //modal
+// .main-container {
+//     font-family: 'Poppins', Courier, monospace;
+
+//     //min-width: calc(100% - 200px);
+//     .modal-header {
+//         font-size: 1.15rem;
+//         padding: 9px 11px 0 11px;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         border-bottom: 2px solid #FF9494;
+
+//         .close-btn:hover {
+//             cursor: pointer;
+//             color: #f56e6e
+//         }
+//     }
+
+
+//     .modal {
+//         position: fixed;
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-40%, -50%) scale(0);
+//         transition: 200ms ease-in-out;
+//         border: 1px solid grey;
+//         border-radius: 4px;
+//         z-index: 10;
+//         background-color: whitesmoke;
+//         width: 870px;
+//         max-width: 80%; //only occupies 80% of the screen if the width is < 800px
+
+//         .modal-body {
+//             display: flex;
+//             flex-direction: column;
+
+//             .text-documents, .image-documents {
+//                 display: flex;
+//                 justify-content: space-evenly;
+//                 align-items: center;
+//                 flex-wrap: wrap;
+//                 padding: 9px 11px 9px 11px;
+//             }
+
+//             .document-container {
+//                 display: flex;
+//                 flex-direction: column;
+//                 justify-content: center;
+//                 align-items: center;
+
+//                 span {
+//                     font-weight: 600;
+//                 }
+
+//                 .documents {
+//                     border: 1px solid black;
+//                     width: 100px;
+//                     height: 100px;
+//                     object-fit: fill;
+//                     margin: 4px;
+//                 }
+//             }
+//         }
+//     }
+
+//     .modal.active {
+//         transform: translate(-40%, -50%) scale(1);
+//     }
+// }
+
+// #overlay {
+//     //not active
+//     transition: 200ms ease-in-out;
+//     position: fixed;
+//     opacity: 0;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: rgb(0, 0, 0, .5);
+//     pointer-events: none;
+// }
+
+// #overlay.active {
+//     opacity: 1;
+//     pointer-events: all;
+// }
+
+// @media (max-width: 950px) {
+//     .main-container {
+//         .modal {
+//             transform: translate(-50%, -50%) scale(0);
+//             transition: 200ms ease-in-out;
+
+//         }
+
+//         .modal.active {
+//             transform: translate(-50%, -50%) scale(1);
+//         }
+//     }
+// }
