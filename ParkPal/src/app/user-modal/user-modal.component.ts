@@ -10,8 +10,5 @@ declare const openModal: any; //js function
 })
 export class UserModalComponent {
   
-  callOpenPopUpFunc(){
-    popUpFunc();
-    //openModal();
-  }
+
 }
