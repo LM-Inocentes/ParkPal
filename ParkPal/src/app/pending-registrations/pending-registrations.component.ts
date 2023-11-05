@@ -13,11 +13,7 @@ import { ImageModalComponent } from '../component/image-modal/image-modal.compon
   
 })
 export class PendingRegistrationsComponent {
-  
-  
-
   PendingUsers: User[] = [];
-  displayedColumns: string[] = ['id', 'fullname', 'email', 'ORdoc', 'CRdoc', 'StudyLoad', 'IDdoc', 'Payment', 'VMake', 'VModel', 'VPlateNo', 'actions'];
 
   constructor( private authService:AuthService, private dialog: MatDialog ) {
   }
