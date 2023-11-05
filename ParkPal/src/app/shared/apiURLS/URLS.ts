@@ -14,9 +14,13 @@ export const USER_MANUAL_REGISTER_URL = BASE_URL + '/api/users/user/manual-regis
 
 export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending';
 
+export const GET_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered';
+
 export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';
 
 export const REJECT_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/reject/';
+
+export const DELETE_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered/delete/';
 
 export const USER_UPLOAD_OR = BASE_URL + '/api/uploads/ORdoc';
 

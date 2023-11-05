@@ -176,6 +176,13 @@ router.get("/user/pending", asyncHandler(
   }
 ))
 
+router.get("/user/registered", asyncHandler(
+  async (req, res) =>{
+      const users = await UserModel.find({isRegistered: true});
+      res.send(users);                       //sending items from database
+  }
+))
+
 router.patch("/user/pending/approve", asyncHandler(
   async (req, res) =>{
     const {id} = req.body;
@@ -186,6 +193,19 @@ router.patch("/user/pending/approve", asyncHandler(
 ))
 
 router.delete("/user/pending/reject/:id", asyncHandler(
+  async (req, res) => {
+    const user = await UserModel.findOne({ id: req.params.id });
+    await cloudinary.uploader.destroy(user?.ORdoc);
+    await cloudinary.uploader.destroy(user?.CRdoc);
+    await cloudinary.uploader.destroy(user?.StudyLoad);
+    await cloudinary.uploader.destroy(user?.IDdoc);
+    await cloudinary.uploader.destroy(user?.Payment);
+    await user!.delete(); 
+    res.send();
+  }
+))
+
+router.delete("/user/registered/delete/:id", asyncHandler(
   async (req, res) => {
     const user = await UserModel.findOne({ id: req.params.id });
     await cloudinary.uploader.destroy(user?.ORdoc);
