@@ -14,6 +14,7 @@ import { AdminRegistrationComponent } from './manual-registration/admin-registra
 import { User } from './shared/models/user';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
+import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -26,6 +27,12 @@ const routes: Routes = [
         component: DashboardComponent,
         title: 'Dashboard',
         data: { title: 'DASHBOARD' },
+      },
+      {
+        path: 'registered-users',
+        title: 'Registered Users',
+        component: RegisteredUsersComponent,
+        data: { title: 'REGISTERED USERS' },
       },
       {
         path: 'pending-registrations',
@@ -81,7 +88,7 @@ const routes: Routes = [
         title: 'User Profile',
         component: UserProfileComponent,
         data: { title: 'USER PROFILE' },
-      }
+      },
       
     ],
     title: 'Dashboard', 
