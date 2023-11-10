@@ -47,4 +47,12 @@ router.get("/all/feedback", asyncHandler(
       res.send(allFeedback);                       //sending items from database
   }
 ))
+router.delete("/delete/feedback/:id", asyncHandler(
+  async (req, res) => {
+    const feedback = await FeedbackModel.findOne({ id: req.params.id });
+    
+    await feedback!.delete(); 
+    res.send();
+  }
+))
 export default router;

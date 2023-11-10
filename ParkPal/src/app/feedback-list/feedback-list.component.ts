@@ -62,6 +62,14 @@ export class FeedbackListComponent {
       this.ngOnInit();
     });
   }
+
+  deleteFeedback(id:string) {
+    console.log(id);
+    this.miscService.deleteFeedback(id).subscribe(_ => {
+      this.ngOnInit();
+    });
+    
+  }
 }
 
 

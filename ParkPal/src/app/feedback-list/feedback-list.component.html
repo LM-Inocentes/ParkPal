@@ -11,13 +11,22 @@
         <p class="name"> {{ Feedback.name }} </p>
         <p class="category"><strong>{{ Feedback.type }}  </strong></p>
       </div>
+     <div class = "dateholder">
 
+       <label>Date</label>
+     </div> 
       <div class="feedback-content">
         <label>Description</label>
         <div class="suggestion">
           <p> {{ Feedback.desc }}</p>
         </div>
       </div>
+      
+      <!-- Buttons -->
+    <button id="deleteBtn" class="delete-btn" *ngIf="user.Level != 1" (click)="deleteFeedback(Feedback.id)">Delete</button>
+    <!-- end of Buttons -->
+
+
     </div>
     
   </div>

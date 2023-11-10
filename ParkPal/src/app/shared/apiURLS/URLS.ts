@@ -37,3 +37,5 @@ export const USER_FEEDBACK = BASE_URL + '/api/misc/feedback';
 export const GET_RECENT_USER_FEEDBACK = BASE_URL + '/api/misc/recent/feedback';
 
 export const GET_ALL_USER_FEEDBACK = BASE_URL + '/api/misc/all/feedback';
+
+export const DELETE_USER_FEEDBACK = BASE_URL + '/api/misc/delete/feedback/';
