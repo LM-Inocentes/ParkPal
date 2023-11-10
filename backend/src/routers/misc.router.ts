@@ -23,7 +23,6 @@ router.post("/feedback" ,asyncHandler(
             hour12: true,
           }),
         }
-      console.log(Ifeedback.date);
       const dbFeedback = await FeedbackModel.create(Ifeedback);
       res.send(dbFeedback);
   }
