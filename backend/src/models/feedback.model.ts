@@ -5,6 +5,7 @@ export interface IFeedback{
     type: string;
     desc: string;
     name: string;
+    date: string;
 }
 
 export const FeedbackSchema = new Schema<IFeedback>(
@@ -13,6 +14,7 @@ export const FeedbackSchema = new Schema<IFeedback>(
         type: { type:String, required:true },
         desc: { type:String, required:true },
         name: { type:String, required:true },
+        date: { type:String, required:true },
     },{
         toJSON:{
             virtuals:true

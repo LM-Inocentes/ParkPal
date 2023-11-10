@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import  asyncHandler  from 'express-async-handler';
 import { FeedbackModel } from '../models/feedback.model';
+const moment = require('moment');
 
 const router = Router();
 
@@ -13,7 +14,9 @@ router.post("/feedback" ,asyncHandler(
             name,
             type, 
             desc,
+            date: moment().fromNow(),
           }
+        console.log(Ifeedback.date);
         const dbFeedback = await FeedbackModel.create(Ifeedback);
         res.send(dbFeedback);
     }
