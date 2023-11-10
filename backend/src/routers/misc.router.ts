@@ -6,21 +6,21 @@ const moment = require('moment');
 const router = Router();
 
 router.post("/feedback" ,asyncHandler(
-    async (req, res) => {
-        const {id, type, desc, name} = req.body;
-        const Ifeedback = 
-        {
-            id,
-            name,
-            type, 
-            desc,
-            date: moment().fromNow(),
-          }
-        console.log(Ifeedback.date);
-        const dbFeedback = await FeedbackModel.create(Ifeedback);
-        res.send(dbFeedback);
-    }
-  ))
+  async (req, res) => {
+      const {id, type, desc, name} = req.body;
+      const Ifeedback = 
+      {
+          id,
+          name,
+          type, 
+          desc,
+          date: new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }),
+        }
+      console.log(Ifeedback.date);
+      const dbFeedback = await FeedbackModel.create(Ifeedback);
+      res.send(dbFeedback);
+  }
+))
 
   router.get("/recent/feedback", asyncHandler(
     async (req, res) =>{

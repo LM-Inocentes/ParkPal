@@ -3,4 +3,5 @@ export class Feedback{
     type!: string;
     desc!: string;
     name!: string;
+    date!: string;
 }
