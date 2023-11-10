@@ -54,7 +54,7 @@ export class FeedbackListComponent {
     if (this.feedbackForm.invalid) return;
 
     this.miscService.postFeedback({
-      id: this.user.id,
+      id: "",
       type: this.form['type'].value,
       desc: this.form['desc'].value,
       name: this.user.Fullname

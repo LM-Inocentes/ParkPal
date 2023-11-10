@@ -9,7 +9,7 @@ router.post("/feedback" ,asyncHandler(
       const {id, type, desc, name} = req.body;
       const Ifeedback = 
       {
-          id,
+          id: await FeedbackModel.countDocuments()+1,
           name,
           type, 
           desc,
