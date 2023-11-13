@@ -139,20 +139,68 @@
 }
 
 .university-map {
-    //margin-top: -260px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    //transform: scale(55%);
-    width: 60%;
+    position: relative;
+    //width: 60%;
     max-width: 100%;
     height: auto;
+
+    button {
+        padding: 10px 20px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow: none;
+        background: #ff696983;
+        box-shadow: transparent;
+        border: 2px solid #ffffff;
+        transition: 0.5s ease;
+        user-select: none;
+    }
+
+    button:hover,:focus {
+        color: #ffffff;
+        background: #FF6969;
+        border: 2px solid #FF6969;
+        text-shadow: 0 0 5px #ffffff,
+                    0 0 10px #ffffff,
+                    0 0 20px #ffffff;
+        box-shadow: 0 0 5px #FF6969,
+                    0 0 20px #FF6969,
+                    0 0 50px #FF6969,
+                    0 0 100px #FF6969;
+    }
+
+    .areaA {
+    position: absolute;
+    top: 43%;
+    left: 37%;
+    background: #aff4be77;
+    }
+    .areaB {
+    position: absolute;
+    top: 60%;
+    left: 32%;
+    }
+    .areaC {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    background: #f1ea8286;
+    }
 }
 
 .university-map img {
-    min-width: 60%;
-    max-width: 100%;
+    min-width: 50%;
+    max-width: 58%;
     height: auto;
 }
+
 
 p {
     font-size: large;

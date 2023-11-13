@@ -20,6 +20,10 @@
     </div>
   </div>
   <div class="university-map">
-    <app-overall-map></app-overall-map>
+    <img [src]="mapImagePath" alt="University Map">
+    <button *ngIf="mapState == 0" class="areaA" (click)="updateMapState(1)">Area A</button>
+    <button *ngIf="mapState == 0" class="areaB" (click)="updateMapState(2)">Area B</button>
+    <button *ngIf="mapState == 0" class="areaC" (click)="updateMapState(3)">Area C</button>
+    <!--<app-overall-map></app-overall-map>-->
   </div>
 </div>

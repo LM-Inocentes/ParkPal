@@ -10,7 +10,9 @@ import { User } from '../shared/models/user';
 })
 export class DashboardComponent {
   user!:User;
-  Firstname?:string;
+  Firstname?: string;
+  mapImagePath: string = 'assets/overall-map.png';
+  mapState: number = 0;
 
   constructor( authService:AuthService ) {
     authService.userObservable.subscribe((newUser) => {
@@ -24,5 +26,18 @@ export class DashboardComponent {
   
   get isAuth(){
     return this.user.token;
+  }
+
+  updateMapState(state: number) {
+    if (state == 0) {
+      this.mapImagePath = 'assets/overall-map.png';
+    } else if (state == 1) {
+      this.mapImagePath = 'assets/area1-map.png';
+    } else if (state == 2) {
+      this.mapImagePath = 'assets/area2-map.png';
+    } else if (state == 3) {
+      this.mapImagePath = 'assets/area3-map.png';
+    }
+    
   }
 }
