@@ -31,13 +31,16 @@ export class DashboardComponent {
   updateMapState(state: number) {
     if (state == 0) {
       this.mapImagePath = 'assets/overall-map.png';
+      this.mapState = 0;
     } else if (state == 1) {
       this.mapImagePath = 'assets/area1-map.png';
+      this.mapState = 1;
     } else if (state == 2) {
       this.mapImagePath = 'assets/area2-map.png';
+      this.mapState = 2;
     } else if (state == 3) {
       this.mapImagePath = 'assets/area3-map.png';
+      this.mapState = 3;
     }
-    
   }
 }
