@@ -15,6 +15,10 @@ import { User } from './shared/models/user';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
+import { OverallMapComponent } from './university-map/overall-map/overall-map.component';
+import { Area1MapComponent } from './university-map/area1-map/area1-map.component';
+import { Area2MapComponent } from './university-map/area2-map/area2-map.component';
+import { Area3MapComponent } from './university-map/area3-map/area3-map.component';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -27,6 +31,38 @@ const routes: Routes = [
         component: DashboardComponent,
         title: 'Dashboard',
         data: { title: 'DASHBOARD' },
+        children: [
+          {
+            path: 'overall-map',
+            title: 'Overall Map',
+            component: OverallMapComponent,
+            data: { title: 'DASHBOARD' },
+          },
+          {
+            path: 'overall-map',
+            title: 'Overall Map',
+            component: OverallMapComponent,
+            data: { title: 'DASHBOARD' },
+          },
+          {
+            path: 'overall-map',
+            title: 'Overall Map',
+            component: OverallMapComponent,
+            data: { title: 'DASHBOARD' },
+          },
+          {
+            path: 'overall-map',
+            title: 'Overall Map',
+            component: OverallMapComponent,
+            data: { title: 'DASHBOARD' },
+          }, 
+          {
+            path: 'overall-map',
+            title: 'Overall Map',
+            component: OverallMapComponent,
+            data: { title: 'DASHBOARD' },
+          },
+        ]
       },
       {
         path: 'registered-users',

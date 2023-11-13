@@ -36,6 +36,10 @@ import { ImageModalComponent } from './component/image-modal/image-modal.compone
 import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
+import { OverallMapComponent } from './university-map/overall-map/overall-map.component';
+import { Area1MapComponent } from './university-map/area1-map/area1-map.component';
+import { Area2MapComponent } from './university-map/area2-map/area2-map.component';
+import { Area3MapComponent } from './university-map/area3-map/area3-map.component';
 
 
 
@@ -59,6 +63,10 @@ import { RegisteredUsersComponent } from './registered-users/registered-users.co
     ImageModalComponent,
     FeedbackListComponent,
     RegisteredUsersComponent,
+    OverallMapComponent,
+    Area1MapComponent,
+    Area2MapComponent,
+    Area3MapComponent,
   ],
   imports: [
     BrowserModule,

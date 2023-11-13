@@ -139,9 +139,13 @@
 }
 
 .university-map {
-    margin-top: 30px;
+    //margin-top: -260px;
     display: flex;
     justify-content: center;
+    //transform: scale(55%);
+    width: 60%;
+    max-width: 100%;
+    height: auto;
 }
 
 .university-map img {
