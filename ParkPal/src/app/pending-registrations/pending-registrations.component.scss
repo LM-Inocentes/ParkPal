@@ -40,6 +40,7 @@
     }
 
     .documents {
+        cursor: pointer;
         border: 1px solid black;
         width: 100px;
         height: 100px;
@@ -93,7 +94,6 @@
         background-color: rgb(89, 195, 236);
         transition: 0.15s;
     }
-
 
 }
 

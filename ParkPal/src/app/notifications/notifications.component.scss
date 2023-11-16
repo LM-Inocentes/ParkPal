@@ -1,0 +1,94 @@
+h4,
+p {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.main-container {
+    overflow: auto;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', Courier, monospace;
+    background-color: #dddada;
+    margin: 2rem 7.5rem 0 7.5rem;
+    padding: 2rem 1.8rem;
+    height: 46rem;
+    border-radius: 10px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    .h-notif-name{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .h-clearNotif {
+        cursor: pointer;
+        color: #FF6969;
+        font-weight: 600;
+    }
+}
+
+.notif-header{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+}
+
+.notif-container{
+    margin-bottom: 2.9rem;
+}
+
+.notif-type{
+    display: flex;
+    justify-content: center;
+    width: 11rem;
+    background-color:#FF6969;
+    color: white;
+    border-radius:5px;
+    padding: .5rem 1rem;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .notif-message {
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #CFCFCF;
+    }
+
+    .context,
+    .heading {
+        font-family: 'Poppins', Courier, monospace;
+    }
+
+    .heading {
+        font-weight: 600;
+    }
+
+    .delete-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        background-color: #FF6969;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 600px){
+    .main-container{
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+}

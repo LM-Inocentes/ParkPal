@@ -183,6 +183,25 @@ router.get("/user/registered", asyncHandler(
   }
 ))
 
+router.get("/user/registered/:searchTerm", asyncHandler(
+  async (req, res) => {
+    const searchRegex = new RegExp(req.params.searchTerm, 'i');
+    const users = await UserModel.find({
+      "$and": [
+        {
+          "$or": [
+            { Fullname: { '$regex': searchRegex } },
+            { id: { '$regex': searchRegex } },
+            { username: { '$regex': searchRegex } },
+          ]
+        },
+        { isRegistered: true }
+      ]
+    });
+    res.send(users);
+  }
+));
+
 router.patch("/user/pending/approve", asyncHandler(
   async (req, res) =>{
     const {id} = req.body;
