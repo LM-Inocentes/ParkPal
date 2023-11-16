@@ -40,6 +40,7 @@ import { OverallMapComponent } from './university-map/overall-map/overall-map.co
 import { Area1MapComponent } from './university-map/area1-map/area1-map.component';
 import { Area2MapComponent } from './university-map/area2-map/area2-map.component';
 import { Area3MapComponent } from './university-map/area3-map/area3-map.component';
+import { SearchComponent } from './component/search/search.component';
 
 
 
@@ -67,6 +68,7 @@ import { Area3MapComponent } from './university-map/area3-map/area3-map.componen
     Area1MapComponent,
     Area2MapComponent,
     Area3MapComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

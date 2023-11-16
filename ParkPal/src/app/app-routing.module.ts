@@ -71,6 +71,12 @@ const routes: Routes = [
         data: { title: 'REGISTERED USERS' },
       },
       {
+        path: 'registered-users/:searchTerm',
+        title: 'Registered Users',
+        component: RegisteredUsersComponent,
+        data: { title: 'REGISTERED USERS' },
+      },
+      {
         path: 'pending-registrations',
         component: PendingRegistrationsComponent,
         title: 'Pending Registrations',
