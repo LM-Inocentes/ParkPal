@@ -167,3 +167,23 @@ p {
   }
 }
 
+//bell-icon
+.bell-icon{
+  cursor: pointer;
+}
+//red-notif
+.button-badge {
+  background-color: #fa3e3e;
+  border-radius: 10px;
+  width: 1rem;
+  height: 1rem;
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: 9px;
+  right: 9px;
+
+  color: white;
+  font-family: 'Poppins', Courier, monospace;
+  font-weight: 500;
+  font-size: 0.9rem;
+  
+}

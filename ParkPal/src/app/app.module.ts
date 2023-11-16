@@ -36,6 +36,7 @@ import { ImageModalComponent } from './component/image-modal/image-modal.compone
 import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -59,6 +60,7 @@ import { RegisteredUsersComponent } from './registered-users/registered-users.co
     ImageModalComponent,
     FeedbackListComponent,
     RegisteredUsersComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,

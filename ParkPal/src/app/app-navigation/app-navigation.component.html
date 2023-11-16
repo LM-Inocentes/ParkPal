@@ -144,11 +144,20 @@
             height="35"
             width="35"
           >
-          <path fill="currentcolor" d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71Z"></path>
-          <path fill="currentcolor" d="M12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"></path>
-          
-          <!-- Second occurrence of the path data -->
-          <path fill="currentcolor" d="M8,8a4,4,0,1,1,4,4A4,4,0,0,1,8,8Z"></path>
+            <path
+              fill="currentcolor"
+              d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71Z"
+            ></path>
+            <path
+              fill="currentcolor"
+              d="M12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"
+            ></path>
+
+            <!-- Second occurrence of the path data -->
+            <path
+              fill="currentcolor"
+              d="M8,8a4,4,0,1,1,4,4A4,4,0,0,1,8,8Z"
+            ></path>
           </svg>
         </div>
         <p>Registered Users</p>
@@ -428,16 +437,17 @@
           </div>
         </div>
         <div class="right-elements">
-          <button
+          <a
             type="button"
             aria-label="Toggle sidenav"
             mat-icon-button
-            (click)="drawer.toggle()"
+            href="/app-notifications"
           >
-            <mat-icon aria-label="notifications icon"
-              >notifications_none</mat-icon
+            <mat-icon class="bell-icon" aria-label="notifications icon">
+              <div class="button-badge">9</div>
+              notifications_none</mat-icon
             >
-          </button>
+          </a>
           <!-- <div style="display: flex; align-items: center;">
             <span style="margin-left: 10px; margin-right: -6px;">{{Firstname}}</span>
             <button

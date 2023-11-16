@@ -15,6 +15,7 @@ import { User } from './shared/models/user';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -89,6 +90,13 @@ const routes: Routes = [
         component: UserProfileComponent,
         data: { title: 'USER PROFILE' },
       },
+      //notifications
+      {
+        path: 'app-notifications',
+        title: 'My notification',
+        component: NotificationsComponent,
+        data: { title: 'MY NOTIFICATIONS'}
+      }
       
     ],
     title: 'Dashboard', 
