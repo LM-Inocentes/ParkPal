@@ -21,6 +21,7 @@
             <option value="Complaint">Complaint</option>
           </select>
         </div>
+
         <div class="form-group">
           <label for="description">Description</label>
           <textarea 
@@ -45,7 +46,9 @@
           <p class="name"> {{ feedback.name }} </p>
           <p class="category"><strong>{{ feedback.type }}</strong></p>
         </div>
-
+        <div class = "dateholder">
+          <label> {{feedback.date}} </label>
+        </div> 
         <div class="feedback-content">
           <label>Description</label>
           <div class="suggestion">

@@ -3,6 +3,8 @@ import { User } from '../shared/models/user';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageModalComponent } from '../component/image-modal/image-modal.component';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-registered-users',
@@ -12,13 +14,23 @@ import { ImageModalComponent } from '../component/image-modal/image-modal.compon
 export class RegisteredUsersComponent {
   RegisteredUsers: User[] = [];
 
-  constructor( private authService:AuthService, private dialog: MatDialog ) {
+  constructor( private authService:AuthService, private dialog: MatDialog, private activatedRoute: ActivatedRoute ) {
   }
 
   ngOnInit(): void {
-    this.authService.getRegisteredUsers().subscribe((newUser) => {
-      this.RegisteredUsers = newUser;
-    });
+    let RegisteredUsersObservable: Observable<User[]>;
+    
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['searchTerm']){
+        RegisteredUsersObservable = this.authService.searchRegisteredUsers(params['searchTerm']);
+      }
+      else{
+        RegisteredUsersObservable = this.authService.getRegisteredUsers();
+      }
+      RegisteredUsersObservable.subscribe((RegisteredUsers) => {
+        this.RegisteredUsers = RegisteredUsers;
+      })
+    })
   }
 
   openImageModal(imageUrl: string) {

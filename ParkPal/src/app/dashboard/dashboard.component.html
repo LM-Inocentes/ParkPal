@@ -8,7 +8,7 @@
     </div>
     <div class="occupied">
       Occupied<br /><br />
-      40
+      {{mapState}}
     </div>
     <div class="pending">
       Pending<br /><br />
@@ -20,6 +20,11 @@
     </div>
   </div>
   <div class="university-map">
-    <img src="assets/map.png" />
+    <img [src]="mapImagePath" alt="University Map">
+    <button *ngIf="mapState != 0" class="back" (click)="updateMapState(0)">Back</button>
+    <button *ngIf="mapState == 0" class="areaA" (click)="updateMapState(1)">Area A</button>
+    <button *ngIf="mapState == 0" class="areaB" (click)="updateMapState(2)">Area B</button>
+    <button *ngIf="mapState == 0" class="areaC" (click)="updateMapState(3)">Area C</button>
+    <!--<app-overall-map></app-overall-map>-->
   </div>
 </div>

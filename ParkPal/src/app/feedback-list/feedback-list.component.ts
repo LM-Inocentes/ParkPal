@@ -54,13 +54,21 @@ export class FeedbackListComponent {
     if (this.feedbackForm.invalid) return;
 
     this.miscService.postFeedback({
-      id: this.user.id,
+      id: "",
       type: this.form['type'].value,
       desc: this.form['desc'].value,
       name: this.user.Fullname
     }).subscribe(_ => {
       this.ngOnInit();
     });
+  }
+
+  deleteFeedback(id:string) {
+    console.log(id);
+    this.miscService.deleteFeedback(id).subscribe(_ => {
+      this.ngOnInit();
+    });
+    
   }
 }
 
