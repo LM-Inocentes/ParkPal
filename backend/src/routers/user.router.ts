@@ -176,6 +176,25 @@ router.get("/user/pending", asyncHandler(
   }
 ))
 
+router.get("/user/pending/:searchTerm", asyncHandler(
+  async (req, res) => {
+    const searchRegex = new RegExp(req.params.searchTerm, 'i');
+    const users = await UserModel.find({
+      "$and": [
+        {
+          "$or": [
+            { Fullname: { '$regex': searchRegex } },
+            { id: { '$regex': searchRegex } },
+            { username: { '$regex': searchRegex } },
+          ]
+        },
+        { isRegistered: false }
+      ]
+    });
+    res.send(users);
+  }
+));
+
 router.get("/user/registered", asyncHandler(
   async (req, res) =>{
       const users = await UserModel.find({isRegistered: true});

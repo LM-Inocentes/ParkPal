@@ -37,7 +37,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { SearchComponent } from './component/search/search.component';
+import { PendingRegistrationSearchComponent } from './component/pending-registration-search/pending-registration-search.component';
+import { RegisteredUsersSearchComponent } from './component/registered-users-search/registered-users-search.component';
+import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delete.component';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { SearchComponent } from './component/search/search.component';
     FeedbackListComponent,
     RegisteredUsersComponent,
     NotificationsComponent,
-    SearchComponent,
+    PendingRegistrationSearchComponent,
+    RegisteredUsersSearchComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,

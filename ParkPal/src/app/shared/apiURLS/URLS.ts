@@ -12,11 +12,9 @@ export const USER_REGISTER_URL = BASE_URL + '/api/users/user/register';
 
 export const USER_MANUAL_REGISTER_URL = BASE_URL + '/api/users/user/manual-register';
 
-export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending';
+export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
-export const GET_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered';
-
-export const SEARCH_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered/';
+export const GET_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered/';
 
 export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';
 

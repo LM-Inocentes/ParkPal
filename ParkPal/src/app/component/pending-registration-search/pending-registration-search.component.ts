@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-pending-registration-search',
+  templateUrl: './pending-registration-search.component.html',
+  styleUrls: ['./pending-registration-search.component.scss']
 })
-export class SearchComponent {
+export class PendingRegistrationSearchComponent {
   searchTerm = '';
   constructor(activatedRoute:ActivatedRoute, private router:Router) {
     activatedRoute.params.subscribe((params) => {
@@ -16,10 +16,10 @@ export class SearchComponent {
 
   search(term:string):void{
     if(term){
-      this.router.navigateByUrl('registered-users/'+ term);
+      this.router.navigateByUrl('pending-registrations/'+ term);
     }
     else{
-      this.router.navigateByUrl('registered-users');
+      this.router.navigateByUrl('pending-registrations');
     }
   }
 }

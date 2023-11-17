@@ -1,10 +1,10 @@
-<app-search></app-search>
+<app-registered-users-search></app-registered-users-search>
 <div class="main-container" *ngFor="let registeredUser of RegisteredUsers">
     <div class="user-header">
       {{registeredUser.Fullname}} ({{registeredUser.id}})
   
       <!-- Buttons -->
-      <button id="rejctBtn" class="reject-btn" (click)="deleteUser(registeredUser)">Delete</button>
+      <button id="rejctBtn" class="reject-btn" (click)="deleteUserConfirmation(registeredUser)">Delete</button>
       <!-- end of Buttons -->
     </div>
     <br />
