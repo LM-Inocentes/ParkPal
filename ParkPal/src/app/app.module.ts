@@ -37,7 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-
+import { SearchComponent } from './component/search/search.component';
 
 
 @NgModule({
@@ -61,6 +61,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     FeedbackListComponent,
     RegisteredUsersComponent,
     NotificationsComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
