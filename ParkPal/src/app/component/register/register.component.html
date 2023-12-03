@@ -1,6 +1,6 @@
 <section class="main__container">
   <!-- input information/s -->
-  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+  <form [formGroup]="registerForm" (ngSubmit)="openVerificationModal()">
     <div class="main__container__grid">
       <div class="combine-basic-vehicle-info">
         <!-- Basic Information -->
@@ -29,7 +29,7 @@
           <div>
             <p class="information__texttitles">Email Address<span>*</span></p>
             <mat-form-field>
-              <mat-label>e.g. john@gmail.com</mat-label>
+              <mat-label>e.g. john&#64;gmail.com</mat-label>
               <input matInput type="email" formControlName="email" />
             </mat-form-field>
           </div>

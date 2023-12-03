@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { PendingRegistrationSearchComponent } from './component/pending-registration-search/pending-registration-search.component';
 import { RegisteredUsersSearchComponent } from './component/registered-users-search/registered-users-search.component';
 import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delete.component';
+import { VerificationComponent } from './component/verification/verification.component';
 
 
 @NgModule({
@@ -66,6 +68,7 @@ import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delet
     PendingRegistrationSearchComponent,
     RegisteredUsersSearchComponent,
     ConfirmDeleteComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delet
     HttpClientModule,
     MatExpansionModule,
     MatTableModule,
+    FormsModule,
     MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
