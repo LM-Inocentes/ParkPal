@@ -5,6 +5,8 @@ import { MiscService } from '../services/misc.service';
 import { User } from '../shared/models/user';
 import { Feedback } from '../shared/models/feedback';
 import { AuthService } from '../services/auth.service';
+import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-delete.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-feedback-list',
@@ -25,7 +27,7 @@ export class FeedbackListComponent {
   constructor(
     private formBuilder: FormBuilder,
     private miscService: MiscService,
-    private router: Router,
+    private dialog: MatDialog,
     private authService: AuthService
   ) 
   {
@@ -60,6 +62,20 @@ export class FeedbackListComponent {
       name: this.user.Fullname
     }).subscribe(_ => {
       this.ngOnInit();
+    });
+  }
+
+  deleteFeedbackConfirmation(feedback: string): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to delete this feedback?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User clicked "Yes", proceed with the delete operation
+        this.deleteFeedback(feedback);
+      }
     });
   }
 

@@ -24,10 +24,9 @@ export class PendingRegistrationsComponent {
   }
 
   ngOnInit(): void {
-    let PendingUsersObservable : Observable<User[]>;
-
+    let PendingUsersObservable: Observable<User[]>;
     this.activatedRoute.params.subscribe((params) => {
-      if(params['searchTerm']){
+      if (params['searchTerm']){
         PendingUsersObservable = this.authService.searchPendingUsers(params['searchTerm']);
       }else{
         PendingUsersObservable = this.authService.getPendingUsers();
@@ -36,10 +35,6 @@ export class PendingRegistrationsComponent {
         this.PendingUsers = PendingUsers;
       })
     })
-
-    // this.authService.getPendingUsers().subscribe((newUser) => {
-    //   this.PendingUsers = newUser;
-    // });
   }
 
   openImageModal(imageUrl: string) {

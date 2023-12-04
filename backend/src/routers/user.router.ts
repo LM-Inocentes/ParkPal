@@ -6,6 +6,7 @@ import { IAdmin, AdminModel } from '../models/admin.model';
 import bcrypt from 'bcryptjs';
 const cloudinary = require("../configs/cloudinary.config");
 const upload = require("../configs/multer.config");
+const nodemailer = require('nodemailer');
 
 const router = Router();
 
@@ -176,6 +177,25 @@ router.get("/user/pending", asyncHandler(
   }
 ))
 
+router.get("/user/pending/:searchTerm", asyncHandler(
+  async (req, res) => {
+    const searchRegex = new RegExp(req.params.searchTerm, 'i');
+    const users = await UserModel.find({
+      "$and": [
+        {
+          "$or": [
+            { Fullname: { '$regex': searchRegex } },
+            { id: { '$regex': searchRegex } },
+            { username: { '$regex': searchRegex } },
+          ]
+        },
+        { isRegistered: false }
+      ]
+    });
+    res.send(users);
+  }
+));
+
 router.get("/user/registered", asyncHandler(
   async (req, res) =>{
       const users = await UserModel.find({isRegistered: true});
@@ -202,30 +222,40 @@ router.get("/user/registered/:searchTerm", asyncHandler(
   }
 ));
 
-router.get("/user/pending/:searchTerm", asyncHandler(
-  async (req, res) => {
-    const searchRegex = new RegExp(req.params.searchTerm, 'i');
-    const users = await UserModel.find({
-      "$and": [
-        {
-          "$or": [
-            { Fullname: { '$regex': searchRegex } },
-            { id: { '$regex': searchRegex } },
-            { username: { '$regex': searchRegex } },
-          ]
-        },
-        { isRegistered: false }
-      ]
-    });
-    res.send(users);
-  }
-));
+        // Create a Nodemailer transporter
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+           user: 'citparkingsystem@gmail.com',
+           pass: 'tlig asor nedm hqfx',
+          },
+         });
 
 router.patch("/user/pending/approve", asyncHandler(
   async (req, res) =>{
     const {id} = req.body;
     const user = await UserModel.findOne({id: id});
     await user!.updateOne({$set: {"isRegistered": true}});
+
+        // Define email options
+        const mailOptions = {
+          from: 'citparkingsystem@gmail.com',
+          to: user!.email, // assuming there is an 'email' field in your user model
+          subject: 'Parking System Application',
+          text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Accepted. Your account username is your id: '+user?.username+'. \n\nHave a Nice Day'
+        };
+        // Send the email
+        transporter.sendMail(mailOptions, (error:any, info:any) => {
+          if (error) {
+              console.error(error);
+          } else {
+              console.log('Email sent: ' + info.response);
+          }
+      });
+
     res.send(user);                    
   }
 ))
@@ -239,6 +269,22 @@ router.delete("/user/pending/reject/:id", asyncHandler(
     await cloudinary.uploader.destroy(user?.IDdoc);
     await cloudinary.uploader.destroy(user?.Payment);
     await user!.delete(); 
+
+            // Define email options
+            const mailOptions = {
+              from: 'citparkingsystem@gmail.com',
+              to: user!.email, // assuming there is an 'email' field in your user model
+              subject: 'Parking System Application',
+              text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Rejected. Your account details or documents submitted must have been incorrect or lacking. You can submit an application again if you have the correct details or documents . \n\nHave a Nice Day'
+            };
+            // Send the email
+            transporter.sendMail(mailOptions, (error:any, info:any) => {
+              if (error) {
+                  console.error(error);
+              } else {
+                  console.log('Email sent: ' + info.response);
+              }
+          });
     res.send();
   }
 ))
@@ -251,6 +297,23 @@ router.delete("/user/registered/delete/:id", asyncHandler(
     await cloudinary.uploader.destroy(user?.StudyLoad);
     await cloudinary.uploader.destroy(user?.IDdoc);
     await cloudinary.uploader.destroy(user?.Payment);
+
+            // Define email options
+            const mailOptions = {
+              from: 'citparkingsystem@gmail.com',
+              to: user!.email, // assuming there is an 'email' field in your user model
+              subject: 'Parking System Account Deleted',
+              text: 'Good Day! ' +user!.Fullname+ '\n\nWe want to notify you that your account has been deleted. This may be due to numerous violations or your sticker has expired. Please see our office for more details. \n\nThank you!'
+            };
+            // Send the email
+            transporter.sendMail(mailOptions, (error:any, info:any) => {
+              if (error) {
+                  console.error(error);
+              } else {
+                  console.log('Email sent: ' + info.response);
+              }
+          });
+
     await user!.delete(); 
     res.send();
   }

@@ -51,8 +51,8 @@ const routes: Routes = [
       },
       {
         path: 'pending-registrations/:searchTerm',
-        title: 'pending Registrations',
         component: PendingRegistrationsComponent,
+        title: 'Pending Registrations',
         data: { title: 'PENDING REGISTRATIONS' },
       },
       {

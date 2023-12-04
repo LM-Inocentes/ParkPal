@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,8 +38,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { SearchComponent } from './component/search/search.component';
-import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
+import { PendingRegistrationSearchComponent } from './component/pending-registration-search/pending-registration-search.component';
+import { RegisteredUsersSearchComponent } from './component/registered-users-search/registered-users-search.component';
+import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delete.component';
+
 
 
 @NgModule({
@@ -62,8 +65,9 @@ import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
     FeedbackListComponent,
     RegisteredUsersComponent,
     NotificationsComponent,
-    SearchComponent,
-    PenaltyPageComponent,
+    PendingRegistrationSearchComponent,
+    RegisteredUsersSearchComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,7 @@ import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
     HttpClientModule,
     MatExpansionModule,
     MatTableModule,
+    FormsModule,
     MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
