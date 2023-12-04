@@ -5,10 +5,21 @@ import { IUser, UserModel } from '../models/user.model';
 import { IAdmin, AdminModel } from '../models/admin.model';
 import bcrypt from 'bcryptjs';
 const cloudinary = require("../configs/cloudinary.config");
-const upload = require("../configs/multer.config");
 const nodemailer = require('nodemailer');
 
 const router = Router();
+
+// Create a Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+   user: 'citparkingsystem@gmail.com',
+   pass: 'tlig asor nedm hqfx',
+  },
+ });
 
 const generateTokenResponse = (user:any) => {
     const token = jwt.sign({
@@ -33,6 +44,16 @@ const generateTokenResponse = (user:any) => {
         VPlateNo: user.VPlateNo,
         token: token,
       };
+}
+
+function generateRandomUpperCaseString(length:any) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+  return result;
 }
 
 router.post("/login",  asyncHandler(
@@ -69,6 +90,12 @@ router.post('/user/register', asyncHandler(
         .send('ID Number Already Exist!');
         return;
       }
+      const userEmail = await UserModel.findOne({email});
+      if(userEmail){
+        res.status(400)
+        .send('Email Already Exist!');
+        return;
+      }
     const salt = await bcrypt.genSalt(10); 
     const newUser:IUser = {
       id,
@@ -87,8 +114,49 @@ router.post('/user/register', asyncHandler(
       VPlateNo,
       isRegistered: false
     }
+
+  // Define email options
+  const mailOptions = {
+    from: 'citparkingsystem@gmail.com',
+    to: email,
+    subject: 'Parking System Application',
+    text: 'Good Day! ' +Fullname+ '\n\nYour Application Has Been Submitted. Please Wait For The Approval\n\nHave a Nice Day'
+  };
+  // Send the email
+  transporter.sendMail(mailOptions, (error:any, info:any) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+  });
+
     const dbUser = await UserModel.create(newUser);  
     res.send(dbUser);
+  }
+))
+
+router.get("/user/verify/:email", asyncHandler(
+  async (req, res) =>{
+    const userEmail = req.params.email;
+    const VerificationCode = generateRandomUpperCaseString(6);
+
+        // Define email options
+        const mailOptions = {
+          from: 'citparkingsystem@gmail.com',
+          to: userEmail, 
+          subject: 'Email Verification',
+          text: 'Code: '+VerificationCode
+        };
+        // Send the email
+        transporter.sendMail(mailOptions, (error:any, info:any) => {
+          if (error) {
+              console.error(error);
+          } else {
+              console.log('Email sent: ' + info.response);
+          }
+      });
+    res.send(VerificationCode);                    
   }
 ))
 
@@ -100,6 +168,12 @@ router.post('/user/manual-register', asyncHandler(
       res.status(400)
       .send('ID Number Already Exist!');
       return;
+    }
+    const userEmail = await UserModel.findOne({email});
+      if(userEmail){
+        res.status(400)
+        .send('Email Already Exist!');
+        return;
     }
   const salt = await bcrypt.genSalt(10); 
   const newUser:IUser = {
@@ -120,6 +194,22 @@ router.post('/user/manual-register', asyncHandler(
     isRegistered: true
   }
   const dbUser = await UserModel.create(newUser);  
+
+  // Define email options
+  const mailOptions = {
+    from: 'citparkingsystem@gmail.com',
+    to: email,
+    subject: 'Parking System Application Accepted',
+    text: 'Good Day! ' +Fullname+ '\n\nYour Application Has Been Accepted. Your account username is your id: '+id+'. \n\nHave a Nice Day'
+  };
+  // Send the email
+  transporter.sendMail(mailOptions, (error:any, info:any) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+  });
   res.send(dbUser);
 }
 ))
@@ -222,18 +312,6 @@ router.get("/user/registered/:searchTerm", asyncHandler(
   }
 ));
 
-        // Create a Nodemailer transporter
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-          auth: {
-           user: 'citparkingsystem@gmail.com',
-           pass: 'tlig asor nedm hqfx',
-          },
-         });
-
 router.patch("/user/pending/approve", asyncHandler(
   async (req, res) =>{
     const {id} = req.body;
@@ -244,7 +322,7 @@ router.patch("/user/pending/approve", asyncHandler(
         const mailOptions = {
           from: 'citparkingsystem@gmail.com',
           to: user!.email, // assuming there is an 'email' field in your user model
-          subject: 'Parking System Application',
+          subject: 'Parking System Application Accepted',
           text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Accepted. Your account username is your id: '+user?.username+'. \n\nHave a Nice Day'
         };
         // Send the email
@@ -274,7 +352,7 @@ router.delete("/user/pending/reject/:id", asyncHandler(
             const mailOptions = {
               from: 'citparkingsystem@gmail.com',
               to: user!.email, // assuming there is an 'email' field in your user model
-              subject: 'Parking System Application',
+              subject: 'Parking System Application Rejected',
               text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Rejected. Your account details or documents submitted must have been incorrect or lacking. You can submit an application again if you have the correct details or documents . \n\nHave a Nice Day'
             };
             // Send the email

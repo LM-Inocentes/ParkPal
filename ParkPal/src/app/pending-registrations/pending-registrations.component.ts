@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImageModalComponent } from '../component/image-modal/image-modal.component';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-delete.component';
 
 
 
@@ -50,6 +51,34 @@ export class PendingRegistrationsComponent {
   rejectUser(user: User) {
     this.authService.rejectPendingUser(user).subscribe(_ => {
       this.ngOnInit();
+    });
+  }
+
+  approveUserConfirmation(user: User): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to approve this user application?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User clicked "Yes", proceed with the delete operation
+        this.approveUser(user);
+      }
+    });
+  }
+
+  rejectUserConfirmation(user: User): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to reject this user application?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User clicked "Yes", proceed with the delete operation
+        this.rejectUser(user);
+      }
     });
   }
   
