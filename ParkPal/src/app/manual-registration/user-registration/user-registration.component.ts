@@ -109,7 +109,6 @@ export class UserRegistrationComponent {
 
       this.authService.sendVerificationEmail(fv.email).subscribe(
         response => {
-          console.log(response);
           this.dialogRef = this.dialog.open(VerificationComponent, {
             width: '300px', 
             data: { VerificationCode:  response }
