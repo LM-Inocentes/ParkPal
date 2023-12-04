@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD, APPROVE_PENDING_USER_URL, REJECT_PENDING_USER_URL, USER_MANUAL_REGISTER_URL, MOD_REGISTER_URL, GET_REGISTERED_USER_URL, DELETE_REGISTERED_USER_URL } from 'src/app/shared/apiURLS/URLS';
+import { LOGIN_URL, ADMIN_REGISTER_URL, GET_PENDING_USER_URL, USER_REGISTER_URL, USER_UPLOAD_CR, USER_UPLOAD_IDDOC, USER_UPLOAD_OR, USER_UPLOAD_PAYMENT, USER_UPLOAD_STUDYLOAD, APPROVE_PENDING_USER_URL, REJECT_PENDING_USER_URL, USER_MANUAL_REGISTER_URL, MOD_REGISTER_URL, GET_REGISTERED_USER_URL, DELETE_REGISTERED_USER_URL, USER_VERIFY_EMAIL_URL } from 'src/app/shared/apiURLS/URLS';
 import { ILogin } from '../shared/interfaces/ILogin';
 import { IAdminRegister } from '../shared/interfaces/IAdminRegister';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
@@ -87,6 +87,10 @@ export class AuthService {
         }
       })
     );
+  }
+
+  sendVerificationEmail(email: string): Observable<string> {
+    return this.http.get(USER_VERIFY_EMAIL_URL + email, { responseType: 'text' });
   }
 
   ManualUserRegister(userRegister:IUserRegister): Observable<User>{

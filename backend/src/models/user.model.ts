@@ -23,7 +23,7 @@ export const UserSchema = new Schema<IUser>(
         id: { type:String, required:true },
         username: { type:String, required:true, unique:true },
         Fullname: { type:String, required:true },
-        email: { type:String, required:true, unique:false },
+        email: { type:String, required:true, unique:true },
         password: { type:String, required:true },
         ORdoc: { type:String, required:false },
         CRdoc: { type:String, required:false },

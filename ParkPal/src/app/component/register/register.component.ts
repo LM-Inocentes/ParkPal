@@ -6,6 +6,8 @@ import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
 import { PasswordsMatchValidator } from 'src/app/shared/validators/password_match_validator';
 import { ToastrService } from 'ngx-toastr';
 import { switchMap } from 'rxjs/operators';
+import { VerificationComponent } from '../verification/verification.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +23,7 @@ export class RegisterComponent {
   SL!: File;
   ID!: File;
   Payment!: File;
+  dialogRef!: MatDialogRef<VerificationComponent>;
 
   returnUrl = '/';
 
@@ -29,11 +32,11 @@ export class RegisterComponent {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
     )
-    { 
-      
 
+    { 
       this.registerForm = this.formBuilder.group({
         IDNo: ['', [Validators.required, Validators.minLength(11)]],
         Fullname: ['', [Validators.required, Validators.minLength(1)]],
@@ -93,7 +96,7 @@ export class RegisterComponent {
         this.toastr.error('Please upload all required documents.', 'Submission Error');
         return;
       }
-  
+
       const fv= this.registerForm.value;
       const user :IUserRegister = {
         id: fv.IDNo,
@@ -106,12 +109,42 @@ export class RegisterComponent {
         VPlateNo: fv.VPlateNo,
       };
 
+      this.toastr.info('Check Your Email For The Verification Code', 'Code Sent');
+
+      this.authService.sendVerificationEmail(fv.email).subscribe(
+        response => {
+          this.dialogRef = this.dialog.open(VerificationComponent, {
+            width: '300px', 
+            data: { VerificationCode: response }
+          });
+          this.dialogRef.afterClosed().subscribe(result => {
+            if(!result){
+              this.toastr.error(
+                `Email Not Verified. Please Try Again`,
+                'Incorrect Code'
+              );
+              return;
+            }
+            this.toastr.success(
+              `Email Verified`,
+              'Success'
+            );
+            this.RegisterUser(user);
+          });
+        },
+        error => {
+          console.error('Error sending verification email:', error);
+        }
+      );
+    }
+
+    RegisterUser(user: IUserRegister){
       this.authService.UserRegister(user).pipe(
-        switchMap(() => this.authService.ORUpload(fv.IDNo, this.OR)),
-        switchMap(() => this.authService.CRUpload(fv.IDNo, this.CR)),
-        switchMap(() => this.authService.SLUpload(fv.IDNo, this.SL)),
-        switchMap(() => this.authService.IDUpload(fv.IDNo, this.ID)),
-        switchMap(() => this.authService.PaymentUpload(fv.IDNo, this.Payment))
+        switchMap(() => this.authService.ORUpload(user.id, this.OR)),
+        switchMap(() => this.authService.CRUpload(user.id, this.CR)),
+        switchMap(() => this.authService.SLUpload(user.id, this.SL)),
+        switchMap(() => this.authService.IDUpload(user.id, this.ID)),
+        switchMap(() => this.authService.PaymentUpload(user.id, this.Payment))
       ).subscribe(
         () => {
           this.toastr.success(
