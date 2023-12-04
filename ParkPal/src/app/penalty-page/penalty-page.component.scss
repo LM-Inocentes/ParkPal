@@ -1,0 +1,111 @@
+p,
+span {
+    margin: 0px;
+}
+
+.main-container {
+    font-family: 'Poppins', Courier, monospace;
+    height: calc(100% - 72px);
+
+    .penalty-container {
+        background-color: #D9D9D9;
+        margin: 1.7rem 1rem 1.7rem 1rem;
+        border-radius: 1.2rem;
+        padding: 3.063rem 2.125rem 3.063rem 2.125rem;
+        // min-height: 52.5rem;
+        height: 80vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+
+        .user-info {
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F4EBEB;
+            padding: 1.688rem 1.25rem 1.688rem 1.25rem;
+            border-radius: 0.5rem;
+
+            .profile {
+
+                border-radius: 5px;
+                background-color: #FF6969;
+                padding: 0.438rem 0.563rem 0.438rem 0.563rem;
+
+            }
+
+            .profile-user-name-id {
+                flex-direction: row;
+
+                .profile {
+                    align-items: center;
+                    margin-right: 0.4rem;
+                }
+
+                .user-name-id {
+                    flex-direction: column;
+
+                    .user-name {
+                        font-size: 0.938rem;
+                    }
+
+                    .user-id {
+                        font-size: 0.813rem;
+                        color: #CFCFCF;
+                    }
+
+                    .user-name,
+                    .user-id {
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .penalty-counter {
+
+
+                span {
+                    color: #BB2525;
+                }
+            }
+
+            .select-user {
+                cursor: pointer;
+                border-radius: 0.313rem;
+                border: 1.8px solid #69FF93;
+                padding: 0.563rem 0.375rem 0.563rem 0.375rem;
+            }
+        }
+    }
+}
+
+.user-info,
+.profile-user-name-id,
+.profile,
+.user-name-id {
+    display: flex;
+}
+
+
+.num-penalties,
+span,
+.select-user {
+    font-size: 1.25rem;
+    font-weight: 500;
+
+}
+
+//scrollbar
+.penalty-container {
+    -ms-overflow-style: none; //for edge and internet explorer
+    scrollbar-width: none; // for firefox
+}
+
+.penalty-container::-webkit-scrollbar {
+    display: none; //chrome safari and opera
+}
+
+
+// animation
+.select-user:hover {
+    transition: 0.4s;
+    background-color: #69FF93;
+}

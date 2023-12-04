@@ -38,6 +38,7 @@ import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SearchComponent } from './component/search/search.component';
+import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { SearchComponent } from './component/search/search.component';
     RegisteredUsersComponent,
     NotificationsComponent,
     SearchComponent,
+    PenaltyPageComponent,
   ],
   imports: [
     BrowserModule,

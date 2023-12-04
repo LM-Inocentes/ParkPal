@@ -189,25 +189,25 @@
       </a>
       <!-- end of Pending reg -->
 
-      <!-- history reports -->
-      <a class="mat-nav-list-btns" href="" *ngIf="user.Level != 1">
+      <!-- Penalty -->
+      <a class="mat-nav-list-btns" href="/app-penalty-page" *ngIf="user.Level != 1">
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            id="history"
+            id="exclamation-triangle"
             height="35"
             width="35"
           >
             <path
               fill="currentcolor"
-              d="M12,2A10,10,0,0,0,5.12,4.77V3a1,1,0,0,0-2,0V7.5a1,1,0,0,0,1,1H8.62a1,1,0,0,0,0-2H6.22A8,8,0,1,1,4,12a1,1,0,0,0-2,0A10,10,0,1,0,12,2Zm0,6a1,1,0,0,0-1,1v3a1,1,0,0,0,1,1h2a1,1,0,0,0,0-2H13V9A1,1,0,0,0,12,8Z"
+              d="M12,16a1,1,0,1,0,1,1A1,1,0,0,0,12,16Zm10.67,1.47-8.05-14a3,3,0,0,0-5.24,0l-8,14A3,3,0,0,0,3.94,22H20.06a3,3,0,0,0,2.61-4.53Zm-1.73,2a1,1,0,0,1-.88.51H3.94a1,1,0,0,1-.88-.51,1,1,0,0,1,0-1l8-14a1,1,0,0,1,1.78,0l8.05,14A1,1,0,0,1,20.94,19.49ZM12,8a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V9A1,1,0,0,0,12,8Z"
             ></path>
           </svg>
         </div>
-        <p>Reports History</p>
+        <p>Penalty</p>
       </a>
-      <!-- end of history reports -->
+      <!-- end of history Penalty -->
 
       <!-- Manual Registration -->
       <a class="mat-nav-list-btns" *ngIf="user.Level != 1">
