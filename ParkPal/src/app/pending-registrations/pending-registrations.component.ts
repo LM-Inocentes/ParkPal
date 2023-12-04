@@ -1,9 +1,9 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { User } from '../shared/models/user';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageModalComponent } from '../component/image-modal/image-modal.component';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-delete.component';
 
@@ -18,7 +18,10 @@ import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-dele
 export class PendingRegistrationsComponent {
   PendingUsers: User[] = [];
 
-  constructor( private authService:AuthService, private dialog: MatDialog, private activatedRoute: ActivatedRoute) {
+  constructor( 
+    private authService:AuthService, 
+    private dialog: MatDialog, 
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -26,8 +29,7 @@ export class PendingRegistrationsComponent {
     this.activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']){
         PendingUsersObservable = this.authService.searchPendingUsers(params['searchTerm']);
-      }
-      else{
+      }else{
         PendingUsersObservable = this.authService.getPendingUsers();
       }
       PendingUsersObservable.subscribe((PendingUsers) => {

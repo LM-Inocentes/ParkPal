@@ -16,6 +16,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
+import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.component';
 
 const routes: Routes = [
   {path : '',title: 'ParkPal-Login',  component : LoginComponent},
@@ -109,6 +111,19 @@ const routes: Routes = [
         title: 'My notification',
         component: NotificationsComponent,
         data: { title: 'MY NOTIFICATIONS'}
+      },
+      //Penalty
+      {
+        path: 'app-penalty-page',
+        title: 'Penalty System',
+        component: PenaltyPageComponent,
+        data: { title: 'PENALTY SYSTEM'}
+      },
+      {
+        path: 'app-penalty-page-user',
+        title: 'Penalty System User',
+        component: PenaltyPageUserComponent,
+        data: { title: 'PENALTY SYSTEM USER'}
       }
       
     ],

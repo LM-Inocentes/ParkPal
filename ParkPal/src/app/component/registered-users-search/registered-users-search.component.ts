@@ -16,10 +16,11 @@ export class RegisteredUsersSearchComponent {
 
   search(term:string):void{
     if(term){
+      // this.router.navigateByUrl('pending-registrations/'+ term);
       this.router.navigateByUrl('registered-users/'+ term);
     }
     else{
       this.router.navigateByUrl('registered-users');
     }
   }
-}
+}   

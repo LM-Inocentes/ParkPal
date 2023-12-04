@@ -26,11 +26,13 @@
 .status-box {
     margin: 0 auto;
     display: grid;
-    height: auto;
+    max-height: 240x;
+    height:auto;
+    width: auto;
     grid-auto-flow: row;
-    grid-template-columns: repeat(4, 140px);
+    grid-template-columns: repeat(4, 120px);
     /* Create 4 columns */
-    grid-template-rows: repeat(1, 140px);
+    grid-template-rows: repeat(1, 120px);
     gap: 5vw;
     /* Adjust the gap between grid items */
     //justify-content: space-evenly;
@@ -42,8 +44,9 @@
     .status-box {
         grid-auto-flow: row;
         /* Flow items in rows */
-        grid-template-columns: repeat(2, 140px);
+        grid-template-columns: repeat(2, 120px);
         /* Single column layout */
+        gap: 1vw;
     }
 
     .greetings {
@@ -53,26 +56,28 @@
 }
 
 .left-status {
+    width: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .right-status {
+    width: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .vacant {
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
     text-align: center;
 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     background-color: #AFF4BE;
     border-radius: 20%;
     align-items: center;
@@ -83,15 +88,15 @@
 
 .occupied {
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     background-color: #FF9494;
     border-radius: 20%;
     align-items: center;
@@ -102,15 +107,15 @@
 
 .pending {
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
     text-align: center;
 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     background-color: #f1ea82;
     border-radius: 20%;
     align-items: center;
@@ -121,15 +126,15 @@
 
 .reports {
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
     text-align: center;
 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     background-color: #C6EEFF;
     border-radius: 20%;
     align-items: center;
@@ -139,7 +144,7 @@
 }
 
 .university-map {
-    margin-top: 30px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -148,7 +153,7 @@
     height: auto;
 
     button {
-        padding: 10px 20px;
+        padding: 5px 10px;
         text-transform: uppercase;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
@@ -179,18 +184,18 @@
     .areaA {
     position: absolute;
     top: 43%;
-    left: 37%;
+    left: 34%;
     background: #aff4be77;
     }
     .areaB {
     position: absolute;
     top: 60%;
-    left: 32%;
+    left: 20%;
     }
     .areaC {
     position: absolute;
     top: 80%;
-    left: 40%;
+    left: 36%;
     background: #f1ea8286;
     }
     .back {
@@ -203,12 +208,24 @@
 
 .university-map img {
     min-width: 50%;
-    max-width: 58%;
+    max-width: 95%;
     height: auto;
 }
 
 
 p {
     font-size: large;
+}
+
+.areaC-div1 {
+    position: absolute;
+    width: 66%;
+    height: 23%;
+    //max-width: 1115px; /* Set the maximum width */
+    //max-height: 200px; /* Set the maximum height */
+    border: 3px solid black; /* Add a 5px black border */
+    box-sizing: border-box; /* Include border in width and height calculations */
+    top: 22%;
+    left:33%
 }
 

@@ -41,7 +41,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { PendingRegistrationSearchComponent } from './component/pending-registration-search/pending-registration-search.component';
 import { RegisteredUsersSearchComponent } from './component/registered-users-search/registered-users-search.component';
 import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delete.component';
-import { VerificationComponent } from './component/verification/verification.component';
+import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.component';
+
 
 
 @NgModule({
@@ -68,7 +69,7 @@ import { VerificationComponent } from './component/verification/verification.com
     PendingRegistrationSearchComponent,
     RegisteredUsersSearchComponent,
     ConfirmDeleteComponent,
-    VerificationComponent,
+    PenaltyPageUserComponent,
   ],
   imports: [
     BrowserModule,
