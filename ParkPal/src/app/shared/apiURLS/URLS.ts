@@ -14,15 +14,11 @@ export const USER_VERIFY_EMAIL_URL = BASE_URL + '/api/users/user/verify/';
 
 export const USER_MANUAL_REGISTER_URL = BASE_URL + '/api/users/user/manual-register';
 
-export const GET_USER_INFO_URL = BASE_URL + '/api/users/info/';
-
 export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
 export const GET_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered/';
 
-export const GET_REGISTERED_USER_BY_ID_URL = BASE_URL + '/api/users/user/registered/';
-
-export const SEARCH_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
+// export const SEARCH_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
 export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';
 

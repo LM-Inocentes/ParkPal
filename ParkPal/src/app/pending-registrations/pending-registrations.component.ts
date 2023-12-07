@@ -29,6 +29,7 @@ export class PendingRegistrationsComponent {
     this.activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']){
         PendingUsersObservable = this.authService.searchPendingUsers(params['searchTerm']);
+
       }else{
         PendingUsersObservable = this.authService.getPendingUsers();
       }

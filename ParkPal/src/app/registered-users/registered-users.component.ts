@@ -22,9 +22,10 @@ export class RegisteredUsersComponent {
     let RegisteredUsersObservable: Observable<User[]>;
     this.activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']){
-        RegisteredUsersObservable = this.authService.searchRegisteredUsers(params['searchTerm']);
-      }
-      else{
+        RegisteredUsersObservable = this.authService. searchRegisteredUsers(params['searchTerm']);
+        console.log(params['searchTerm'])
+
+      }else{
         RegisteredUsersObservable = this.authService.getRegisteredUsers();
       }
       RegisteredUsersObservable.subscribe((RegisteredUsers) => {
