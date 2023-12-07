@@ -267,6 +267,20 @@ router.get("/user/pending", asyncHandler(
   }
 ))
 
+router.get("/user/registered", asyncHandler(
+  async (req, res) => {
+    const users = await UserModel.find({ isRegistered: true });
+    res.send(users);                       //sending items from database
+  }
+))
+
+router.get("/user/registered/:userID", asyncHandler(
+  async (req, res) =>{
+      const user = await UserModel.findOne({id: req.params.userID});
+      res.send(user);                       //sending items from database
+  }
+))
+
 router.get("/user/pending/:searchTerm", asyncHandler(
   async (req, res) => {
     const searchRegex = new RegExp(req.params.searchTerm, 'i');
@@ -285,20 +299,6 @@ router.get("/user/pending/:searchTerm", asyncHandler(
     res.send(users);
   }
 ));
-
-router.get("/user/registered", asyncHandler(
-  async (req, res) => {
-    const users = await UserModel.find({ isRegistered: true });
-    res.send(users);                       //sending items from database
-  }
-))
-
-router.get("/user/registered/:userID", asyncHandler(
-  async (req, res) =>{
-      const user = await UserModel.findOne({id: req.params.userID});
-      res.send(user);                       //sending items from database
-  }
-))
 
 router.get("/user/registered/:searchTerm", asyncHandler(
   async (req, res) => {
@@ -401,13 +401,6 @@ router.delete("/user/registered/delete/:id", asyncHandler(
 
     await user!.delete();
     res.send();
-  }
-))
-
-router.get("/info/:id", asyncHandler(
-  async (req, res) => {
-    const user = await UserModel.findOne({ _id: req.params.id });
-    res.send(user);
   }
 ))
 
