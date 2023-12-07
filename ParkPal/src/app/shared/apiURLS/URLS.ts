@@ -20,6 +20,8 @@ export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
 export const GET_REGISTERED_USER_URL = BASE_URL + '/api/users/user/registered/';
 
+export const GET_REGISTERED_USER_BY_ID_URL = BASE_URL + '/api/users/user/registered/';
+
 export const SEARCH_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
 export const APPROVE_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/approve';

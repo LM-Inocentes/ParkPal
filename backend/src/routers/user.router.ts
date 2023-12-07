@@ -293,6 +293,13 @@ router.get("/user/registered", asyncHandler(
   }
 ))
 
+router.get("/user/registered/:userID", asyncHandler(
+  async (req, res) =>{
+      const user = await UserModel.findOne({id: req.params.userID});
+      res.send(user);                       //sending items from database
+  }
+))
+
 router.get("/user/registered/:searchTerm", asyncHandler(
   async (req, res) => {
     const searchRegex = new RegExp(req.params.searchTerm, 'i');

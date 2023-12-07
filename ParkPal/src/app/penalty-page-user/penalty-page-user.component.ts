@@ -20,8 +20,10 @@ export class PenaltyPageUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>{
+      console.log(params['userID']);
       this.authService.getRegisteredUsersByID(params['userID']).subscribe(regUser =>{
         this.user = regUser
+        console.log(regUser);
       })
     })
   }
