@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken'
-import  asyncHandler  from 'express-async-handler';
+import asyncHandler from 'express-async-handler';
 import { IUser, UserModel } from '../models/user.model';
 import { IAdmin, AdminModel } from '../models/admin.model';
 import bcrypt from 'bcryptjs';
@@ -16,37 +16,37 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-   user: 'citparkingsystem@gmail.com',
-   pass: 'tlig asor nedm hqfx',
+    user: 'citparkingsystem@gmail.com',
+    pass: 'tlig asor nedm hqfx',
   },
- });
+});
 
-const generateTokenResponse = (user:any) => {
-    const token = jwt.sign({
-        id: user.id
-    },"Expires In",{
-        expiresIn: "30d"
-    })
-    return {
-        Level: user.Level,
-        id: user.id,
-        email: user.email,
-        password: user.password,
-        Fullname: user.Fullname,
-        username: user.username,
-        ORdoc: user.ORdoc,         
-        CRdoc: user.CRdoc,
-        StudyLoad: user.StudyLoad,
-        IDdoc: user.IDdoc,
-        Payment: user.Payment,
-        VMake: user.VMake,
-        VModel: user.VModel,
-        VPlateNo: user.VPlateNo,
-        token: token,
-      };
+const generateTokenResponse = (user: any) => {
+  const token = jwt.sign({
+    id: user.id
+  }, "Expires In", {
+    expiresIn: "30d"
+  })
+  return {
+    Level: user.Level,
+    id: user.id,
+    email: user.email,
+    password: user.password,
+    Fullname: user.Fullname,
+    username: user.username,
+    ORdoc: user.ORdoc,
+    CRdoc: user.CRdoc,
+    StudyLoad: user.StudyLoad,
+    IDdoc: user.IDdoc,
+    Payment: user.Payment,
+    VMake: user.VMake,
+    VModel: user.VModel,
+    VPlateNo: user.VPlateNo,
+    token: token,
+  };
 }
 
-function generateRandomUpperCaseString(length:any) {
+function generateRandomUpperCaseString(length: any) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let result = '';
   for (let i = 0; i < length; i++) {
@@ -56,48 +56,48 @@ function generateRandomUpperCaseString(length:any) {
   return result;
 }
 
-router.post("/login",  asyncHandler(
+router.post("/login", asyncHandler(
   async (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
     var user = await AdminModel.findOne({ username });
     if (!user) {
       user = await UserModel.findOne({ 'id': username, 'isRegistered': true });
     }
-    if(!user){
+    if (!user) {
       user = await UserModel.findOne({ 'id': username, 'isRegistered': false });
       res.status(400).send("User Registration Not Yet Approved");
       return;
     }
-    if(!user){                                                                   
+    if (!user) {
       res.status(400).send("User does not exist");
       return;
     }
-    const isPassMatch = await bcrypt.compare(password, user.password);           
-    if(isPassMatch) {
+    const isPassMatch = await bcrypt.compare(password, user.password);
+    if (isPassMatch) {
       res.send(generateTokenResponse(user));
       return;
     }
-    res.status(400).send("Incorrect Password"); 
+    res.status(400).send("Incorrect Password");
   }
 ))
 
 router.post('/user/register', asyncHandler(
-    async (req, res) => {
-      const {id, Fullname, email, password, VMake, VModel, VPlateNo} = req.body;
-      const user = await UserModel.findOne({id});
-      if(user){
-        res.status(400)
+  async (req, res) => {
+    const { id, Fullname, email, password, VMake, VModel, VPlateNo } = req.body;
+    const user = await UserModel.findOne({ id });
+    if (user) {
+      res.status(400)
         .send('ID Number Already Exist!');
-        return;
-      }
-      const userEmail = await UserModel.findOne({email});
-      if(userEmail){
-        res.status(400)
+      return;
+    }
+    const userEmail = await UserModel.findOne({ email });
+    if (userEmail) {
+      res.status(400)
         .send('Email Already Exist!');
-        return;
-      }
-    const salt = await bcrypt.genSalt(10); 
-    const newUser:IUser = {
+      return;
+    }
+    const salt = await bcrypt.genSalt(10);
+    const newUser: IUser = {
       id,
       username: id,
       Fullname,
@@ -115,155 +115,155 @@ router.post('/user/register', asyncHandler(
       isRegistered: false
     }
 
-  // Define email options
-  const mailOptions = {
-    from: 'citparkingsystem@gmail.com',
-    to: email,
-    subject: 'Parking System Application',
-    text: 'Good Day! ' +Fullname+ '\n\nYour Application Has Been Submitted. Please Wait For The Approval\n\nHave a Nice Day'
-  };
-  // Send the email
-  transporter.sendMail(mailOptions, (error:any, info:any) => {
-    if (error) {
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: email,
+      subject: 'Parking System Application',
+      text: 'Good Day! ' + Fullname + '\n\nYour Application Has Been Submitted. Please Wait For The Approval\n\nHave a Nice Day'
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
         console.error(error);
-    } else {
+      } else {
         console.log('Email sent: ' + info.response);
-    }
-  });
+      }
+    });
 
-    const dbUser = await UserModel.create(newUser);  
+    const dbUser = await UserModel.create(newUser);
     res.send(dbUser);
   }
 ))
 
 router.get("/user/verify/:email", asyncHandler(
-  async (req, res) =>{
+  async (req, res) => {
     const userEmail = req.params.email;
     const VerificationCode = generateRandomUpperCaseString(6);
 
-        // Define email options
-        const mailOptions = {
-          from: 'citparkingsystem@gmail.com',
-          to: userEmail, 
-          subject: 'Email Verification',
-          text: 'Code: '+VerificationCode
-        };
-        // Send the email
-        transporter.sendMail(mailOptions, (error:any, info:any) => {
-          if (error) {
-              console.error(error);
-          } else {
-              console.log('Email sent: ' + info.response);
-          }
-      });
-    res.send(VerificationCode);                    
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: userEmail,
+      subject: 'Email Verification',
+      text: 'Code: ' + VerificationCode
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+    res.send(VerificationCode);
   }
 ))
 
 router.post('/user/manual-register', asyncHandler(
   async (req, res) => {
-    const {id, Fullname, email, password, VMake, VModel, VPlateNo} = req.body;
-    const user = await UserModel.findOne({id});
-    if(user){
+    const { id, Fullname, email, password, VMake, VModel, VPlateNo } = req.body;
+    const user = await UserModel.findOne({ id });
+    if (user) {
       res.status(400)
-      .send('ID Number Already Exist!');
+        .send('ID Number Already Exist!');
       return;
     }
-    const userEmail = await UserModel.findOne({email});
-      if(userEmail){
-        res.status(400)
+    const userEmail = await UserModel.findOne({ email });
+    if (userEmail) {
+      res.status(400)
         .send('Email Already Exist!');
-        return;
+      return;
     }
-  const salt = await bcrypt.genSalt(10); 
-  const newUser:IUser = {
-    id,
-    username: id,
-    Fullname,
-    email: email.toLowerCase(),
-    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
-    ORdoc: '',
-    CRdoc: '',
-    StudyLoad: '',
-    IDdoc: '',
-    Payment: '',
-    Level: 1,
-    VMake,
-    VModel,
-    VPlateNo,
-    isRegistered: true
-  }
-  const dbUser = await UserModel.create(newUser);  
+    const salt = await bcrypt.genSalt(10);
+    const newUser: IUser = {
+      id,
+      username: id,
+      Fullname,
+      email: email.toLowerCase(),
+      password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+      ORdoc: '',
+      CRdoc: '',
+      StudyLoad: '',
+      IDdoc: '',
+      Payment: '',
+      Level: 1,
+      VMake,
+      VModel,
+      VPlateNo,
+      isRegistered: true
+    }
+    const dbUser = await UserModel.create(newUser);
 
-  // Define email options
-  const mailOptions = {
-    from: 'citparkingsystem@gmail.com',
-    to: email,
-    subject: 'Parking System Application Accepted',
-    text: 'Good Day! ' +Fullname+ '\n\nYour Application Has Been Accepted. Your account username is your id: '+id+'. \n\nHave a Nice Day'
-  };
-  // Send the email
-  transporter.sendMail(mailOptions, (error:any, info:any) => {
-    if (error) {
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: email,
+      subject: 'Parking System Application Accepted',
+      text: 'Good Day! ' + Fullname + '\n\nYour Application Has Been Accepted. Your account username is your id: ' + id + '. \n\nHave a Nice Day'
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
         console.error(error);
-    } else {
+      } else {
         console.log('Email sent: ' + info.response);
-    }
-  });
-  res.send(dbUser);
-}
+      }
+    });
+    res.send(dbUser);
+  }
 ))
 
 router.post('/admin/register', asyncHandler(
   async (req, res) => {
-    const {Fullname, username, password, id} = req.body;
-    const admin = await AdminModel.findOne({username});
+    const { Fullname, username, password, id } = req.body;
+    const admin = await AdminModel.findOne({ username });
     const count = await AdminModel.count();
-    if(admin){
+    if (admin) {
       res.status(400)
-      .send('ID already exist!');
+        .send('ID already exist!');
       return;
     }
-  const salt = await bcrypt.genSalt(10); 
-  const newAdmin:IAdmin = {
-    id,
-    Fullname,
-    username: username.toLowerCase(),
-    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
-    Level: 3,
+    const salt = await bcrypt.genSalt(10);
+    const newAdmin: IAdmin = {
+      id,
+      Fullname,
+      username: username.toLowerCase(),
+      password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+      Level: 3,
+    }
+    const dbUser = await AdminModel.create(newAdmin);
+    res.send(generateTokenResponse(dbUser));
   }
-  const dbUser = await AdminModel.create(newAdmin);  
-  res.send(generateTokenResponse(dbUser));
-}
 ))
 
 router.post('/mod/register', asyncHandler(
   async (req, res) => {
-    const {Fullname, username, password, id} = req.body;
-    const admin = await AdminModel.findOne({username});
+    const { Fullname, username, password, id } = req.body;
+    const admin = await AdminModel.findOne({ username });
     const count = await AdminModel.count();
-    if(admin){
+    if (admin) {
       res.status(400)
-      .send('ID already exist!');
+        .send('ID already exist!');
       return;
     }
-  const salt = await bcrypt.genSalt(10); 
-  const newMod:IAdmin = {
-    id,
-    Fullname,
-    username: username.toLowerCase(),
-    password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
-    Level: 2,
+    const salt = await bcrypt.genSalt(10);
+    const newMod: IAdmin = {
+      id,
+      Fullname,
+      username: username.toLowerCase(),
+      password: await bcrypt.hash(password, salt),       //hash and salts the password with bcrypt
+      Level: 2,
+    }
+    const dbUser = await AdminModel.create(newMod);
+    res.send(generateTokenResponse(dbUser));
   }
-  const dbUser = await AdminModel.create(newMod);  
-  res.send(generateTokenResponse(dbUser));
-}
 ))
 
 router.get("/user/pending", asyncHandler(
-  async (req, res) =>{
-      const users = await UserModel.find({isRegistered: false});
-      res.send(users);                       //sending items from database
+  async (req, res) => {
+    const users = await UserModel.find({ isRegistered: false });
+    res.send(users);                       //sending items from database
   }
 ))
 
@@ -287,9 +287,9 @@ router.get("/user/pending/:searchTerm", asyncHandler(
 ));
 
 router.get("/user/registered", asyncHandler(
-  async (req, res) =>{
-      const users = await UserModel.find({isRegistered: true});
-      res.send(users);                       //sending items from database
+  async (req, res) => {
+    const users = await UserModel.find({ isRegistered: true });
+    res.send(users);                       //sending items from database
   }
 ))
 
@@ -313,28 +313,28 @@ router.get("/user/registered/:searchTerm", asyncHandler(
 ));
 
 router.patch("/user/pending/approve", asyncHandler(
-  async (req, res) =>{
-    const {id} = req.body;
-    const user = await UserModel.findOne({id: id});
-    await user!.updateOne({$set: {"isRegistered": true}});
+  async (req, res) => {
+    const { id } = req.body;
+    const user = await UserModel.findOne({ id: id });
+    await user!.updateOne({ $set: { "isRegistered": true } });
 
-        // Define email options
-        const mailOptions = {
-          from: 'citparkingsystem@gmail.com',
-          to: user!.email, // assuming there is an 'email' field in your user model
-          subject: 'Parking System Application Accepted',
-          text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Accepted. Your account username is your id: '+user?.username+'. \n\nHave a Nice Day'
-        };
-        // Send the email
-        transporter.sendMail(mailOptions, (error:any, info:any) => {
-          if (error) {
-              console.error(error);
-          } else {
-              console.log('Email sent: ' + info.response);
-          }
-      });
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: user!.email, // assuming there is an 'email' field in your user model
+      subject: 'Parking System Application Accepted',
+      text: 'Good Day! ' + user!.Fullname + '\n\nYour Application Has Been Accepted. Your account username is your id: ' + user?.username + '. \n\nHave a Nice Day'
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
-    res.send(user);                    
+    res.send(user);
   }
 ))
 
@@ -346,23 +346,23 @@ router.delete("/user/pending/reject/:id", asyncHandler(
     await cloudinary.uploader.destroy(user?.StudyLoad);
     await cloudinary.uploader.destroy(user?.IDdoc);
     await cloudinary.uploader.destroy(user?.Payment);
-    await user!.delete(); 
+    await user!.delete();
 
-            // Define email options
-            const mailOptions = {
-              from: 'citparkingsystem@gmail.com',
-              to: user!.email, // assuming there is an 'email' field in your user model
-              subject: 'Parking System Application Rejected',
-              text: 'Good Day! ' +user!.Fullname+ '\n\nYour Application Has Been Rejected. Your account details or documents submitted must have been incorrect or lacking. You can submit an application again if you have the correct details or documents . \n\nHave a Nice Day'
-            };
-            // Send the email
-            transporter.sendMail(mailOptions, (error:any, info:any) => {
-              if (error) {
-                  console.error(error);
-              } else {
-                  console.log('Email sent: ' + info.response);
-              }
-          });
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: user!.email, // assuming there is an 'email' field in your user model
+      subject: 'Parking System Application Rejected',
+      text: 'Good Day! ' + user!.Fullname + '\n\nYour Application Has Been Rejected. Your account details or documents submitted must have been incorrect or lacking. You can submit an application again if you have the correct details or documents . \n\nHave a Nice Day'
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
     res.send();
   }
 ))
@@ -376,24 +376,31 @@ router.delete("/user/registered/delete/:id", asyncHandler(
     await cloudinary.uploader.destroy(user?.IDdoc);
     await cloudinary.uploader.destroy(user?.Payment);
 
-            // Define email options
-            const mailOptions = {
-              from: 'citparkingsystem@gmail.com',
-              to: user!.email, // assuming there is an 'email' field in your user model
-              subject: 'Parking System Account Deleted',
-              text: 'Good Day! ' +user!.Fullname+ '\n\nWe want to notify you that your account has been deleted. This may be due to numerous violations or your sticker has expired. Please see our office for more details. \n\nThank you!'
-            };
-            // Send the email
-            transporter.sendMail(mailOptions, (error:any, info:any) => {
-              if (error) {
-                  console.error(error);
-              } else {
-                  console.log('Email sent: ' + info.response);
-              }
-          });
+    // Define email options
+    const mailOptions = {
+      from: 'citparkingsystem@gmail.com',
+      to: user!.email, // assuming there is an 'email' field in your user model
+      subject: 'Parking System Account Deleted',
+      text: 'Good Day! ' + user!.Fullname + '\n\nWe want to notify you that your account has been deleted. This may be due to numerous violations or your sticker has expired. Please see our office for more details. \n\nThank you!'
+    };
+    // Send the email
+    transporter.sendMail(mailOptions, (error: any, info: any) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
-    await user!.delete(); 
+    await user!.delete();
     res.send();
+  }
+))
+
+router.get("/info/:id", asyncHandler(
+  async (req, res) => {
+    const user = await UserModel.findOne({ _id: req.params.id });
+    res.send(user);
   }
 ))
 
