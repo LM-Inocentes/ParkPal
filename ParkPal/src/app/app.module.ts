@@ -43,6 +43,9 @@ import { RegisteredUsersSearchComponent } from './component/registered-users-sea
 import { ConfirmDeleteComponent } from './component/confirm-delete/confirm-delete.component';
 import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.component';
 import { VerificationComponent } from './component/verification/verification.component';
+import { CommonModule } from '@angular/common';
+import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
+
 
 
 @NgModule({
@@ -71,6 +74,7 @@ import { VerificationComponent } from './component/verification/verification.com
     ConfirmDeleteComponent,
     PenaltyPageUserComponent,
     VerificationComponent,
+    PenaltyPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +94,7 @@ import { VerificationComponent } from './component/verification/verification.com
     MatTableModule,
     FormsModule,
     MatDialogModule,
+    CommonModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

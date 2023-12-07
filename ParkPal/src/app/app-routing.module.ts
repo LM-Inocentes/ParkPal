@@ -115,12 +115,12 @@ const routes: Routes = [
       //Penalty
       {
         path: 'app-penalty-page',
-        title: 'Penalty System',
+        title: 'Penalty Page',
         component: PenaltyPageComponent,
-        data: { title: 'PENALTY SYSTEM'}
+        data: { title: 'PENALTY PAGE'}
       },
       {
-        path: 'app-penalty-page-user',
+        path: 'app-penalty-page-user/info/:userID',
         title: 'Penalty System User',
         component: PenaltyPageUserComponent,
         data: { title: 'PENALTY SYSTEM USER'}

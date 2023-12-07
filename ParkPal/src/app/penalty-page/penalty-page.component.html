@@ -1,16 +1,16 @@
-<section class="main-container" >
+<section class="main-container">
   <!-- <app-search></app-search> -->
-  <div class="penalty-container" *ngFor="let registeredUserList of RegisteredUserList">
-    <div class="user-info">
+  <div class="penalty-container" >
+    <div class="user-info" *ngFor="let userLists of UserLists">
       <div class="profile-user-name-id">
         <!-- id logo -->
-        <div class="profile">CD</div>
+        <div class="profile">{{calculateInitials(userLists)}}</div>
         <!-- end of Id logo -->
 
         <!-- username n ID -->
         <div class="user-name-id">
-          <div class="user-name">{{registeredUserList.Fullname}}</div>
-          <div class="user-id">222-3333-222</div>
+          <div class="user-name">{{userLists.Fullname}}</div>
+          <div class="user-id">{{userLists.username}}</div>
         </div>
         <!-- end of username n ID -->
       </div>
@@ -22,8 +22,8 @@
       <!-- end Penalty -->
 
       <!-- select user -->
-      <a href="/app-penalty-page-user" class="select-user">Select User</a>
+      <a routerLink="/app-penalty-page-user/info/{{userLists.id}}" class="select-user">Select User</a>
       <!-- end of select user -->
     </div>
-  </div>
+  </div>    
 </section>

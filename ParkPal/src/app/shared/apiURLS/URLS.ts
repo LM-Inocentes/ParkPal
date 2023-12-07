@@ -10,9 +10,11 @@ export const MOD_REGISTER_URL = BASE_URL + '/api/users/mod/register';
 
 export const USER_REGISTER_URL = BASE_URL + '/api/users/user/register';
 
-export const USER_VERIFY_EMAIL_URL = BASE_URL + '/api/users/user/verify/'; 
+export const USER_VERIFY_EMAIL_URL = BASE_URL + '/api/users/user/verify/';
 
 export const USER_MANUAL_REGISTER_URL = BASE_URL + '/api/users/user/manual-register';
+
+export const GET_USER_INFO_URL = BASE_URL + '/api/users/info/';
 
 export const GET_PENDING_USER_URL = BASE_URL + '/api/users/user/pending/';
 
