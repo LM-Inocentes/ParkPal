@@ -126,10 +126,8 @@ export class DashboardComponent {
         this.miscService.parkUser(park).subscribe(_ => {
           this.ngOnInit();
         });
-      } else if (result === 'report') {
+      }else if (result === 'report') {
         
-      } else if (result === 'clear') {
-
       }
     });
   }
@@ -137,7 +135,7 @@ export class DashboardComponent {
     const dialogRef = this.dialog.open(ParkRedModalComponent, {
       width: '250px',
       data: { 
-        title: `Parking Space ${park.id!+1}`, 
+        title: `Parking Space #${park.id!+1}`, 
         message1: `ID number: ${park.parkerID}`, 
         message2: `Plate No: ${park.PlateNo}`,
         message3: `Time ${park.time}`,
@@ -153,8 +151,11 @@ export class DashboardComponent {
         });
       } else if (result === 'report') {
         
-      } else if (result === 'clear') {
-
+      } else if (result === 'reset') {
+        //unpark and reset is the same
+        this.miscService.unparkUser(park).subscribe(_ => {
+          this.ngOnInit();
+        });
       }
     });
   }

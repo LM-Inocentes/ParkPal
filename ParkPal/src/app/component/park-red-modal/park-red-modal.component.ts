@@ -22,8 +22,8 @@ export class ParkRedModalComponent {
     this.dialogRef.close('report');
   }
 
-  clear(): void {
-    this.dialogRef.close('clear');
+  reset(): void {
+    this.dialogRef.close('reset');
   }
 }
 
