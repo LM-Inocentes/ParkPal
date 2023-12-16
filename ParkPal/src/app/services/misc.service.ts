@@ -93,12 +93,12 @@ export class MiscService {
     );
   }
 
-  postSuspension(notificationmsg: NotificationsMsg ): Observable<NotificationsMsg>{
-    return this.http.post<NotificationsMsg>(USER_SUSPENSION, notificationmsg);
+  postSuspension(userID: string ): Observable<NotificationsMsg>{
+    return this.http.post<NotificationsMsg>(USER_SUSPENSION, { userID });
   }
 
   suspendUser(userID: string): Observable<NotificationsMsg>{
-    return this.http.patch<NotificationsMsg>(USER_SUSPEND_ACCOUNT, userID).pipe(
+    return this.http.patch<NotificationsMsg>(USER_SUSPEND_ACCOUNT, { userID }).pipe(
       tap({
         next: (user) => {
           this.toastrService.success(
@@ -114,7 +114,7 @@ export class MiscService {
   }
 
   unsuspendUser(userID: string): Observable<NotificationsMsg>{
-    return this.http.patch<NotificationsMsg>(USER_UNSUSPEND_ACCOUNT, userID).pipe(
+    return this.http.patch<NotificationsMsg>(USER_UNSUSPEND_ACCOUNT, { userID }).pipe(
       tap({
         next: (user) => {
           this.toastrService.success(

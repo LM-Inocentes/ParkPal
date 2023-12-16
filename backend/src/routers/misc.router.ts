@@ -144,7 +144,7 @@ router.post("/warning" ,asyncHandler(
 
 router.post("/suspension" ,asyncHandler(
   async (req, res) => {
-      const {userID, type, description} = req.body;
+      const {userID} = req.body;
       const Ireport = 
       {
           id: await NotificationsModel.countDocuments()+1,
@@ -166,7 +166,7 @@ router.post("/suspension" ,asyncHandler(
   }
 ))
 
-router.post("/suspend-account" ,asyncHandler(
+router.patch("/suspend-account/" ,asyncHandler(
   async (req, res) => {
       const {userID} = req.body;
       const user = await UserModel.findOne({ id: userID });
@@ -175,7 +175,7 @@ router.post("/suspend-account" ,asyncHandler(
   }
 ))
 
-router.post("/unsuspend-account" ,asyncHandler(
+router.patch("/unsuspend-account" ,asyncHandler(
   async (req, res) => {
       const {userID} = req.body;
       const user = await UserModel.findOne({ id: userID });
