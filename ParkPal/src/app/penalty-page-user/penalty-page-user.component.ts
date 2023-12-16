@@ -31,8 +31,8 @@ export class PenaltyPageUserComponent implements OnInit {
       this.authService.getRegisteredUsersByID(params['userID']).subscribe(regUser => {
         this.user = regUser;
       });
-      this.miscService.getAllUserReports(params['userID']).subscribe(regUser => {
-        this.userReports = regUser;
+      this.miscService.getAllUserReports(params['userID']).subscribe(reports => {
+        this.userReports = reports;
       });
     });
   }
