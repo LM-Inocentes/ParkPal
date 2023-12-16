@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
-
+import { MiscService } from '../services/misc.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +14,17 @@ export class DashboardComponent {
   mapImagePath: string = 'assets/overall-map.png';
   mapState: number = 0;
 
-  constructor( authService:AuthService ) {
+  constructor( authService:AuthService, private miscService:MiscService ) {
     authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
       if(this.isAuth){
         this.Firstname = this.user.Fullname.split(' ').at(0);
         // console.log(this.user);
       }
+    });
+
+    this.miscService.mapState$.subscribe((state) => {
+      this.updateMapState(state);
     });
   }
   
