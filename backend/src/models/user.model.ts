@@ -16,6 +16,7 @@ export interface IUser{
     VModel: string;
     VPlateNo: string;
     isRegistered: boolean;
+    isSuspended: boolean;
 }
 
 export const UserSchema = new Schema<IUser>(
@@ -35,6 +36,7 @@ export const UserSchema = new Schema<IUser>(
         VModel: { type:String, required:true },
         VPlateNo: { type:String, required:true },
         isRegistered: { type:Boolean, required:true },
+        isSuspended: { type:Boolean, required:true },
     },{
         toJSON:{
             virtuals:true

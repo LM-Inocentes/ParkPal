@@ -13,6 +13,7 @@ export class VerificationComponent {
 
   constructor(public dialogRef: MatDialogRef<VerificationComponent>, @Inject(MAT_DIALOG_DATA) private data: { VerificationCode: string }) {
     this.EmailVerificationCode = this.data.VerificationCode;
+    console.log(this.EmailVerificationCode);
   }
   
   submitVerification() {
