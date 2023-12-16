@@ -1,7 +1,8 @@
-export class Notifications{
-    id!: string;
+export class NotificationsMsg{
+    id?: string;
     userID!: string;
-    type!: string;
-    description!: string;
-    date!: string;
+    type?: string;
+    description?: string;
+    date?: string;
+    reporterName?: string;
 }

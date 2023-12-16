@@ -45,3 +45,17 @@ export const GET_RECENT_USER_FEEDBACK = BASE_URL + '/api/misc/recent/feedback';
 export const GET_ALL_USER_FEEDBACK = BASE_URL + '/api/misc/all/feedback';
 
 export const DELETE_USER_FEEDBACK = BASE_URL + '/api/misc/delete/feedback/';
+
+export const USER_REPORT_AVAILABLE = BASE_URL + '/api/misc/report/available';
+
+export const USER_REPORT_UNAVAILABLE = BASE_URL + '/api/misc/report/unavailable';
+
+export const USER_WARNING = BASE_URL + '/api/misc/warning';
+
+export const USER_SUSPENSION = BASE_URL + '/api/misc/suspension';
+
+export const USER_SUSPEND_ACCOUNT = BASE_URL + '/api/misc/suspend-account';
+
+export const USER_UNSUSPEND_ACCOUNT = BASE_URL + '/api/misc/unsuspend-account';
+
+export const GET_USER_REPORTS = BASE_URL + '/api/misc/user/reports/';

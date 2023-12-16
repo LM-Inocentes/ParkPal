@@ -6,6 +6,7 @@ export interface INotifications{
     type: string;
     description: string;
     date: string;
+    reporterName: string;
 }
 
 export const NotificationsSchema = new Schema<INotifications>(
@@ -15,6 +16,7 @@ export const NotificationsSchema = new Schema<INotifications>(
         type: { type:String, required:true },
         description: { type:String, required:true },
         date: { type:String, required:true },
+        reporterName: { type:String, required:false },
     },{
         toJSON:{
             virtuals:true

@@ -170,7 +170,6 @@ export class AuthService {
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Error');
         }
-
       })
     );
   }

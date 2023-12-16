@@ -67,15 +67,41 @@ router.delete("/delete/feedback/:id", asyncHandler(
   }
 ))
 
-router.post("/report" ,asyncHandler(
+router.post("/report/available" ,asyncHandler(
   async (req, res) => {
-      const {userID, type, description} = req.body;
+      const {userID, reporterName} = req.body;
       const Ireport = 
       {
           id: await NotificationsModel.countDocuments()+1,
           userID,
+          reporterName,
           type: "Report", 
-          description,
+          description: `You have been reported by ${reporterName} for not recording that you occupied the parking space`, 
+          date: new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      const dbreport = await NotificationsModel.create(Ireport);
+      res.send(dbreport);
+  }
+))
+
+router.post("/report/unavailable" ,asyncHandler(
+  async (req, res) => {
+      const {userID, reporterName} = req.body;
+      const Ireport = 
+      {
+          id: await NotificationsModel.countDocuments()+1,
+          userID,
+          reporterName,
+          type: "Report", 
+          description: `You have been reported by ${reporterName} for recording that you occupied the parking space and not using it`, 
           date: new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Manila',
             day: '2-digit',
@@ -93,11 +119,12 @@ router.post("/report" ,asyncHandler(
 
 router.post("/warning" ,asyncHandler(
   async (req, res) => {
-      const {userID, type, description} = req.body;
+      const {userID, description} = req.body;
       const Ireport = 
       {
           id: await NotificationsModel.countDocuments()+1,
           userID,
+          reporterName: "Admin",
           type: "Warning", 
           description,
           date: new Date().toLocaleString('en-US', {
@@ -156,5 +183,13 @@ router.post("/unsuspend-account" ,asyncHandler(
       res.send(user);
   }
 ))
+
+router.get("/user/reports/:userID", asyncHandler(
+  async (req, res) =>{
+    const allReports = await NotificationsModel.find({userID: req.params.userID}).sort({ createdAt: -1 });
+    res.send(allReports);                       //sending items from database
+  }
+))
+
 
 export default router;

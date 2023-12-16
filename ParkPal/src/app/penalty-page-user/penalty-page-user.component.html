@@ -21,54 +21,20 @@
 
   <!-- left content -->
   <main class="left-content">
-    <form action="" class="msg-to-user">
-      <textarea class="text-input" name="" id="" cols="30" rows="10">
-      </textarea>
+    <form class="msg-to-user" #myForm="ngForm">
+      <textarea name="reporterName" [(ngModel)]="warningmsg" class="text-input" cols="30" rows="10"></textarea>
     </form>
-    <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">Send Message</button>
+    <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">Send Warning Message</button>
 
     <div class="user-report-history"> User Report History</div>
 
     <div class="sent-msg-hstr">
-      <div class="msg-sent">
+      <div *ngFor="let report of userReports" class="msg-sent">
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
-          similique quas vel asperiores odio quod alias voluptatum ex eius esse
-          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+          {{report.description}}
         </p>
-        <span class="date">mm/dd/yy</span>
-      </div>
-      <div class="msg-sent">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
-          similique quas vel asperiores odio quod alias voluptatum ex eius esse
-          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
-        </p>
-        <span class="date">mm/dd/yy</span>
-      </div>
-      <div class="msg-sent">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
-          similique quas vel asperiores odio quod alias voluptatum ex eius esse
-          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
-        </p>
-        <span class="date">mm/dd/yy</span>
-      </div>
-      <div class="msg-sent">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
-          similique quas vel asperiores odio quod alias voluptatum ex eius esse
-          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
-        </p>
-        <span class="date">mm/dd/yy</span>
-      </div>
-      <div class="msg-sent">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
-          similique quas vel asperiores odio quod alias voluptatum ex eius esse
-          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
-        </p>
-        <span class="date">mm/dd/yy</span>
+        <span class="date">{{report.date}}</span>
+        <span class="type">{{report.type}}</span>
       </div>
     </div>
   </main>
