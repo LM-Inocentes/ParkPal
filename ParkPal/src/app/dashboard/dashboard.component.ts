@@ -11,6 +11,7 @@ import { MiscService } from '../services/misc.service';
 export class DashboardComponent {
   user!:User;
   Firstname?: string;
+  dashSuspended?: boolean;
   mapImagePath: string = 'assets/overall-map.png';
   mapState: number = 0;
 
@@ -19,6 +20,7 @@ export class DashboardComponent {
       this.user = newUser;
       if(this.isAuth){
         this.Firstname = this.user.Fullname.split(' ').at(0);
+        this.dashSuspended = this.user.isSuspended;
         // console.log(this.user);
       }
     });

@@ -152,6 +152,27 @@
     max-width: 100%;
     height: auto;
 
+    .suspended-div {
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    left: 0; /* Adjust as needed */
+    right: 0; /* Adjust as needed */
+    bottom: 0; /* Adjust as needed */
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent background */
+    z-index: 9999; /* Set a higher z-index to ensure it appears on top */
+    padding: 20px; /* Add padding for better visibility */
+    text-align: center; /* Center the content */
+    }
+
+    /* Additional styles for better visibility or customizations */
+    .suspended-div p {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 15%;
+    font-size: 20px;
+    color: red;
+    /* Add any other styles as needed */
+    }
+
     // button {
     //     padding: 5px 10px;
     //     text-transform: uppercase;

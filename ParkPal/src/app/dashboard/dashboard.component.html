@@ -20,6 +20,10 @@
     </div>
   </div>
   <div class="university-map">
+    <div *ngIf="dashSuspended" class="suspended-div">
+      <p>Your account has been temporarily suspended for violating the terms of use. <br>
+         Please visit CIT-U's Security and Safety Department to revoke your suspension.</p>
+    </div>
     <div class="areaC-div1" *ngIf="mapState == 3">
       <div *ngFor="let index of [64, 65, 66, 67, 68, 69, 70, 71, 72, 73]">
         <button [id]="index">
