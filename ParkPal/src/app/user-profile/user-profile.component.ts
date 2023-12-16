@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
 import { ImageModalComponent } from '../component/image-modal/image-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NotificationsMsg } from '../shared/models/notifications';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,6 +14,7 @@ export class UserProfileComponent {
   panelOpenState = false;
   user!:User;
   intitials!: string;
+  userReports: NotificationsMsg[] = [];
 
   constructor( authService:AuthService, private dialog: MatDialog ) {
     authService.userObservable.subscribe((newUser) => {

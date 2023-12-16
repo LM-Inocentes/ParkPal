@@ -19,7 +19,17 @@
       <mat-expansion-panel-header  *ngIf="user.Level==1">
         <mat-panel-title> Violation History </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>No Violations Keep it Up!</p>
+      <div *ngFor="let report of userReports" class="notif-container">
+        <div class="notif-header">
+          <div class="notif-type">{{ this.report.type }}</div>
+          <span class="date">{{ this.report.date }}</span>
+        </div>
+        <div class="message-container">
+          <div class="notif-message">
+            {{ this.report.description }}
+          </div>
+        </div>
+      </div>
     </mat-expansion-panel>
     <!-- end of left panel -->
     <br />

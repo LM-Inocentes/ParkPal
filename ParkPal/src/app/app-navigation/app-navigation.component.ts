@@ -9,6 +9,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MiscService } from '../services/misc.service';
+import { NotificationsMsg } from '../shared/models/notifications';
 
 declare const myFunction: any;
 @Component({
@@ -18,6 +19,8 @@ declare const myFunction: any;
 })
 export class AppNavigationComponent {
   hidden = false;
+  userReports: NotificationsMsg[] = [];
+  
   callfun(){
     myFunction();
   }

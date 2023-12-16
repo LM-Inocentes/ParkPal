@@ -10,9 +10,9 @@ p {
     flex-direction: column;
     font-family: 'Poppins', Courier, monospace;
     background-color: #dddada;
-    margin: 2rem 7.5rem 0 7.5rem;
-    padding: 2rem 1.8rem;
-    height: 46rem;
+    margin: 2vh 7.5rem 0 7.5rem;
+    padding: 2vh 1.8rem;
+    height: 80vh;
     border-radius: 10px;
 
     .header {
@@ -27,7 +27,6 @@ p {
     }
 
     .h-clearNotif {
-        cursor: pointer;
         color: #FF6969;
         font-weight: 600;
     }
@@ -35,6 +34,12 @@ p {
     .main-notif-container {
         overflow: auto;
         scroll-behavior: smooth;
+
+        .date{
+            margin-left: 9px;
+            border-bottom: 1px solid black;
+            font-weight: 500;
+        }
     }
 }
 
@@ -47,14 +52,13 @@ p {
 }
 
 .notif-container {
-    cursor: pointer;
     margin-bottom: 2.9rem;
 }
 
 .notif-type {
     display: flex;
     justify-content: center;
-    width: 11rem;
+    width: fit-content;
     background-color: #FF6969;
     color: white;
     border-radius: 5px;
@@ -63,8 +67,7 @@ p {
 
 .message-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
 
     .notif-message {
         padding-bottom: 0.8rem;
@@ -78,17 +81,6 @@ p {
 
     .heading {
         font-weight: 600;
-    }
-
-    .delete-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        background-color: #FF6969;
-        border-radius: 10px;
     }
 }
 
