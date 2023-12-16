@@ -196,7 +196,7 @@
         text-transform: uppercase;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
-        font-size: 17px;
+        font-size: 100%;
         font-weight: 500;
         color: #ffffff;
         text-shadow: none;
@@ -215,7 +215,7 @@
         text-transform: uppercase;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
-        font-size: 17px;
+        font-size: 100%;
         font-weight: 500;
         color: #ffffff;
         text-shadow: none;
@@ -234,7 +234,7 @@
         text-transform: uppercase;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
-        font-size: 17px;
+        font-size: 100%;
         font-weight: 500;
         color: #ffffff;
         text-shadow: none;
@@ -249,11 +249,12 @@
     left: 74%;
     background: #00000075;
 
+        max-width: fit-content;
         padding: 5px 10px;
         text-transform: uppercase;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
-        font-size: 17px;
+        font-size: 100%;
         font-weight: 500;
         color: #ffffff;
         text-shadow: none;
