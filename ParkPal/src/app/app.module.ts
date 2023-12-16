@@ -45,6 +45,9 @@ import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.
 import { VerificationComponent } from './component/verification/verification.component';
 import { CommonModule } from '@angular/common';
 import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
+import { OccupyModalComponent } from './component/occupy-modal/occupy-modal.component';
+
+
 import { PenaltyPageSearchComponent } from './component/penalty-page-search/penalty-page-search.component';
 
 @NgModule({
@@ -74,6 +77,7 @@ import { PenaltyPageSearchComponent } from './component/penalty-page-search/pena
     PenaltyPageUserComponent,
     VerificationComponent,
     PenaltyPageComponent,
+    OccupyModalComponent,
     PenaltyPageSearchComponent
   ],
   imports: [

@@ -53,10 +53,10 @@ export class PenaltyPageUserComponent implements OnInit {
     return ''; // Return an empty string if user or Fullname is not provided
   }
 
-  oneDayConfirm(){
+  suspendAccConfirm(){
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '250px',
-      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for 1 day?' },
+      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account?' },
     });
 
     // dialogRef.afterClosed().subscribe((result) => {
@@ -66,46 +66,6 @@ export class PenaltyPageUserComponent implements OnInit {
     //   }
     // });
   }
-  threeDayConfirm(){
-    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
-      width: '250px',
-      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for 3 days?' },
-    });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     // User clicked "Yes", proceed with the delete operation
-    //     // this.approveUser(user);
-    //   }
-    // });
-  }
-  oneWeekConfirm(){
-    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
-      width: '250px',
-      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for One week?' },
-    });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     // User clicked "Yes", proceed with the delete operation
-    //     // this.approveUser(user);
-    //   }
-    // });
-  }
-  permRevocConfirm(){
-    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
-      width: '250px',
-      data: { title: 'Confirmation', message: 'Are you sure you want to PERMANENTLY REVOKE THIS user account?' },
-    });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     // User clicked "Yes", proceed with the delete operation
-    //     // this.approveUser(user);
-    //   }
-    // });
-  }
-
   sendMessageConfirm(){
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '250px',

@@ -12,33 +12,7 @@
       Number of Penalties:
       <span class="penalties-ctr">50</span>
     </div>
-    <div class="suspend-acc">Suspend Account</div>
-    <!-- buttons -->
-    <div id="susp-oneDay" (click)="oneDayConfirm()" class="suspend-acc-button1">
-      One Day
-    </div>
-    <div
-      id="susp-twoDays"
-      (click)="threeDayConfirm()"
-      class="suspend-acc-button2"
-    >
-      Three Days
-    </div>
-    <div
-      id="susp-threeDays"
-      (click)="oneWeekConfirm()"
-      class="suspend-acc-button3"
-    >
-      One Week
-    </div>
-    <div
-      id="perm-revoc"
-      (click)="permRevocConfirm()"
-      class="suspend-acc-button4"
-    >
-      Permanent Revocation
-    </div>
-    <!-- end of buttons -->
+    <div class="suspend-acc-button4" (click)="suspendAccConfirm()" >Suspend Account</div>
   </aside>
   <!-- end of right content -->
 
