@@ -45,6 +45,7 @@ import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.
 import { VerificationComponent } from './component/verification/verification.component';
 import { CommonModule } from '@angular/common';
 import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
+import { OccupyModalComponent } from './component/occupy-modal/occupy-modal.component';
 
 
 
@@ -75,6 +76,7 @@ import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
     PenaltyPageUserComponent,
     VerificationComponent,
     PenaltyPageComponent,
+    OccupyModalComponent,
   ],
   imports: [
     BrowserModule,

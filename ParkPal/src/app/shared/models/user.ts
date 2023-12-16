@@ -16,6 +16,6 @@ export class User{
     VModel?: string;
     VPlateNo?: string;
     isRegistered?: string;
-    
+    isSuspended?: boolean;
     token!: string;
 }
