@@ -422,40 +422,73 @@ p {
     left: 5.2%;
 }
 .areaA-div1 {
+    img {
+        max-width: 90%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 3.82%;
+    //gap: 3.82%;
     width: 80.5%;
     height: 22%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
     top: 10.3%;
     left: 17%;
 }
 .areaA-div2 {
+    img {
+        max-width: 90%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 3.82%;
+    //gap: 3.82%;
     width: 80.5%;
     height: 22%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
     top: 42.9%;
     left: 17%;
 }
 .areaA-div3 {
+    img {
+        max-width: 90%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 3.82%;
+    //gap: 3.82%;
     width: 80.5%;
     height: 22%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
     top: 75.6%;
     left: 17%;
