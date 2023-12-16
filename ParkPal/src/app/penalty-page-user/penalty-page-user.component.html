@@ -12,9 +12,17 @@
       Number of Reports:
       <span class="penalties-ctr">50</span>
     </div>
-    <div *ngIf="!user.isSuspended; else elseBlock" class="suspend-acc-button4" (click)="suspendAccConfirm()" >Suspend Account</div>
+    <div
+      *ngIf="!user.isSuspended; else elseBlock"
+      class="suspend-acc-button4"
+      (click)="suspendAccConfirm()"
+    >
+      Suspend Account
+    </div>
     <ng-template #elseBlock>
-      <div class="suspend-acc-button1" (click)="suspendAccConfirm()" >Unsuspend Account</div>
+      <div class="suspend-acc-button1" (click)="suspendAccConfirm()">
+        Unsuspend Account
+      </div>
     </ng-template>
   </aside>
   <!-- end of right content -->
@@ -22,19 +30,29 @@
   <!-- left content -->
   <main class="left-content">
     <form class="msg-to-user" #myForm="ngForm">
-      <textarea name="reporterName" [(ngModel)]="warningmsg" class="text-input" cols="30" rows="10"></textarea>
+      <textarea
+        name="reporterName"
+        [(ngModel)]="warningmsg"
+        class="text-input"
+        cols="30"
+        rows="10"
+      ></textarea>
     </form>
-    <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">Send Warning Message</button>
+    <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">
+      Send Warning Message
+    </button>
 
-    <div class="user-report-history"> User Report History</div>
+    <div class="user-report-history">User Report History</div>
 
     <div class="sent-msg-hstr">
       <div *ngFor="let report of userReports" class="msg-sent">
+        <div class="msg-sent-header">
+          <div class="type">{{ report.type }}</div>
+          <div class="date">{{ report.date }}</div>
+        </div>
         <p>
-          {{report.description}}
+          {{ report.description }}
         </p>
-        <span class="date">{{report.date}}</span>
-        <span class="type">{{report.type}}</span>
       </div>
     </div>
   </main>
