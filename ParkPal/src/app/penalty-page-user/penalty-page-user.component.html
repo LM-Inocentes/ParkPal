@@ -10,7 +10,7 @@
     </div>
     <div class="num-of-penalties">
       Number of Reports:
-      <span class="penalties-ctr">50</span>
+      <span class="penalties-ctr">{{userReports.length}}</span>
     </div>
     <div *ngIf="!user.isSuspended; else elseBlock" class="suspend-acc-button4" (click)="suspendAccConfirm()" >Suspend Account</div>
     <ng-template #elseBlock>
