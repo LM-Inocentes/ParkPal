@@ -112,7 +112,8 @@ router.post('/user/register', asyncHandler(
       VMake,
       VModel,
       VPlateNo,
-      isRegistered: false
+      isRegistered: false,
+      isSuspended: false
     }
 
     // Define email options
@@ -191,7 +192,8 @@ router.post('/user/manual-register', asyncHandler(
       VMake,
       VModel,
       VPlateNo,
-      isRegistered: true
+      isRegistered: true,
+      isSuspended: false
     }
     const dbUser = await UserModel.create(newUser);
 
@@ -300,7 +302,7 @@ router.get("/user/pending/:searchTerm", asyncHandler(
   }
 ));
 
-router.get("/user/registered/:searchTerm", asyncHandler(
+router.get("/user/registered/search/:searchTerm", asyncHandler(
   async (req, res) => {
     const searchRegex = new RegExp(req.params.searchTerm, 'i');
     const users = await UserModel.find({
@@ -340,7 +342,6 @@ router.patch("/user/pending/approve", asyncHandler(
         console.log('Email sent: ' + info.response);
       }
     });
-
     res.send(user);
   }
 ))

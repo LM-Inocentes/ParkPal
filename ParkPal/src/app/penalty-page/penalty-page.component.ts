@@ -19,14 +19,16 @@ export class PenaltyPageComponent {
   }
 
   ngOnInit(): void {
-    let RegisteredUsersObservableList: Observable<User[]>;
-    this.activatedRoute.params.subscribe(()=> {
-      RegisteredUsersObservableList = this.authService.getRegisteredUsers();
-      RegisteredUsersObservableList.subscribe((UserLists) => {
-        this.UserLists = UserLists;
+    let RegisteredUsersObservable: Observable<User[]>;
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['searchTerm']){
+        RegisteredUsersObservable = this.authService.searchRegisteredUsers(params['searchTerm']);
+      }else{
+        RegisteredUsersObservable = this.authService.getRegisteredUsers();
+      }
+      RegisteredUsersObservable.subscribe((RegisteredUsers) => {
+        this.UserLists = RegisteredUsers;
       })
-      
-
     })
   }
 
@@ -44,8 +46,6 @@ export class PenaltyPageComponent {
 
       // Now 'initials' contains the user's initials.
       this.initials = initials;
-      console.log(this.initials);
-
       return this.initials;
     }
 

@@ -24,7 +24,6 @@ export class PenaltyPageUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params['userID']);
       this.authService.getRegisteredUsersByID(params['userID']).subscribe(regUser => {
         this.user = regUser;
       });
@@ -45,8 +44,6 @@ export class PenaltyPageUserComponent implements OnInit {
 
       // Now 'initials' contains the user's initials.
       this.initials = initials;
-      console.log(this.initials);
-
       return this.initials;
     }
 
