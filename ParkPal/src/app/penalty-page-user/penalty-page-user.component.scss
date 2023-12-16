@@ -7,6 +7,7 @@ a {
 
 .left-content {
     justify-content: center;
+    align-items: center;
 }
 
 .main-container,
@@ -16,7 +17,6 @@ a {
 }
 
 .right-content,
-.left-content,
 .user-name-id {
     flex-direction: column;
     justify-content: center;
@@ -90,17 +90,22 @@ a {
     }
 
     .left-content {
+        display: flex;
+        flex-direction: column;
         background-color: #D9D9D9;
         margin: 4.375rem 2.125rem 4.375rem 2.125rem;
         border-radius: 25px;
         width: 100%;
 
         .text-input {
+            font-family: 'Poppins', Courier, monospace;
+            font-size: 1rem;
+            padding: 1.5rem;
             margin-top: 3.5rem;
             resize: none;
             border-radius: 7px;
-            width: 90%;
-            max-width: 100vh;
+            width: 100vh;
+            height: 9.438rem;
         }
 
         .send-msg-btn {
@@ -119,12 +124,14 @@ a {
         }
 
         .sent-msg-hstr {
+            overflow: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-y: scroll;
             scroll-behavior: smooth;
             height: 50vh;
+            margin-bottom: 1rem;
 
             .msg-sent {
                 display: flex;

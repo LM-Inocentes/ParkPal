@@ -6,8 +6,8 @@ p {
 }
 
 .main-container {
-    overflow: auto;
-    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
     font-family: 'Poppins', Courier, monospace;
     background-color: #dddada;
     margin: 2rem 7.5rem 0 7.5rem;
@@ -21,7 +21,7 @@ p {
         margin-bottom: 2rem;
     }
 
-    .h-notif-name{
+    .h-notif-name {
         font-size: 1rem;
         font-weight: 600;
     }
@@ -31,9 +31,14 @@ p {
         color: #FF6969;
         font-weight: 600;
     }
+
+    .main-notif-container {
+        overflow: auto;
+        scroll-behavior: smooth;
+    }
 }
 
-.notif-header{
+.notif-header {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -41,18 +46,18 @@ p {
     margin-bottom: 0.7rem;
 }
 
-.notif-container{
+.notif-container {
     cursor: pointer;
     margin-bottom: 2.9rem;
 }
 
-.notif-type{
+.notif-type {
     display: flex;
     justify-content: center;
     width: 11rem;
-    background-color:#FF6969;
+    background-color: #FF6969;
     color: white;
-    border-radius:5px;
+    border-radius: 5px;
     padding: .5rem 1rem;
 }
 
@@ -87,8 +92,18 @@ p {
     }
 }
 
-@media (max-width: 600px){
-    .main-container{
+//scrollbar
+.main-notif-container {
+    -ms-overflow-style: none; //for edge and internet explorer
+    scrollbar-width: none; // for firefox
+}
+
+.main-notif-container::-webkit-scrollbar {
+    display: none; //chrome safari and opera
+}
+
+@media (max-width: 600px) {
+    .main-container {
         margin-right: 2rem;
         margin-left: 2rem;
     }

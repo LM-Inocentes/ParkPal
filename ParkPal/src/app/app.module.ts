@@ -45,8 +45,7 @@ import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.
 import { VerificationComponent } from './component/verification/verification.component';
 import { CommonModule } from '@angular/common';
 import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
-
-
+import { PenaltyPageSearchComponent } from './component/penalty-page-search/penalty-page-search.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +74,7 @@ import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
     PenaltyPageUserComponent,
     VerificationComponent,
     PenaltyPageComponent,
+    PenaltyPageSearchComponent
   ],
   imports: [
     BrowserModule,

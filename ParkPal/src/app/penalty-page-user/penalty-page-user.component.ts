@@ -2,6 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/user';
 import { AuthService } from '../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-delete.component';
+
 
 @Component({
   selector: 'app-penalty-page-user',
@@ -15,6 +18,7 @@ export class PenaltyPageUserComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private dialog: MatDialog, 
     private authService: AuthService
   ) { }
 
@@ -47,6 +51,73 @@ export class PenaltyPageUserComponent implements OnInit {
     }
 
     return ''; // Return an empty string if user or Fullname is not provided
+  }
+
+  oneDayConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for 1 day?' },
+    });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     // User clicked "Yes", proceed with the delete operation
+    //     // this.approveUser(user);
+    //   }
+    // });
+  }
+  threeDayConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for 3 days?' },
+    });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     // User clicked "Yes", proceed with the delete operation
+    //     // this.approveUser(user);
+    //   }
+    // });
+  }
+  oneWeekConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account for One week?' },
+    });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     // User clicked "Yes", proceed with the delete operation
+    //     // this.approveUser(user);
+    //   }
+    // });
+  }
+  permRevocConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to PERMANENTLY REVOKE THIS user account?' },
+    });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     // User clicked "Yes", proceed with the delete operation
+    //     // this.approveUser(user);
+    //   }
+    // });
+  }
+
+  sendMessageConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to send this message? [Actions cannot be edited after you click "YES" for record puporses]' },
+    });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result) {
+    //     // User clicked "Yes", proceed with the delete operation
+    //     // this.approveUser(user);
+    //   }
+    // });
   }
 }
 
