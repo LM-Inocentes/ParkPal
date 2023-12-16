@@ -405,4 +405,6 @@ router.delete("/user/registered/delete/:id", asyncHandler(
   }
 ))
 
+
+
 export default router;
