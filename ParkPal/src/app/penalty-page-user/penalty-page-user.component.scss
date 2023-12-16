@@ -135,7 +135,7 @@ a {
 
             .msg-sent {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 text-align: start;
                 margin-top: 15px;
                 padding: 1.875rem 1.5rem 1.875rem 1.5rem;
@@ -145,8 +145,29 @@ a {
                 max-width: 100vh;
                 font-size: 1rem;
 
-                .date{
-                    margin-left: 9px;
+                
+
+                .msg-sent-header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-bottom: 0.7rem;
+
+                    .date{
+                        margin-left: 9px;
+                        border-bottom: 1px solid black;
+                        font-weight: 500;
+                    }
+
+                    .type{
+                        margin-left: 9px;
+                        font-weight: 500;
+                        color: white;
+                        padding: 0.288rem 0.325rem 0.288rem 0.325rem;
+                        background-color: rgba(254, 29, 29, 0.63);
+                        border-radius: 3px;
+                    }
+
                 }
 
             }
