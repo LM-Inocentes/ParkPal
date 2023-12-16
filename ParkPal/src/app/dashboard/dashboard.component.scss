@@ -152,24 +152,24 @@
     max-width: 100%;
     height: auto;
 
-    button {
-        padding: 5px 10px;
-        text-transform: uppercase;
-        border-radius: 8px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 17px;
-        font-weight: 500;
-        color: #ffffff;
-        text-shadow: none;
-        background: #ff696983;
-        box-shadow: transparent;
-        border: 2px solid #ffffff;
-        transition: 0.5s ease;
-        user-select: none;
-    }
+    // button {
+    //     padding: 5px 10px;
+    //     text-transform: uppercase;
+    //     border-radius: 8px;
+    //     font-family: 'Poppins', sans-serif;
+    //     font-size: 17px;
+    //     font-weight: 500;
+    //     color: #ffffff;
+    //     text-shadow: none;
+    //     background: #ff696983;
+    //     box-shadow: transparent;
+    //     border: 2px solid #ffffff;
+    //     transition: 0.5s ease;
+    //     user-select: none;
+    // }
     
     button:hover {
-        box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #4b4b4b;
+        //box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #4b4b4b;
         transform: translateY(-0.1em);
     }
     
@@ -191,28 +191,80 @@
     top: 43%;
     left: 34%;
     background: #82c8f186;
+
+        padding: 5px 10px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow: none;
+        box-shadow: transparent;
+        border: 2px solid #ffffff;
+        transition: 0.5s ease;
+        user-select: none;
     }
     .areaB {
     position: absolute;
     top: 60%;
     left: 20%;
     background: #82c8f186;
+
+        padding: 5px 10px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow: none;
+        box-shadow: transparent;
+        border: 2px solid #ffffff;
+        transition: 0.5s ease;
+        user-select: none;
     }
     .areaC {
     position: absolute;
     top: 80%;
     left: 36%;
     background: #82c8f186;
+
+        padding: 5px 10px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow: none;
+        box-shadow: transparent;
+        border: 2px solid #ffffff;
+        transition: 0.5s ease;
+        user-select: none;
     }
     .back {
     position: absolute;
     top: 0%;
     left: 74%;
     background: #00000075;
+
+        padding: 5px 10px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow: none;
+        box-shadow: transparent;
+        border: 2px solid #ffffff;
+        transition: 0.5s ease;
+        user-select: none;
     }
 }
 
-.university-map img {
+.university-map-img {
     min-width: 50%;
     max-width: 95%;
     height: auto;
@@ -223,41 +275,76 @@ p {
     font-size: large;
 }
 
+
+
 .areaC-div1 {
+    img {
+        max-width: 90%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 4.38%;
+    //gap: 1%;
     width: 64%;
     height: 21%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
-    top: 23%;
+    top: 24%;
     left:33.7%
 }
 .areaC-div2 {
+    img {
+        max-width: 90%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 23.5%;
+    //gap: 23.5%;
     width: 13.5%;
     height: 21%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
-    top: 23%;
+    top: 24%;
     left:2%
 }
 .areaC-div3 {
+    img {
+        max-width: 85%;
+    }
+
+    button {
+        border: 0;
+        background-color: #00000000;
+        max-width: 155%;
+        height: auto;
+    }
+
     position: absolute;
     display: flex;
-    gap: 8.8%;
+    //gap: 8.8%;
     width: 68%;
     height: 31%;
     //max-width: 1115px; /* Set the maximum width */
     //max-height: 200px; /* Set the maximum height */
-    border: 3px solid black; /* Add a 5px black border */
+    //border: 3px solid black; /* Add a 5px black border */
     box-sizing: border-box; /* Include border in width and height calculations */
     top: 68%;
     left:4%

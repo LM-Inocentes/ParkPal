@@ -23,21 +23,23 @@
     <div class="areaC-div1" *ngIf="mapState == 3">
       <div *ngFor="let index of [64, 65, 66, 67, 68, 69, 70, 71, 72, 73]">
         <button [id]="index">
-          <img src = "assets/motorcycle-available.png" width = "399">
+          <img src = "assets/motorcycle-available.png">
         </button>
       </div>
     </div>
 
     <div class="areaC-div2" *ngIf="mapState == 3">
       <div *ngFor="let index of [74, 75]">
-        <button [id]="index" style="height: 92%; width: 136%; margin: 4px;">
+        <button [id]="index">
+          <img src = "assets/motorcycle-available.png">
         </button>
       </div>
     </div>
 
     <div class="areaC-div3" *ngIf="mapState == 3">
       <div *ngFor="let index of [76, 77, 78, 79, 80, 81, 82]">
-        <button [id]="index" style="height: 92%; width: 200%; margin: 5px;">
+        <button [id]="index">
+          <img src = "assets/car-available.png">
         </button>
       </div>
     </div>
@@ -83,7 +85,7 @@
         </button>
       </div>
     </div>
-    <img [src]="mapImagePath" alt="University Map">
+    <img [src]="mapImagePath" alt="University Map" class="university-map-img">
     <button *ngIf="mapState != 0" class="back" (click)="updateMapState(0)">Back</button>
     <button *ngIf="mapState == 0" class="areaA" (click)="updateMapState(1)">Area A</button>
     <button *ngIf="mapState == 0" class="areaB" (click)="updateMapState(2)">Area B</button>
