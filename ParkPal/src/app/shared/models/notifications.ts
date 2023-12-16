@@ -5,4 +5,5 @@ export class NotificationsMsg{
     description?: string;
     date?: string;
     reporterName?: string;
+    parkID?: string;
 }

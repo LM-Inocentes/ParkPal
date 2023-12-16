@@ -4,6 +4,9 @@ import { User } from '../shared/models/user';
 import { MiscService } from '../services/misc.service';
 import { Park } from '../shared/models/park';
 import { timer } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ParkGreenModalComponent } from '../component/park-green-modal/park-green-modal.component';
+import { ParkRedModalComponent } from '../component/park-red-modal/park-red-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,20 +20,48 @@ export class DashboardComponent {
   mapImagePath: string = 'assets/overall-map.png';
   mapState: number = 0;
 
-  constructor( authService:AuthService, private miscService:MiscService ) {
-    authService.userObservable.subscribe((newUser) => {
+  allParks!: Park[];
+  AD1!: Park[];
+  AD2!: Park[];
+  AD3!: Park[];
+  BD1!: Park[];
+  BD2!: Park[];
+  BD3!: Park[];
+  CD1!: Park[];
+  CD2!: Park[];
+  CD3!: Park[];
+
+  constructor( private authService:AuthService, private miscService:MiscService, private dialog: MatDialog) {
+    this.authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
       if(this.isAuth){
         this.Firstname = this.user.Fullname.split(' ').at(0);
       }
     });
     if(this.user.Level == 1){
-      authService.getRegisteredUsersByID(this.user.id).subscribe((user) => {
+      this.authService.getRegisteredUsersByID(this.user.id).subscribe((user) => {
         this.dashSuspended = user.isSuspended;
       });
     }
     this.miscService.mapState$.subscribe((state) => {
       this.updateMapState(state);
+    });
+  }
+
+  ngOnInit(): void {
+    this.miscService.getAllParks().subscribe((parks) => {
+      this.allParks = parks;
+      // Use slice to get a subset of the array based on the start and end+1 indices
+      this.AD1 = this.allParks.slice(0, 12);
+      this.AD2 = this.allParks.slice(12, 24);
+      this.AD3 = this.allParks.slice(24, 36);
+      this.BD1 = this.allParks.slice(36, 47);
+      this.BD2 = this.allParks.slice(47, 49);
+      this.BD3 = this.allParks.slice(49, 63);
+      this.CD1 = this.allParks.slice(63, 73);
+      this.CD2 = this.allParks.slice(73, 75);
+      this.CD3 = this.allParks.slice(75, 82);
+      console.log(this.AD1);
     });
   }
   
@@ -73,4 +104,59 @@ export class DashboardComponent {
   //     }
   //   }
   // }
+
+  parkGreen(id: number){
+    const park: Park = {
+      id,
+      parkerID: this.user.id,
+      name: this.user.Fullname,
+      PlateNo: this.user.VPlateNo!,
+    }
+    const dialogRef = this.dialog.open(ParkGreenModalComponent, {
+      width: '250px',
+      data: { 
+        title: `Parking Space #${park.id!+1}`, 
+        message: 'Select Option', 
+        level: this.user.Level 
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'park') {
+        this.miscService.parkUser(park).subscribe(_ => {
+          this.ngOnInit();
+        });
+      } else if (result === 'report') {
+        
+      } else if (result === 'clear') {
+
+      }
+    });
+  }
+  parkRed(park: Park){
+    const dialogRef = this.dialog.open(ParkRedModalComponent, {
+      width: '250px',
+      data: { 
+        title: `Parking Space ${park.id!+1}`, 
+        message1: `ID number: ${park.parkerID}`, 
+        message2: `Plate No: ${park.PlateNo}`,
+        message3: `Time ${park.time}`,
+        level: this.user.Level,
+        isParker: (park.parkerID==this.user.id)  //boolean if user is parker
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'unpark') {
+        this.miscService.unparkUser(park).subscribe(_ => {
+          this.ngOnInit();
+        });
+      } else if (result === 'report') {
+        
+      } else if (result === 'clear') {
+
+      }
+    });
+  }
+
 } 

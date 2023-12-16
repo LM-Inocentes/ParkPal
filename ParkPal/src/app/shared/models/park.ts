@@ -1,9 +1,9 @@
 export class Park{
-    id!: number;
-    isAvailable!: boolean;
-    isReported!: boolean;
+    id?: number;
+    isAvailable?: boolean;
+    isReported?: boolean;
     parkerID!: string;
-    name?: string;
-    PlateNo?: string;
-    time!: string;
+    name!: string;
+    PlateNo!: string;
+    time?: string;
 }

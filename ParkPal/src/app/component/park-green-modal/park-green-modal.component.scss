@@ -1,0 +1,14 @@
+h2, mat-dialog-content{
+    display: flex;
+    justify-content: center; // Center the buttons horizontally
+    align-items: center; // Center the buttons vertically
+  }
+mat-dialog-actions {
+    display: flex;
+    justify-content: center; // Center the buttons horizontally
+    align-items: center; // Center the buttons vertically
+  
+    button {
+      margin: 0 8px; // Add some spacing between the buttons
+    }
+  }

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import  asyncHandler  from 'express-async-handler';
 import { FeedbackModel } from '../models/feedback.model';
-import { NotificationsModel } from '../models/notification.model';
+import { INotifications, NotificationsModel } from '../models/notification.model';
 import { UserModel } from '../models/user.model';
 import { IPark, ParkModel } from '../models/park.model';
 
@@ -70,11 +70,12 @@ router.delete("/delete/feedback/:id", asyncHandler(
 
 router.post("/report/available" ,asyncHandler(
   async (req, res) => {
-      const {userID, reporterName} = req.body;
+      const {userID, reporterName, parkID} = req.body;
       const Ireport = 
       {
           id: await NotificationsModel.countDocuments()+1,
           userID,
+          parkID,
           reporterName,
           type: "Report", 
           description: `You have been reported by ${reporterName} for not recording that you occupied the parking space`, 
@@ -95,10 +96,11 @@ router.post("/report/available" ,asyncHandler(
 
 router.post("/report/unavailable" ,asyncHandler(
   async (req, res) => {
-      const {userID, reporterName} = req.body;
+      const {userID, reporterName, parkID} = req.body;
       const Ireport = 
       {
           id: await NotificationsModel.countDocuments()+1,
+          parkID,
           userID,
           reporterName,
           type: "Report", 
@@ -207,6 +209,13 @@ router.post("/parks/" ,asyncHandler(
         }
       const dbPARK = await ParkModel.create(IPark);
       res.send(dbPARK);
+  }
+))
+
+router.get("/parks/all", asyncHandler(
+  async (req, res) =>{
+    const allParks = await ParkModel.find().sort({ id: 1 });
+    res.send(allParks);                       //sending items from database
   }
 ))
 

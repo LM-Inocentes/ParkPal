@@ -61,3 +61,9 @@ export const USER_UNSUSPEND_ACCOUNT = BASE_URL + '/api/misc/unsuspend-account';
 export const GET_USER_REPORTS = BASE_URL + '/api/misc/user/reports/';
 
 export const CREATE_PARKS = BASE_URL + '/api/misc/parks';
+
+export const GET_ALL_PARKS = BASE_URL + '/api/misc/parks/all';
+
+export const PARK_USER = BASE_URL + '/api/misc/parks/parkUser';
+
+export const UNPARK_USER = BASE_URL + '/api/misc/parks/unparkUser';

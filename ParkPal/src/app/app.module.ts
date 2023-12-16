@@ -45,10 +45,11 @@ import { PenaltyPageUserComponent } from './penalty-page-user/penalty-page-user.
 import { VerificationComponent } from './component/verification/verification.component';
 import { CommonModule } from '@angular/common';
 import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
-import { OccupyModalComponent } from './component/occupy-modal/occupy-modal.component';
-
 
 import { PenaltyPageSearchComponent } from './component/penalty-page-search/penalty-page-search.component';
+import { ParkGreenModalComponent } from './component/park-green-modal/park-green-modal.component';
+import { ParkRedModalComponent } from './component/park-red-modal/park-red-modal.component';
+import { ParkYellowModalComponent } from './component/park-yellow-modal/park-yellow-modal.component';
 
 @NgModule({
   declarations: [
@@ -77,8 +78,10 @@ import { PenaltyPageSearchComponent } from './component/penalty-page-search/pena
     PenaltyPageUserComponent,
     VerificationComponent,
     PenaltyPageComponent,
-    OccupyModalComponent,
-    PenaltyPageSearchComponent
+    PenaltyPageSearchComponent,
+    ParkGreenModalComponent,
+    ParkRedModalComponent,
+    ParkYellowModalComponent
   ],
   imports: [
     BrowserModule,
