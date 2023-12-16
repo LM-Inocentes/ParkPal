@@ -1,20 +1,24 @@
 import { Schema, model } from 'mongoose';
 
 export interface IPark{
-    id: string;
-    userID: string;
-    type: string;
-    description: string;
-    date: string;
+    id: number;
+    isAvailable: boolean;
+    isReported: boolean;
+    parkerID: string;
+    name: string;
+    PlateNo: string;
+    time: string;
 }
 
 export const ParkSchema = new Schema<IPark>(
     {
-        id: { type:String, required:true },
-        userID: { type:String, required:true },
-        type: { type:String, required:true },
-        description: { type:String, required:true },
-        date: { type:String, required:true },
+        id: { type:Number, required:false },
+        parkerID: { type:String, required:false },
+        name: { type:String, required:false },
+        PlateNo: { type:String, required:false },
+        time: { type:String, required:false },
+        isAvailable: { type:Boolean, required:true },
+        isReported: { type:Boolean, required:true },
     },{
         toJSON:{
             virtuals:true

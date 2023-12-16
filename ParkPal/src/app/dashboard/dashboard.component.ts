@@ -2,6 +2,8 @@ import { Component, NgModule } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
 import { MiscService } from '../services/misc.service';
+import { Park } from '../shared/models/park';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,11 +22,13 @@ export class DashboardComponent {
       this.user = newUser;
       if(this.isAuth){
         this.Firstname = this.user.Fullname.split(' ').at(0);
-        this.dashSuspended = this.user.isSuspended;
-        // console.log(this.user);
       }
     });
-
+    if(this.user.Level == 1){
+      authService.getRegisteredUsersByID(this.user.id).subscribe((user) => {
+        this.dashSuspended = user.isSuspended;
+      });
+    }
     this.miscService.mapState$.subscribe((state) => {
       this.updateMapState(state);
     });
@@ -49,4 +53,24 @@ export class DashboardComponent {
       this.mapState = 3;
     }
   }
-}
+
+  // createParks() {
+  //   let Index = 82;
+  //   for (let i = 0; i < Index; i++) {
+  //     this.miscService.postParks(i.toString()).subscribe(
+  //       (response) => {
+  //         console.log(`Park ${i} created successfully:`, response);
+  //       },
+  //       (error) => {
+  //         console.error(`Error creating park ${i}:`, error);
+  //       }
+  //     );
+  
+  //     // Introduce a delay between requests (e.g., 500 milliseconds)
+  //     // Adjust the delay as needed based on your requirements.
+  //     if (i < Index - 1) {
+  //       timer(2000).subscribe();
+  //     }
+  //   }
+  // }
+} 

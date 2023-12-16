@@ -3,6 +3,7 @@ import  asyncHandler  from 'express-async-handler';
 import { FeedbackModel } from '../models/feedback.model';
 import { NotificationsModel } from '../models/notification.model';
 import { UserModel } from '../models/user.model';
+import { IPark, ParkModel } from '../models/park.model';
 
 const router = Router();
 
@@ -191,5 +192,61 @@ router.get("/user/reports/:userID", asyncHandler(
   }
 ))
 
+router.post("/parks/" ,asyncHandler(
+  async (req, res) => {
+      const {Index} = req.body;
+      const IPark: IPark = 
+      {
+          id: Index,
+          isAvailable: true,
+          isReported: false,
+          parkerID: "", 
+          name: "", 
+          PlateNo: "",
+          time: "",
+        }
+      const dbPARK = await ParkModel.create(IPark);
+      res.send(dbPARK);
+  }
+))
+
+router.patch("/parks/parkUser" ,asyncHandler(
+  async (req, res) => {
+      const { id, parkerID, name, PlateNo} = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": parkerID,
+          "name": name,
+          "PlateNo": PlateNo,
+          "isAvailable": false,
+          "time": new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      });
+      res.send(park);
+  }
+))
+
+router.patch("/parks/unparkUser" ,asyncHandler(
+  async (req, res) => {
+      const { id } = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": "",
+          "name": "",
+          "PlateNo": "",
+          "isAvailable": true,
+          "time": ""
+        }
+      });
+      res.send(park);
+  }
+))
 
 export default router;

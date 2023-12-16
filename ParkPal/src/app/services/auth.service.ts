@@ -218,9 +218,17 @@ export class AuthService {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  getUserFromLocalStorage():User{
+  getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
-    if(userJson) return JSON.parse(userJson) as User;
+  
+    try {
+      if (userJson) {
+        const user: User = JSON.parse(userJson);
+        return user;
+      }
+    } catch (error) {
+      console.error('Error parsing user JSON:', error);
+    }
     return new User();
   }
 

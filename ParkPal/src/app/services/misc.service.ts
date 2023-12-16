@@ -4,8 +4,9 @@ import { Feedback } from '../shared/models/feedback';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { DELETE_USER_FEEDBACK, GET_ALL_USER_FEEDBACK, GET_RECENT_USER_FEEDBACK, GET_USER_REPORTS, USER_FEEDBACK, USER_REPORT_AVAILABLE, USER_REPORT_UNAVAILABLE, USER_SUSPEND_ACCOUNT, USER_SUSPENSION, USER_UNSUSPEND_ACCOUNT, USER_WARNING} from '../shared/apiURLS/URLS';
+import { CREATE_PARKS, DELETE_USER_FEEDBACK, GET_ALL_USER_FEEDBACK, GET_RECENT_USER_FEEDBACK, GET_USER_REPORTS, USER_FEEDBACK, USER_REPORT_AVAILABLE, USER_REPORT_UNAVAILABLE, USER_SUSPEND_ACCOUNT, USER_SUSPENSION, USER_UNSUSPEND_ACCOUNT, USER_WARNING} from '../shared/apiURLS/URLS';
 import { NotificationsMsg } from '../shared/models/notifications';
+import { Park } from '../shared/models/park';
 
 
 @Injectable({
@@ -141,5 +142,9 @@ export class MiscService {
   }
   getAllUserReports(userID: string): Observable<NotificationsMsg[]>{
     return this.http.get<NotificationsMsg[]>(GET_USER_REPORTS + userID);
+  }
+
+  postParks(Index: string): Observable<Park>{
+    return this.http.post<Park>(CREATE_PARKS, { Index });
   }
 }

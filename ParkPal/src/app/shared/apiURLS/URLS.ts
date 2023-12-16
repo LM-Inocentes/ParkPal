@@ -59,3 +59,5 @@ export const USER_SUSPEND_ACCOUNT = BASE_URL + '/api/misc/suspend-account';
 export const USER_UNSUSPEND_ACCOUNT = BASE_URL + '/api/misc/unsuspend-account';
 
 export const GET_USER_REPORTS = BASE_URL + '/api/misc/user/reports/';
+
+export const CREATE_PARKS = BASE_URL + '/api/misc/parks';
