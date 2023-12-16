@@ -167,36 +167,42 @@
         transition: 0.5s ease;
         user-select: none;
     }
-
-    button:hover,:focus {
-        color: #ffffff;
-        background: #FF6969;
-        border: 2px solid #FF6969;
-        text-shadow: 0 0 5px #ffffff,
-                    0 0 10px #ffffff,
-                    0 0 20px #ffffff;
-        box-shadow: 0 0 5px #FF6969,
-                    0 0 20px #FF6969,
-                    0 0 50px #FF6969,
-                    0 0 100px #FF6969;
+    
+    button:hover {
+        box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #4b4b4b;
+        transform: translateY(-0.1em);
     }
+    
+    // button:hover,:focus {
+    //     color: #ffffff;
+    //     background: #FF6969;
+    //     border: 2px solid #FF6969;
+    //     text-shadow: 0 0 5px #ffffff,
+    //                 0 0 10px #ffffff,
+    //                 0 0 20px #ffffff;
+    //     box-shadow: 0 0 5px #FF6969,
+    //                 0 0 20px #FF6969,
+    //                 0 0 50px #FF6969,
+    //                 0 0 100px #FF6969;
+    // }
 
     .areaA {
     position: absolute;
     top: 43%;
     left: 34%;
-    background: #aff4be77;
+    background: #82c8f186;
     }
     .areaB {
     position: absolute;
     top: 60%;
     left: 20%;
+    background: #82c8f186;
     }
     .areaC {
     position: absolute;
     top: 80%;
     left: 36%;
-    background: #f1ea8286;
+    background: #82c8f186;
     }
     .back {
     position: absolute;
