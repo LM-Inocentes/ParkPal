@@ -9,7 +9,7 @@
       <span class="user-id"> {{ user.id }}</span>
     </div>
     <div class="num-of-penalties">
-      Number of Penalties:
+      Number of Reports:
       <span class="penalties-ctr">50</span>
     </div>
     <div class="suspend-acc-button4" (click)="suspendAccConfirm()" >Suspend Account</div>
@@ -23,6 +23,8 @@
       </textarea>
     </form>
     <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">Send Message</button>
+
+    <div class="user-report-history"> User Report History</div>
 
     <div class="sent-msg-hstr">
       <div class="msg-sent">
