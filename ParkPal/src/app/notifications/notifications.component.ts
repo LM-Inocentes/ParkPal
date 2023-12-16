@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../shared/models/user';
+import { MiscService } from '../services/misc.service';
+import { NotificationsMsg } from '../shared/models/notifications';
 
 
 
@@ -15,19 +17,27 @@ import { User } from '../shared/models/user';
 export class NotificationsComponent {
 
   user = {} as User;
+  userReports: NotificationsMsg[] = [];
+  
   constructor( 
     private authService:AuthService, 
     private dialog: MatDialog, 
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private miscService: MiscService
+    ) {
+      authService.userObservable.subscribe((newUser) => {
+        this.user = newUser;
+      });
+      
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      console.log(params['userID']);
-      this.authService.getRegisteredUsersByID(params['userID']).subscribe(regUser => {
-        this.user = regUser;
+      this.authService.userObservable.subscribe((newUser) => {
+        this.user = newUser;
       });
-    });
+      this.miscService.getAllUserReports(this.user.id).subscribe(reports => {
+        this.userReports = reports;
+      });
   }
 
   clearNotifConfirmation(){

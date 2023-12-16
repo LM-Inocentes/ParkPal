@@ -95,3 +95,53 @@
         }
     }
 }
+
+
+
+.notif-header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+}
+
+.main-notif-container {
+    overflow: auto;
+    scroll-behavior: smooth;
+
+    .date{
+        margin-left: 9px;
+        border-bottom: 1px solid black;
+        font-weight: 500;
+    }
+}
+
+//scrollbar
+.main-notif-container {
+    -ms-overflow-style: none; //for edge and internet explorer
+    scrollbar-width: none; // for firefox
+}
+
+.main-notif-container::-webkit-scrollbar {
+    display: none; //chrome safari and opera
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+
+    .notif-message {
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #CFCFCF;
+    }
+
+    .context,
+    .heading {
+        font-family: 'Poppins', Courier, monospace;
+    }
+
+    .heading {
+        font-weight: 600;
+    }
+}

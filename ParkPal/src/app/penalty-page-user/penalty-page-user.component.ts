@@ -63,13 +63,28 @@ export class PenaltyPageUserComponent implements OnInit {
       data: { title: 'Confirmation', message: 'Are you sure you want to suspend this account?' },
     });
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     // User clicked "Yes", proceed with the delete operation
-    //     // this.approveUser(user);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User clicked "Yes", proceed with the delete operation
+        this.suspendAccount();
+      }
+    });
   }
+
+  unsuspendAccConfirm(){
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '250px',
+      data: { title: 'Confirmation', message: 'Are you sure you want to unsuspend this account?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User clicked "Yes", proceed with the delete operation
+        this.unsuspendAccount();
+      }
+    });
+  }
+
   sendMessageConfirm(){
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '250px',
@@ -95,11 +110,18 @@ export class PenaltyPageUserComponent implements OnInit {
   }
 
   unsuspendAccount(){
-    
+    this.miscService.unsuspendUser(this.user.id).subscribe(_ => {
+      this.ngOnInit();
+    });
   }
 
   suspendAccount(){
-    
+    this.miscService.suspendUser(this.user.id).subscribe(_ => {
+      this.ngOnInit();
+    });
+    this.miscService.postSuspension(this.user.id).subscribe(_ => {
+      this.ngOnInit();
+    });
   }
 
   deleteUser(user: User) {
