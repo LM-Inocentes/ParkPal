@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-penalty-page',
   templateUrl: './penalty-page.component.html',
@@ -50,6 +51,8 @@ export class PenaltyPageComponent {
 
     return ''; // Return an empty string if user or Fullname is not provided
   }
+
+  
 
 
 }

@@ -1,57 +1,97 @@
 <section class="main-container">
-    <!-- right content -->
-    <aside class="right-content">
-        <div class="user-profile">
-            {{calculateInitials(user)}}
-        </div>
-        <div class="user-name-id">
-            {{user.Fullname}} 
-            <span class="user-id"> {{user.id}}</span>
-        </div>
-        <div class="num-of-penalties">
-            Number of Penalties: 
-            <span class="penalties-ctr">50</span>
-        </div>
-        <div class="suspend-acc">
-            Suspend Account 
-        </div>
-        <!-- buttons -->
-        <div class="suspend-acc-button1">
-            One Day 
-        </div>
-        <div class="suspend-acc-button2">
-            Three Days 
-        </div>
-        <div class="suspend-acc-button3">
-            One Week 
-        </div>
-        <div class="suspend-acc-button4">
-            Permanent Revocation 
-        </div>
-        <!-- end of buttons -->
-
-    </aside>
-    <!-- end of right content -->
-    
-    <!-- left content -->
-    <main class="left-content">
-       <form action="" class="msg-to-user">
-        <textarea class="text-input" name="" id="" cols="30" rows="10">
-
-        </textarea>
-       </form>
-       <button class="send-msg-btn">
-        Send Message
-       </button>
-
-       <div class="sent-msg-hstr">
-           <div class="msg-sent">
-               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est similique quas vel asperiores odio quod alias voluptatum ex eius esse repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.</p> <span class="date">mm/dd/yy</span>
-           </div>
-           
+  <!-- right content -->
+  <aside class="right-content">
+    <div class="user-profile">
+      {{ calculateInitials(user) }}
     </div>
+    <div class="user-name-id">
+      {{ user.Fullname }}
+      <span class="user-id"> {{ user.id }}</span>
+    </div>
+    <div class="num-of-penalties">
+      Number of Penalties:
+      <span class="penalties-ctr">50</span>
+    </div>
+    <div class="suspend-acc">Suspend Account</div>
+    <!-- buttons -->
+    <div id="susp-oneDay" (click)="oneDayConfirm()" class="suspend-acc-button1">
+      One Day
+    </div>
+    <div
+      id="susp-twoDays"
+      (click)="threeDayConfirm()"
+      class="suspend-acc-button2"
+    >
+      Three Days
+    </div>
+    <div
+      id="susp-threeDays"
+      (click)="oneWeekConfirm()"
+      class="suspend-acc-button3"
+    >
+      One Week
+    </div>
+    <div
+      id="perm-revoc"
+      (click)="permRevocConfirm()"
+      class="suspend-acc-button4"
+    >
+      Permanent Revocation
+    </div>
+    <!-- end of buttons -->
+  </aside>
+  <!-- end of right content -->
 
-    </main>
-    <!-- end of left content -->
+  <!-- left content -->
+  <main class="left-content">
+    <form action="" class="msg-to-user">
+      <textarea class="text-input" name="" id="" cols="30" rows="10">
+      </textarea>
+    </form>
+    <button id="sendMsg" (click)="sendMessageConfirm()" class="send-msg-btn">Send Message</button>
 
+    <div class="sent-msg-hstr">
+      <div class="msg-sent">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
+          similique quas vel asperiores odio quod alias voluptatum ex eius esse
+          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+        </p>
+        <span class="date">mm/dd/yy</span>
+      </div>
+      <div class="msg-sent">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
+          similique quas vel asperiores odio quod alias voluptatum ex eius esse
+          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+        </p>
+        <span class="date">mm/dd/yy</span>
+      </div>
+      <div class="msg-sent">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
+          similique quas vel asperiores odio quod alias voluptatum ex eius esse
+          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+        </p>
+        <span class="date">mm/dd/yy</span>
+      </div>
+      <div class="msg-sent">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
+          similique quas vel asperiores odio quod alias voluptatum ex eius esse
+          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+        </p>
+        <span class="date">mm/dd/yy</span>
+      </div>
+      <div class="msg-sent">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim est
+          similique quas vel asperiores odio quod alias voluptatum ex eius esse
+          repudiandae, animi fugiat et aut minima. Voluptate, odit eveniet.
+        </p>
+        <span class="date">mm/dd/yy</span>
+      </div>
+    </div>
+  </main>
+  <!-- end of left content -->
 </section>

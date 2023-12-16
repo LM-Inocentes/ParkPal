@@ -48,6 +48,7 @@ import { PenaltyPageComponent } from './penalty-page/penalty-page.component';
 import { OccupyModalComponent } from './component/occupy-modal/occupy-modal.component';
 
 
+import { PenaltyPageSearchComponent } from './component/penalty-page-search/penalty-page-search.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { OccupyModalComponent } from './component/occupy-modal/occupy-modal.comp
     VerificationComponent,
     PenaltyPageComponent,
     OccupyModalComponent,
+    PenaltyPageSearchComponent
   ],
   imports: [
     BrowserModule,

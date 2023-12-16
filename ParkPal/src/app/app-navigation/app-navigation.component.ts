@@ -6,6 +6,8 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 declare const myFunction: any;
 @Component({
@@ -14,6 +16,7 @@ declare const myFunction: any;
   styleUrls: ['./app-navigation.component.scss']
 })
 export class AppNavigationComponent {
+  hidden = false;
   callfun(){
     myFunction();
   }
@@ -103,4 +106,10 @@ export class AppNavigationComponent {
   get isAuth(){
     return this.user.token;
   }
+  
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
 }
