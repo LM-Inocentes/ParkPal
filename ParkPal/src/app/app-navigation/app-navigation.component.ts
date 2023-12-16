@@ -8,6 +8,7 @@ import { User } from '../shared/models/user';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MiscService } from '../services/misc.service';
 
 declare const myFunction: any;
 @Component({
@@ -41,7 +42,9 @@ export class AppNavigationComponent {
     private datePipe: DatePipe, 
     private authService:AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private miscService: MiscService
+    ) {
 
     authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
@@ -107,6 +110,9 @@ export class AppNavigationComponent {
     return this.user.token;
   }
   
+  changeMapStateNav(state: number) {
+    this.miscService.updateMapState(state);
+  }
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;

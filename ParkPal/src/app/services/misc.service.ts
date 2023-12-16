@@ -11,9 +11,20 @@ import { NotificationsMsg } from '../shared/models/notifications';
 @Injectable({
   providedIn: 'root'
 })
+  
 export class MiscService {
-
+  private mapStateSubject = new BehaviorSubject<number>(0);
+  mapState$: Observable<number> = this.mapStateSubject.asObservable();
+  
   constructor(private http:HttpClient, private toastrService: ToastrService) { }
+
+  updateMapState(state: number) {
+    this.mapStateSubject.next(state);
+  }
+
+  getMapState(): Observable<number> {
+    return this.mapStateSubject.asObservable();
+  }
 
   postFeedback(Ifeedback: IFeedback): Observable<Feedback>{
     return this.http.post<Feedback>(USER_FEEDBACK, Ifeedback).pipe(
