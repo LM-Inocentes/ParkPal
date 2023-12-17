@@ -30,7 +30,7 @@
         <button [id]="park.id" *ngIf="park.isReported">
           <img src="assets/motorcycle-pending.png">
         </button>
-        <button [id]="park.id" *ngIf="!park.isReported && park.isAvailable" (click)="parkGreen(park.id!)">
+        <button [id]="park.id" *ngIf="!park.isReported && park.isAvailable" (click)="parkGreen(park.id!, park.name)">
           <img src="assets/motorcycle-available.png">
         </button>
         <button [id]="park.id" *ngIf="!park.isReported && !park.isAvailable" (click)="parkRed(park)">

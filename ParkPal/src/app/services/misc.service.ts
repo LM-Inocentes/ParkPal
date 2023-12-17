@@ -4,9 +4,10 @@ import { Feedback } from '../shared/models/feedback';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { CREATE_PARKS, DELETE_USER_FEEDBACK, GET_ALL_PARKS, GET_ALL_USER_FEEDBACK, GET_RECENT_USER_FEEDBACK, GET_USER_REPORTS, PARK_USER, UNPARK_USER, USER_FEEDBACK, USER_REPORT_AVAILABLE, USER_REPORT_UNAVAILABLE, USER_SUSPEND_ACCOUNT, USER_SUSPENSION, USER_UNSUSPEND_ACCOUNT, USER_WARNING} from '../shared/apiURLS/URLS';
+import { CREATE_PARKS, DELETE_USER_FEEDBACK, GET_ALL_PARKS, GET_ALL_USER_FEEDBACK, GET_IS_PARKED_USER, GET_RECENT_USER_FEEDBACK, GET_REPORTED_USER_BY_PLATENO, GET_USER_REPORTS, PARK_USER, REPORT_GREEN, REPORT_RED, UNPARK_USER, USER_FEEDBACK, USER_REPORT_AVAILABLE, USER_REPORT_UNAVAILABLE, USER_SUSPEND_ACCOUNT, USER_SUSPENSION, USER_UNSUSPEND_ACCOUNT, USER_WARNING} from '../shared/apiURLS/URLS';
 import { NotificationsMsg } from '../shared/models/notifications';
 import { Park } from '../shared/models/park';
+import { User } from '../shared/models/user';
 
 
 @Injectable({
@@ -57,7 +58,7 @@ export class MiscService {
     return this.http.delete( DELETE_USER_FEEDBACK +id);
   }
 
-  postReportAvailable(notificationmsg: NotificationsMsg ): Observable<NotificationsMsg>{
+  postReportAvailable(notificationmsg: any ): Observable<NotificationsMsg>{
     return this.http.post<NotificationsMsg>(USER_REPORT_AVAILABLE, notificationmsg).pipe(
       tap({
         next: () => {
@@ -150,9 +151,45 @@ export class MiscService {
     return this.http.get<Park[]>(GET_ALL_PARKS);
   }
   parkUser(park: Park): Observable<Park>{
-    return this.http.patch<Park>(PARK_USER, park);
+    return this.http.patch<Park>(PARK_USER, park).pipe(
+      tap({
+        next: (park) => {
+          this.toastrService.success(
+            `Parked In Parking Space ${park.id!+1}`,
+            'Parking Success'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Error');
+        }
+      })
+    );
   }
   unparkUser(park: Park): Observable<Park>{
-    return this.http.patch<Park>(UNPARK_USER, park);
+    return this.http.patch<Park>(UNPARK_USER, park).pipe(
+      tap({
+        next: (park) => {
+          this.toastrService.success(
+            `Unparked In Parking Space ${park.id!+1}`,
+            'Unparking Success'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Error');
+        }
+      })
+    );
   }
+  reportGreen(park: any): Observable<Park>{
+    return this.http.patch<Park>(REPORT_GREEN, park);
+  }
+  reportRed(park: Park): Observable<Park>{
+    return this.http.patch<Park>(REPORT_RED, park);
+  }
+  getRegisteredUsersByPlateNo(PlateNo: string): Observable<User>{
+    return this.http.get<User>(GET_REPORTED_USER_BY_PLATENO + PlateNo);
+  } 
+  getIsAlreadyParked(parkerID: string): Observable<Park>{
+    return this.http.get<Park>(GET_IS_PARKED_USER + parkerID);
+  } 
 }

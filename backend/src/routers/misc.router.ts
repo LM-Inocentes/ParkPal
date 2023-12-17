@@ -258,4 +258,65 @@ router.patch("/parks/unparkUser" ,asyncHandler(
   }
 ))
 
+router.get("/user/:PlateNo", asyncHandler(
+  async (req, res) =>{
+      const user = await UserModel.findOne({VPlateNo: req.params.PlateNo});
+      res.send(user);                    
+  }
+))
+
+router.get("/isparked/:parkerID", asyncHandler(
+  async (req, res) =>{
+      const park = await ParkModel.findOne({parkerID: req.params.parkerID});
+      const isParked = !!park; // Convert park to a boolean (true if park exists, false if not)
+      res.json({ isParked });                 
+  }
+))
+
+router.patch("/parks/report/green" ,asyncHandler(
+  async (req, res) => {
+      const { id, reporterName, name } = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": name,
+          "name": reporterName,
+          "PlateNo": `${name} Reported by ${reporterName} for Occupying Available Space`,
+          "isReported": true,
+          "time": new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      });
+      res.send(park);
+  }
+))
+
+router.patch("/parks/report/red" ,asyncHandler(
+  async (req, res) => {
+      const { id, reporterName, name } = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": name,
+          "name": reporterName,
+          "PlateNo": `User ${name} Reported by ${reporterName} for Not Occupying Unavailable Space`,
+          "isReported": true,
+          "time": new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      });
+      res.send(park);
+  }
+))
+
+
+
 export default router;
