@@ -104,7 +104,7 @@ router.post("/report/unavailable" ,asyncHandler(
           userID,
           reporterName,
           type: "Report", 
-          description: `You have been reported by ${reporterName} for recording that you occupied the parking space and not using it`, 
+          description: `You have been reported by ${reporterName} for recording that you occupied the parking space but not using it`, 
           date: new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Manila',
             day: '2-digit',

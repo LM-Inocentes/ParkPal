@@ -74,7 +74,7 @@ export class MiscService {
     );
   }
 
-  postReportUnAvailable(notificationmsg: NotificationsMsg ): Observable<NotificationsMsg>{
+  postReportUnAvailable(notificationmsg: any ): Observable<NotificationsMsg>{
     return this.http.post<NotificationsMsg>(USER_REPORT_UNAVAILABLE, notificationmsg).pipe(
       tap({
         next: () => {
@@ -183,7 +183,7 @@ export class MiscService {
   reportGreen(park: any): Observable<Park>{
     return this.http.patch<Park>(REPORT_GREEN, park);
   }
-  reportRed(park: Park): Observable<Park>{
+  reportRed(park: any): Observable<Park>{
     return this.http.patch<Park>(REPORT_RED, park);
   }
   getRegisteredUsersByPlateNo(PlateNo: string): Observable<User>{

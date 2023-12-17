@@ -140,6 +140,12 @@ export class DashboardComponent {
         //result is PlateNo here
         this.miscService.getRegisteredUsersByPlateNo(result).pipe(
           switchMap((user) => {
+            if(!user && result){
+              this.toastr.error(
+                `No Matching Plate Number Found Among Users`,
+                'Report Failed'
+              );
+            }
             const sendreport = {
               userID: user.id,
               parkID: id,
@@ -180,9 +186,26 @@ export class DashboardComponent {
         this.miscService.unparkUser(park).subscribe(_ => {
           this.ngOnInit();
         });
-      } else if (result === 'report') {
-        
-      } else if (result === 'reset') {
+      }else if (result === 'report') {
+        const sendreport = {
+          userID: park.parkerID,
+          parkID: park.id,
+          reporterName: this.user.id,
+        };
+        const parkreport = {
+          id: park.id,
+          reporterName: this.user.id,
+          name: park.parkerID,
+        };
+        forkJoin([
+          this.miscService.postReportUnAvailable(sendreport),
+          this.miscService.reportRed(parkreport)
+        ]).subscribe(
+          _ => {
+            this.ngOnInit(); 
+          }
+        );
+      }else if (result === 'reset') {
         //unpark and reset is the same
         this.miscService.unparkUser(park).subscribe(_ => {
           this.ngOnInit();
@@ -207,9 +230,7 @@ export class DashboardComponent {
         this.miscService.unparkUser(park).subscribe(_ => {
           this.ngOnInit();
         });
-      } else if (result === 'report') {
-        
-      } else if (result === 'reset') {
+      }else if (result === 'reset') {
         //unpark and reset is the same
         this.miscService.unparkUser(park).subscribe(_ => {
           this.ngOnInit();
