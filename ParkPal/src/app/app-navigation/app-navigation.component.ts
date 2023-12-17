@@ -20,15 +20,15 @@ declare const myFunction: any;
 export class AppNavigationComponent {
   hidden = false;
   userReports: NotificationsMsg[] = [];
-  
-  callfun(){
+
+  callfun() {
     myFunction();
   }
 
   private breakpointObserver = inject(BreakpointObserver);
 
-  user!:User;
-  Firstname?:string;
+  user!: User;
+  Firstname?: string;
   pageTitle: string = 'DASHBOARDS'; // Default page title
 
   // Initialize currentDate as null
@@ -42,16 +42,16 @@ export class AppNavigationComponent {
     );
 
   constructor(
-    private datePipe: DatePipe, 
-    private authService:AuthService,
+    private datePipe: DatePipe,
+    private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private miscService: MiscService
-    ) {
+  ) {
 
     authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
-      if(this.isAuth){
+      if (this.isAuth) {
         this.Firstname = this.user.Fullname.split(' ').at(0);
       }
       // console.log(this.user);
@@ -84,7 +84,11 @@ export class AppNavigationComponent {
   }
 
   //START OF CHANGE TITLE CODE
-  ngOnInit() {
+  ngOnInit(): void {
+
+    this.miscService.getAllUserReports(this.user.id).subscribe(reports => {
+      this.userReports = reports;
+    });
     this.setPageTitle();
   }
 
@@ -105,14 +109,14 @@ export class AppNavigationComponent {
   }
   //END OF CHANGE TITLE CODE
 
-  logout(){
+  logout() {
     this.authService.Logout();
   }
 
-  get isAuth(){
+  get isAuth() {
     return this.user.token;
   }
-  
+
   changeMapStateNav(state: number) {
     this.miscService.updateMapState(state);
   }

@@ -173,6 +173,9 @@ p {
 }
 //red-notif
 .button-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fa3e3e;
   border-radius: 10px;
   width: 1rem;
@@ -184,6 +187,6 @@ p {
   color: white;
   font-family: 'Poppins', Courier, monospace;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   
 }

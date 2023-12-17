@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 2rem;
 }
 
 .user_details,
@@ -96,7 +97,15 @@
     }
 }
 
-
+.notif-type {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    background-color: #FF6969;
+    color: white;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+}
 
 .notif-header {
     align-items: center;
@@ -106,25 +115,14 @@
     margin-bottom: 0.7rem;
 }
 
-.main-notif-container {
-    overflow: auto;
-    scroll-behavior: smooth;
-
-    .date{
-        margin-left: 9px;
-        border-bottom: 1px solid black;
-        font-weight: 500;
-    }
+.notif-container{
+    margin-bottom: 1rem;
 }
 
-//scrollbar
-.main-notif-container {
-    -ms-overflow-style: none; //for edge and internet explorer
-    scrollbar-width: none; // for firefox
-}
-
-.main-notif-container::-webkit-scrollbar {
-    display: none; //chrome safari and opera
+.date{
+    margin-left: 9px;
+    border-bottom: 1px solid black;
+    font-weight: 500;
 }
 
 .message-container {
@@ -133,7 +131,7 @@
 
     .notif-message {
         padding-bottom: 0.8rem;
-        border-bottom: 2px solid #CFCFCF;
+        border-bottom: 3px solid #CFCFCF;
     }
 
     .context,
