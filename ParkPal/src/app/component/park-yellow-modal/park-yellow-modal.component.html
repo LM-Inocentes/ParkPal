@@ -5,7 +5,6 @@
 
         <mat-dialog-actions>
             <button mat-button *ngIf="data.isParker" (click)="unpark()">UnPark</button>
-            <button mat-button *ngIf="!data.isParker" (click)="report()">Report</button>
         </mat-dialog-actions>
         <mat-dialog-actions *ngIf="data.level != 1">
             <button mat-button (click)="reset()">Reset</button>
