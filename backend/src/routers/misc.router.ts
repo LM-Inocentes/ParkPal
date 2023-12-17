@@ -250,6 +250,7 @@ router.patch("/parks/unparkUser" ,asyncHandler(
           "parkerID": "",
           "name": "",
           "PlateNo": "",
+          "isReported": false,
           "isAvailable": true,
           "time": ""
         }
@@ -268,8 +269,12 @@ router.get("/user/:PlateNo", asyncHandler(
 router.get("/isparked/:parkerID", asyncHandler(
   async (req, res) =>{
       const park = await ParkModel.findOne({parkerID: req.params.parkerID});
-      const isParked = !!park; // Convert park to a boolean (true if park exists, false if not)
-      res.json({ isParked });                 
+      if(park){
+        res.json({ isParked: true });  
+      }
+      else{
+        res.json({ isParked: false });  
+      }                 
   }
 ))
 
@@ -303,7 +308,7 @@ router.patch("/parks/report/red" ,asyncHandler(
         $set: {
           "parkerID": name,
           "name": reporterName,
-          "PlateNo": `User ${name} Reported by ${reporterName} for Not Occupying Unavailable Space`,
+          "PlateNo": `User ${name} Reported by ${reporterName} for Not Occupying Parked Space`,
           "isReported": true,
           "time": new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Manila',

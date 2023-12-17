@@ -27,7 +27,7 @@
     <div class="areaC-div1" *ngIf="mapState == 3">
       <!-- <div *ngFor="let index of [64, 65, 66, 67, 68, 69, 70, 71, 72, 73]"> -->
       <div *ngFor="let park of CD1">
-        <button [id]="park.id" *ngIf="park.isReported">
+        <button [id]="park.id" *ngIf="park.isReported" (click)="parkYellow(park)">
           <img src="assets/motorcycle-pending.png">
         </button>
         <button [id]="park.id" *ngIf="!park.isReported && park.isAvailable" (click)="parkGreen(park.id!, park.name)">

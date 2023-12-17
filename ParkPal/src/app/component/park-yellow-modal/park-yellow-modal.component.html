@@ -1,1 +1,15 @@
-<p>park-yellow-modal works!</p>
+<h2 mat-dialog-title>{{ data.title }}</h2>
+    <mat-dialog-content>
+        {{data.message}}
+    </mat-dialog-content>
+
+        <mat-dialog-actions>
+            <button mat-button *ngIf="data.isParker" (click)="unpark()">UnPark</button>
+            <button mat-button *ngIf="!data.isParker" (click)="report()">Report</button>
+        </mat-dialog-actions>
+        <mat-dialog-actions *ngIf="data.level != 1">
+            <button mat-button (click)="reset()">Reset</button>
+        </mat-dialog-actions>
+
+
+

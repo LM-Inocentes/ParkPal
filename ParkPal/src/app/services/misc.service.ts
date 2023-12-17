@@ -189,7 +189,7 @@ export class MiscService {
   getRegisteredUsersByPlateNo(PlateNo: string): Observable<User>{
     return this.http.get<User>(GET_REPORTED_USER_BY_PLATENO + PlateNo);
   } 
-  getIsAlreadyParked(parkerID: string): Observable<Park>{
-    return this.http.get<Park>(GET_IS_PARKED_USER + parkerID);
+  getIsAlreadyParked(parkerID: string): Observable<any>{
+    return this.http.get<any>(GET_IS_PARKED_USER + parkerID);
   } 
 }

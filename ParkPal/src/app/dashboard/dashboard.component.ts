@@ -63,7 +63,6 @@ export class DashboardComponent {
       this.CD1 = this.allParks.slice(63, 73);
       this.CD2 = this.allParks.slice(73, 75);
       this.CD3 = this.allParks.slice(75, 82);
-      console.log(this.AD1);
     });
   }
   
@@ -125,7 +124,7 @@ export class DashboardComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'park') {
-        this.miscService.getIsAlreadyParked(this.user.id).subscribe((isParked) => {
+        this.miscService.getIsAlreadyParked(this.user.id).subscribe(({isParked}) => {
           if (isParked) {
             this.toastr.error(
               `You Are Parked In Other Parking Spaces Or Reported (Contact Admin To Reset Parking)`,
@@ -197,9 +196,7 @@ export class DashboardComponent {
       width: '250px',
       data: { 
         title: `Parking Space #${park.id!+1}`, 
-        message1: `ID number: ${park.parkerID}`, 
-        message2: `Plate No: ${park.PlateNo}`,
-        message3: `Time ${park.time}`,
+        message: `${park.PlateNo}`,               //
         level: this.user.Level,
         isParker: (park.parkerID==this.user.id)  //boolean if user is parker
       },
