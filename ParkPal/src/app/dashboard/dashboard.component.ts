@@ -33,6 +33,21 @@ export class DashboardComponent {
   CD2!: Park[];
   CD3!: Park[];
 
+  AvailableParks_All!: number;
+  AvailableParks_A!: number;
+  AvailableParks_B!: number;
+  AvailableParks_C!: number;
+
+  OccupiedParks_All!: number;
+  OccupiedParks_A!: number;
+  OccupiedParks_B!: number;
+  OccupiedParks_C!: number;
+
+  ReportedParks_All!: number;
+  ReportedParks_A!: number;
+  ReportedParks_B!: number;
+  ReportedParks_C!: number;
+
   constructor( private authService:AuthService, private miscService:MiscService, private dialog: MatDialog, private toastr: ToastrService) {
     this.authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
@@ -63,6 +78,39 @@ export class DashboardComponent {
       this.CD1 = this.allParks.slice(63, 73);
       this.CD2 = this.allParks.slice(73, 75);
       this.CD3 = this.allParks.slice(75, 82);
+
+      this.AvailableParks_All = this.allParks.filter(park => park.isAvailable && !park.isReported).length;
+      this.AvailableParks_A = this.AD1.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.AD2.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.AD3.filter(park => park.isAvailable && !park.isReported).length;
+      this.AvailableParks_B = this.BD1.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.BD2.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.BD3.filter(park => park.isAvailable && !park.isReported).length;
+      this.AvailableParks_C = this.CD1.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.CD2.filter(park => park.isAvailable && !park.isReported).length 
+                            + this.CD3.filter(park => park.isAvailable && !park.isReported).length;
+
+      this.OccupiedParks_All = this.allParks.filter(park => !park.isAvailable && !park.isReported).length;
+      this.OccupiedParks_A = this.AD1.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.AD2.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.AD3.filter(park => !park.isAvailable && !park.isReported).length;
+      this.OccupiedParks_B = this.BD1.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.BD2.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.BD3.filter(park => !park.isAvailable && !park.isReported).length;
+      this.OccupiedParks_C = this.CD1.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.CD2.filter(park => !park.isAvailable && !park.isReported).length 
+                            + this.CD3.filter(park => !park.isAvailable && !park.isReported).length;
+      
+      this.ReportedParks_All = this.allParks.filter(park => park.isReported).length;
+      this.ReportedParks_A = this.AD1.filter(park => park.isReported).length 
+                            + this.AD2.filter(park => park.isReported).length 
+                            + this.AD3.filter(park => park.isReported).length;
+      this.ReportedParks_B = this.BD1.filter(park => park.isReported).length 
+                            + this.BD2.filter(park => park.isReported).length 
+                            + this.BD3.filter(park => park.isReported).length;
+      this.ReportedParks_C = this.CD1.filter(park => park.isReported).length 
+                            + this.CD2.filter(park => park.isReported).length 
+                            + this.CD3.filter(park => park.isReported).length;
     });
   }
   

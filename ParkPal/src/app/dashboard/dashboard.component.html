@@ -1,22 +1,60 @@
 <div class="dashboard-div">
   <div class="greetings">Hi, {{ Firstname }}!</div>
   <div class="status-header">Overview</div>
-  <div class="status-box">
+  <div class="status-box" *ngIf="mapState==0">
     <div class="vacant">
-      Vacant<br /><br />
-      9
+      Available<br /><br />
+      {{AvailableParks_All}}
     </div>
     <div class="occupied">
       Occupied<br /><br />
-      {{mapState}}
+      {{OccupiedParks_All}}
     </div>
     <div class="pending">
-      Pending<br /><br />
-      10
-    </div>
-    <div class="reports">
       Reports<br /><br />
-      20
+      {{ReportedParks_All}}
+    </div>
+  </div>
+  <div class="status-box" *ngIf="mapState==1">
+    <div class="vacant">
+      Available<br /><br />
+      {{AvailableParks_A}}
+    </div>
+    <div class="occupied">
+      Occupied<br /><br />
+      {{OccupiedParks_A}}
+    </div>
+    <div class="pending">
+      Reports<br /><br />
+      {{ReportedParks_A}}
+    </div>
+  </div>
+  <div class="status-box" *ngIf="mapState==2">
+    <div class="vacant">
+      Available<br /><br />
+      {{AvailableParks_B}}
+    </div>
+    <div class="occupied">
+      Occupied<br /><br />
+      {{OccupiedParks_B}}
+    </div>
+    <div class="pending">
+      Reports<br /><br />
+      {{ReportedParks_B}}
+    </div>
+  </div>
+  <div class="status-box" *ngIf="mapState==3">
+    <div class="vacant">
+      Available<br /><br />
+      {{AvailableParks_C}}
+    </div>
+    <div class="occupied">
+      Occupied<br /><br />
+      {{OccupiedParks_C}}
+    </div>
+    <div class="pending">
+      Reports<br /><br />
+      {{ReportedParks_C}}
     </div>
   </div>
   <div class="university-map">
