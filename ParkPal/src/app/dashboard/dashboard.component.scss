@@ -26,11 +26,11 @@
 .status-box {
     margin: 0 auto;
     display: grid;
-    max-height: 240x;
+    max-height: 240px;
     height:auto;
     width: auto;
     grid-auto-flow: row;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(3, 120px);
     /* Create 4 columns */
     grid-template-rows: repeat(1, 120px);
     gap: 5vw;
@@ -42,11 +42,17 @@
 
     /* For screens smaller than 768px (e.g., mobile), make it a single column layout */
     .status-box {
-        grid-auto-flow: row;
+        //grid-auto-flow: row;
         /* Flow items in rows */
         grid-template-columns: repeat(2, 120px);
+        grid-template-rows: repeat(2, 120px);
         /* Single column layout */
         gap: 1vw;
+        
+    }
+    
+    .status-box .pending {
+        grid-column: span 2; /* Span one column in the second row for smaller screens */
     }
 
     .greetings {

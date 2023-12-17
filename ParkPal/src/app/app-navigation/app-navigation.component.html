@@ -158,7 +158,7 @@
       <a
         class="mat-nav-list-btns"
         href="/pending-registrations"
-        *ngIf="user.Level != 1"
+        *ngIf="user.Level == 3"
       >
         <div class="categ_svg_icon_style">
           <svg
@@ -199,12 +199,12 @@
             ></path>
           </svg>
         </div>
-        <p>Penalty System</p>
+        <p>Penalty Management</p>
       </a>
       <!-- end of history Penalty -->
 
       <!-- Report Management -->
-      <a
+      <!-- <a
         class="mat-nav-list-btns"
         href="/app-penalty-page"
         *ngIf="user.Level != 1"
@@ -224,11 +224,11 @@
           </svg>
         </div>
         <p>Report Management</p>
-      </a>
+      </a> -->
       <!-- End of Report Management -->
 
       <!-- Manual Registration -->
-      <a class="mat-nav-list-btns" *ngIf="user.Level != 1">
+      <a class="mat-nav-list-btns" *ngIf="user.Level != 1 && user.Level != 2">
         <div class="categ_svg_icon_style">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -247,7 +247,7 @@
       </a>
       <!-- end of Manual Registration -->
       <!-- User -->
-      <div class="ManualReg_sub" *ngIf="user.Level != 1">
+      <div class="ManualReg_sub" *ngIf="user.Level != 1 && user.Level != 2">
         <a href="/user-registration" class="ManualReg_sub_btn">
           <!-- <div class="ManualReg_sub_btn_icon">
             <svg

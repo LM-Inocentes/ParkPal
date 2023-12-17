@@ -30,7 +30,6 @@ const routes: Routes = [
         component: DashboardComponent,
         title: 'Dashboard',
         data: { title: 'DASHBOARD' },
-        
       },
       {
         path: 'registered-users',

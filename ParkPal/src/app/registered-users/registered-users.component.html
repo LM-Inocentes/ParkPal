@@ -4,7 +4,7 @@
       {{registeredUser.Fullname}} ({{registeredUser.id}})
   
       <!-- Buttons -->
-      <button id="rejctBtn" class="reject-btn" (click)="deleteUserConfirmation(registeredUser)">Delete</button>
+      <button id="rejctBtn" class="reject-btn" *ngIf="user.Level != 1 && user.Level != 2" (click)="deleteUserConfirmation(registeredUser)">Delete</button>
       <!-- end of Buttons -->
     </div>
     <br />

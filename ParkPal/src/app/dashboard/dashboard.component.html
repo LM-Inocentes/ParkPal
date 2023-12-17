@@ -95,13 +95,13 @@
       <!-- <div *ngFor="let index of [76, 77, 78, 79, 80, 81, 82]"> -->
       <div *ngFor="let park of CD3">
         <button [id]="park.id" *ngIf="park.isReported" (click)="parkYellow(park)">
-          <img src="assets/motorcycle-pending.png">
+          <img src="assets/car-pending.png">
         </button>
         <button [id]="park.id" *ngIf="!park.isReported && park.isAvailable" (click)="parkGreen(park.id!, park.name)">
-          <img src="assets/motorcycle-available.png">
+          <img src="assets/car-available.png">
         </button>
         <button [id]="park.id" *ngIf="!park.isReported && !park.isAvailable" (click)="parkRed(park)">
-          <img src="assets/motorcycle-occupied.png">
+          <img src="assets/car-occupied.png">
         </button>
       </div>
     </div>

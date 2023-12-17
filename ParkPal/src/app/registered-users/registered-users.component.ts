@@ -13,9 +13,18 @@ import { ConfirmDeleteComponent } from '../component/confirm-delete/confirm-dele
   styleUrls: ['./registered-users.component.scss']
 })
 export class RegisteredUsersComponent {
+  user!: User;
+  Firstname?: string;
   RegisteredUsers: User[] = [];
 
-  constructor( private authService:AuthService, private dialog: MatDialog, private activatedRoute: ActivatedRoute ) {
+  constructor(private authService: AuthService, private dialog: MatDialog, private activatedRoute: ActivatedRoute) {
+    authService.userObservable.subscribe((newUser) => {
+      this.user = newUser;
+      if (this.isAuth) {
+        this.Firstname = this.user.Fullname.split(' ').at(0);
+      }
+      // console.log(this.user);
+    });
   }
 
   ngOnInit(): void {
@@ -30,6 +39,10 @@ export class RegisteredUsersComponent {
         this.RegisteredUsers = RegisteredUsers;
       })
     })
+  }
+
+  get isAuth() {
+    return this.user.token;
   }
 
   openImageModal(imageUrl: string) {
