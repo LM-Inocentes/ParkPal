@@ -67,3 +67,12 @@ export const GET_ALL_PARKS = BASE_URL + '/api/misc/parks/all';
 export const PARK_USER = BASE_URL + '/api/misc/parks/parkUser';
 
 export const UNPARK_USER = BASE_URL + '/api/misc/parks/unparkUser';
+
+export const GET_REPORTED_USER_BY_PLATENO = BASE_URL + '/api/misc/user/';
+
+export const GET_IS_PARKED_USER = BASE_URL + '/api/misc/isparked/';
+
+export const REPORT_GREEN = BASE_URL + '/api/misc/parks/report/green';
+
+export const REPORT_RED= BASE_URL + '/api/misc/parks/report/red';
+

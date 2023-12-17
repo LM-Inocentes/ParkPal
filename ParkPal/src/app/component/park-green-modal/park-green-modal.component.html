@@ -1,11 +1,13 @@
 <h2 mat-dialog-title>{{ data.title }}</h2>
-    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
+    <mat-dialog-content *ngIf="!inputFlag">{{ data.message }}</mat-dialog-content>
+    <mat-dialog-content *ngIf="inputFlag">Input Plate Number of Occupying Vehicle</mat-dialog-content>
+    <mat-form-field *ngIf="inputFlag">
+        <input matInput placeholder="Plate Number" [(ngModel)]="PlateNo"/>
+    </mat-form-field>
         <mat-dialog-actions>
-            <button mat-button *ngIf="data.level == 1" (click)="park()">Park</button>
-            <button mat-button (click)="report()">Report</button>
-        </mat-dialog-actions>
-        <mat-dialog-actions *ngIf="data.level != 1">
-            <button mat-button (click)="reset()">Reset</button>
+            <button mat-button *ngIf="data.level == 1 && !inputFlag" (click)="park()">Park</button>
+            <button mat-button *ngIf="!inputFlag" (click)="report()">Report</button>
+            <button mat-button *ngIf="inputFlag" (click)="doneReport()">Report</button>
         </mat-dialog-actions>
 
 

@@ -12,3 +12,13 @@ mat-dialog-actions {
       margin: 0 8px; // Add some spacing between the buttons
     }
   }
+  mat-form-field{
+    display: flex;
+    align-items: center;
+
+    input {
+        
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+}

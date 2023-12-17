@@ -250,6 +250,7 @@ router.patch("/parks/unparkUser" ,asyncHandler(
           "parkerID": "",
           "name": "",
           "PlateNo": "",
+          "isReported": false,
           "isAvailable": true,
           "time": ""
         }
@@ -257,5 +258,70 @@ router.patch("/parks/unparkUser" ,asyncHandler(
       res.send(park);
   }
 ))
+
+router.get("/user/:PlateNo", asyncHandler(
+  async (req, res) =>{
+      const user = await UserModel.findOne({VPlateNo: req.params.PlateNo});
+      res.send(user);                    
+  }
+))
+
+router.get("/isparked/:parkerID", asyncHandler(
+  async (req, res) =>{
+      const park = await ParkModel.findOne({parkerID: req.params.parkerID});
+      if(park){
+        res.json({ isParked: true });  
+      }
+      else{
+        res.json({ isParked: false });  
+      }                 
+  }
+))
+
+router.patch("/parks/report/green" ,asyncHandler(
+  async (req, res) => {
+      const { id, reporterName, name } = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": name,
+          "name": reporterName,
+          "PlateNo": `${name} Reported by ${reporterName} for Occupying Available Space`,
+          "isReported": true,
+          "time": new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      });
+      res.send(park);
+  }
+))
+
+router.patch("/parks/report/red" ,asyncHandler(
+  async (req, res) => {
+      const { id, reporterName, name } = req.body;
+      const park = await ParkModel.findOne({ id: id });
+      await park!.updateOne({
+        $set: {
+          "parkerID": name,
+          "name": reporterName,
+          "PlateNo": `User ${name} Reported by ${reporterName} for Not Occupying Parked Space`,
+          "isReported": true,
+          "time": new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+        }
+      });
+      res.send(park);
+  }
+))
+
+
 
 export default router;

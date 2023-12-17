@@ -7,6 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./park-green-modal.component.scss']
 })
 export class ParkGreenModalComponent {
+  inputFlag: boolean = false;
+  PlateNo!: string;
   constructor(
     public dialogRef: MatDialogRef<ParkGreenModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { level: number, title: string; message: string }
@@ -18,10 +20,11 @@ export class ParkGreenModalComponent {
   }
 
   report(): void {
-    this.dialogRef.close('report');
+    this.inputFlag = true;
   }
 
-  reset(): void {
-    this.dialogRef.close('reset');
+  doneReport(): void {
+    this.dialogRef.close(this.PlateNo);
   }
+
 }

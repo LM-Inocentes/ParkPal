@@ -3,10 +3,12 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../shared/models/user';
 import { MiscService } from '../services/misc.service';
 import { Park } from '../shared/models/park';
-import { timer } from 'rxjs';
+import { forkJoin, switchMap, timer } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ParkGreenModalComponent } from '../component/park-green-modal/park-green-modal.component';
 import { ParkRedModalComponent } from '../component/park-red-modal/park-red-modal.component';
+import { ParkYellowModalComponent } from '../component/park-yellow-modal/park-yellow-modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +33,7 @@ export class DashboardComponent {
   CD2!: Park[];
   CD3!: Park[];
 
-  constructor( private authService:AuthService, private miscService:MiscService, private dialog: MatDialog) {
+  constructor( private authService:AuthService, private miscService:MiscService, private dialog: MatDialog, private toastr: ToastrService) {
     this.authService.userObservable.subscribe((newUser) => {
       this.user = newUser;
       if(this.isAuth){
@@ -61,7 +63,6 @@ export class DashboardComponent {
       this.CD1 = this.allParks.slice(63, 73);
       this.CD2 = this.allParks.slice(73, 75);
       this.CD3 = this.allParks.slice(75, 82);
-      console.log(this.AD1);
     });
   }
   
@@ -105,7 +106,7 @@ export class DashboardComponent {
   //   }
   // }
 
-  parkGreen(id: number){
+  parkGreen(id: number, name: string){
     const park: Park = {
       id,
       parkerID: this.user.id,
@@ -123,11 +124,41 @@ export class DashboardComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'park') {
-        this.miscService.parkUser(park).subscribe(_ => {
+        this.miscService.getIsAlreadyParked(this.user.id).subscribe(({isParked}) => {
+          if (isParked) {
+            this.toastr.error(
+              `You Are Parked In Other Parking Spaces Or Reported (Contact Admin To Reset Parking)`,
+              'Parking Failed'
+            );
+          } else {
+            this.miscService.parkUser(park).subscribe(_ => {
+              this.ngOnInit();
+            });
+          }
+        });
+      }else{
+        //result is PlateNo here
+        this.miscService.getRegisteredUsersByPlateNo(result).pipe(
+          switchMap((user) => {
+            const sendreport = {
+              userID: user.id,
+              parkID: id,
+              reporterName: this.user.id,
+            };
+            const parkreport = {
+              id,
+              reporterName: this.user.id,
+              name: user.id,
+            };
+            //forkJoin means run in parallel
+            return forkJoin([
+              this.miscService.postReportAvailable(sendreport),
+              this.miscService.reportGreen(parkreport)
+            ]);
+          })
+        ).subscribe(() => {
           this.ngOnInit();
         });
-      }else if (result === 'report') {
-        
       }
     });
   }
@@ -139,6 +170,33 @@ export class DashboardComponent {
         message1: `ID number: ${park.parkerID}`, 
         message2: `Plate No: ${park.PlateNo}`,
         message3: `Time ${park.time}`,
+        level: this.user.Level,
+        isParker: (park.parkerID==this.user.id)  //boolean if user is parker
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'unpark') {
+        this.miscService.unparkUser(park).subscribe(_ => {
+          this.ngOnInit();
+        });
+      } else if (result === 'report') {
+        
+      } else if (result === 'reset') {
+        //unpark and reset is the same
+        this.miscService.unparkUser(park).subscribe(_ => {
+          this.ngOnInit();
+        });
+      }
+    });
+  }
+
+  parkYellow(park: Park){
+    const dialogRef = this.dialog.open(ParkYellowModalComponent, {
+      width: '250px',
+      data: { 
+        title: `Parking Space #${park.id!+1}`, 
+        message: `${park.PlateNo}`,               //
         level: this.user.Level,
         isParker: (park.parkerID==this.user.id)  //boolean if user is parker
       },
