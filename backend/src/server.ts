@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin:["http://localhost:4200"],
+    origin:'https://parkpal.netlify.app',
 }));
 
 app.use("/api/users/", userRouter);
