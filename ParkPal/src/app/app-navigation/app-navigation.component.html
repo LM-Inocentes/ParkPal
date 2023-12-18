@@ -460,6 +460,7 @@
             aria-label="Toggle sidenav"
             mat-icon-button
             href="/app-notifications"
+            *ngIf="user.Level == 1"
           >
             <mat-icon class="bell-icon" aria-label="notifications icon">
               <div class="button-badge">{{userReports.length}}</div>

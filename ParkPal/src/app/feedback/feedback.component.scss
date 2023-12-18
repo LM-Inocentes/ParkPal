@@ -22,6 +22,11 @@ h2 {
     flex-direction: column;
 }
 
+.feedback-header {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 .dateholder {
     margin-left: 3%;
 }
@@ -41,9 +46,10 @@ h2 {
 
 .container {
     max-width: 600px;
+    width:75%;
     margin-left: 2rem;
-    margin-top: 7%;
-    padding: 5rem;
+    margin-top: 3%;
+    padding: 3rem;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -75,6 +81,8 @@ h2 {
     .btnSubmit {
         font-family: "Poppins", Courier, monospace;
     }
+
+    //margin: 20px auto 0 auto
 }
 
 
@@ -84,7 +92,7 @@ h2 {
 }
 
 .maincontent {
-    width: fit-content;
+    width:100%;
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 1rem;
@@ -93,7 +101,7 @@ h2 {
     .upper {
         display: flex;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 10px;
 
     }
 
@@ -151,11 +159,11 @@ button:hover {
 .upper,
 .user_info {
     display: flex;
-    align-items: center;
+    //align-items: center;
 }
 
 .upper {
-    padding: 4rem 0 3rem 0;
+    padding: 5px 0 5px 0;
 
 
     .user_info {
@@ -180,5 +188,38 @@ button:hover {
 @media (max-width: 950px){
     .maincontainer{
         flex-direction: column;
+        justify-content: center;
+
+        .container {
+
+            font-family: "Poppins", Courier, monospace;
+        
+            #feedbackType {
+                font-family: "Poppins", Courier, monospace;
+            }
+        
+            .btnSubmit {
+                font-family: "Poppins", Courier, monospace;
+            }
+        
+            margin: 20px auto 0 auto
+        }
+        
+        
+        .feedback-container {
+            font-family: "Poppins", Courier, monospace;
+        
+            #feedbackType {
+                font-family: "Poppins", Courier, monospace;
+            }
+        
+            .btnSubmit {
+                font-family: "Poppins", Courier, monospace;
+            }
+        
+            margin: 20px auto 0 auto
+        
+        }
+        
     }
 }
