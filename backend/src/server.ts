@@ -18,7 +18,9 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     origin:'https://parkpal-cit.netlify.app/',
-}));
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 
 app.use("/api/users/", userRouter);
 app.use("/api/uploads/", uploadRouter);
