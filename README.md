@@ -4,7 +4,9 @@
 https://parkpal-cit.netlify.app/
 
 sample user acc:
+
 username: 21-1312-121
+
 password: 1234567
 
 sample admin acc:
